@@ -1,0 +1,62 @@
+html, body
+{
+  background-color: #fff;
+  color: #000;
+  letter-spacing: 0.5px;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+footer
+{
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+a, a:hover, a:focus, a:visited
+{
+  color: #000;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 289px;
+}
+
+#__nuxt {
+  height: 100%;
+}
+
+pre {
+  padding: 8px !important;
+  background: #eee;
+}
+pre code {
+  padding: 8px !important;
+  background: #fff !important;
+}
+
+.components-panel {
+  width: 100%;
+  background: #fff;
+  padding: 36px 16px;
+  background: #eee;
+}
+
+.components-panel-inner {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.veb-dark-theme .components-panel{
+  background: #212121;
+}
+
+.veb-dark-theme  pre {
+  background: #212121;
+}

@@ -1,0 +1,9 @@
+{
+    currentUser {
+        _id
+        username
+        token,
+        insertedAt,
+        insertedBy,
+    }
+}
