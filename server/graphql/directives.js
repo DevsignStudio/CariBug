@@ -15,8 +15,6 @@ const directiveResolvers = {
                 context.secrets.KEY
             )
             context.user = decoded
-            context.user.insertedAt = new Date(context.user.insertedAt)
-            context.user.updatedAt = new Date(context.user.updatedAt)
             return next()
         } catch (err) {
             throw new AuthorizationError({
@@ -50,6 +48,10 @@ const directiveResolvers = {
                 })
             )
         }
+    },
+    mongoDateConverter: async (resolve, source, args) => {
+        const value = await resolve()
+        return new Date(value)
     }
 }
 export { directiveResolvers }

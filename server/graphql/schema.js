@@ -5,6 +5,7 @@ import Resolvers from './resolvers'
 const typeDefs = `
     directive @isAuthenticated on QUERY | FIELD
     directive @hasScope(scope: [String]) on QUERY | FIELD
+    directive @mongoDateConverter on FIELD_DEFINITION | FIELD
 
     scalar DateTime
     scalar NonPositiveInt
@@ -36,9 +37,9 @@ const typeDefs = `
         _id: String
         username: String
         token: String
-        insertedAt: DateTime
+        insertedAt: DateTime @mongoDateConverter
         insertedBy: String
-        updatedAt: DateTime
+        updatedAt: DateTime @mongoDateConverter
         updatedBy: String
         isDeleted: Boolean
     }
