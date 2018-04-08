@@ -1,9 +1,9 @@
 <template>
     <veb-toolbar class="background-primary elevation z2" style="z-index:100" v-elevation>
-        <span class="show-xs hidden-lg hidden-xlg">
-            <veb-icon-button name="menu" class="color-white" @click="enable"></veb-icon-button>  
+        <span style="display: inline-block">
+            <veb-icon-button name="menu" class="color-white show-xs hidden-lg hidden-xlg" @click="enable"></veb-icon-button>  
         </span>
-        <span class="font-title toolbar-title color-white font-normal">{{ internalTitle }}</span>  
+        <span class="font-title toolbar-title color-white font-normal">{{ internalTitle }}</span> 
         
         <div slot="right">
             <veb-icon-button name="dots-vertical" class="color-white"></veb-icon-button>
