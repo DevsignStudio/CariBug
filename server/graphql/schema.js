@@ -19,20 +19,6 @@ const typeDefs = `
     scalar EmailAddress
     scalar URL
 
-    type Post {
-        _id: String
-        title: String
-        content: String
-        comments: [Comment]
-    }
-
-    type Comment {
-        _id: String
-        postId: String
-        content: String
-        post: Post
-    }
-
     type User {
         _id: String
         username: String
@@ -44,18 +30,53 @@ const typeDefs = `
         isDeleted: Boolean
     }
 
+    type Project {
+        _id: String
+        name: String
+        description: String
+        ownerId: String
+        owner: User
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
+    type ProjectTeamRole {
+        _id: String
+        name: String
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
+    type ProjectTeam {
+        _id: String
+        userId: String
+        rolesId: [String]
+        projectId: String
+        user: User
+        roles: [ProjectTeamRole]
+        project: Project
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
     type Query {
-        post(_id: String): Post
-        posts: [Post]
-        comment(_id: String): Comment
         currentUser: User @isAuthenticated
+        currentUserProjects: [Project] @isAuthenticated
     }
 
     type Mutation {
-        createPost(title: String, content: String): Post
-        createComment(postId: String, content: String): Comment
         signup(username: String, password: String): User
         login(username: String, password: String): User
+        createProject(name: String, description: String): Boolean @isAuthenticated
     }
 
     schema {

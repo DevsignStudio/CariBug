@@ -9,7 +9,7 @@ export default ({User}) => {
                 throw new Error('User already exists')
             }
             let hashedPassword = await bcrypt.hash(password, 10)
-            await User.insert({
+            await User.insert(null, {
                 username,
                 password: hashedPassword
             })

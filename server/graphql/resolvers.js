@@ -1,5 +1,5 @@
 import {DB, Collection} from '../mongodb/index'
-import {prepare} from '../helpers/index'
+// import {prepare} from '../helpers/index'
 import {ObjectId} from 'mongodb'
 import Mutation from './mutations'
 
@@ -21,9 +21,10 @@ export default async () => {
     try {
         const db = await DB()
         const collections = {
-            Posts: Collection(db, 'posts'),
-            Comments: Collection(db, 'comments'),
-            User: Collection(db, 'users')
+            // Posts: Collection(db, 'posts'),
+            // Comments: Collection(db, 'comments'),
+            User: Collection(db, 'users'),
+            Project: Collection(db, 'projects')
         }
         return {
             DateTime,
@@ -38,27 +39,29 @@ export default async () => {
             EmailAddress,
             URL,
             Query: {
-                post: async (root, {_id}) => {
-                    return prepare(await collections.Posts.findOne(ObjectId(_id)))
-                },
-                posts: async (root, params, {secrets}) => {
-                    return (await collections.Posts.find({}).toArray()).map(prepare)
-                },
-                comment: async (root, {_id}) => {
-                    return prepare(await collections.Comments.findOne(ObjectId(_id)))
-                },
                 currentUser: (root, args, context) => {
                     return context.user
+                },
+                currentUserProjects: async (root, args, context) => {
+                    let result = await collections.Project.find({ownerId: context.user._id}).toArray()
+                    return result
                 }
             },
-            Post: {
-                comments: async ({_id}) => {
-                    return (await collections.Comments.find({postId: _id}).toArray()).map(prepare)
-                }
-            },
-            Comment: {
-                post: async ({postId}) => {
-                    return prepare(await collections.Posts.findOne(ObjectId(postId)))
+            // Post: {
+            //     comments: async ({_id}) => {
+            //         return (await collections.Comments.find({postId: _id}).toArray()).map(prepare)
+            //     }
+            // },
+            // Comment: {
+            //     post: async ({postId}) => {
+            //         return prepare(await collections.Posts.findOne(ObjectId(postId)))
+            //     }
+            // },
+            Project: {
+                owner: async ({ownerId}) => {
+                    let user = await collections.User.findOne({_id: ObjectId(ownerId)})
+                    console.log(user[0])
+                    return user
                 }
             },
             Mutation: Mutation(collections)
