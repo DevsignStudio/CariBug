@@ -1,5 +1,5 @@
 import {MongoClient} from 'mongodb'
-
+import uuid from 'uuid/v4'
 const MONGO_URL = 'mongodb://localhost:27017/'
 
 export const DB = async () => {
@@ -19,32 +19,32 @@ export const Collection = (db, name) => {
     let findCommand = collection.find
     // let findOneCommand = collection.findOne
 
-    collection.insert = (...args) => {
+    collection.insert = (user, ...args) => {
+        args[0]._id = uuid()
+        args[0].insertedBy = user ? user._id : null
+        args[0].updatedBy = user ? user._id : null
         args[0].insertedAt = new Date()
         args[0].updatedAt = new Date()
-        args[0].insertedBy = collection.getUser ? collection.getUser()._id : null
-        args[0].updatedBy = collection.getUser ? collection.getUser()._id : null
         args[0].isDeleted = false
         return insertCommand.apply(collection, args)
     }
 
-    collection.update = (...args) => {
+    collection.update = (user, ...args) => {
         args[0].updatedAt = (new Date()).toString()
-        args[0].updatedBy = null
+        args[0].updatedBy = user ? user._id : null
 
         return updateCommand.apply(collection, args)
     }
 
-    collection.find = async (...args) => {
+    collection.find = (...args) => {
         args[0].isDeleted = false
 
-        let data = await findCommand.apply(collection, args)
+        let data = findCommand.apply(collection, args)
         return data
     }
 
-    collection.findWithDeleted = async (...args) => {
-        let res = await findCommand.apply(collection, args)
-        return res
+    collection.findWithDeleted = (...args) => {
+        return findCommand.apply(collection, args)
     }
 
     collection.findOne = async (...args) => {
@@ -65,10 +65,10 @@ export const Collection = (db, name) => {
         return null
     }
 
-    collection.remove = () => {
+    collection.remove = (user) => {
         let args = [{}]
         args[0].updatedAt = (new Date()).toString()
-        args[0].updatedBy = null
+        args[0].updatedBy = user ? user._id : null
         args[0].isDeleted = true
 
         return updateCommand.apply(collection, args)

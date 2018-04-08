@@ -43,6 +43,7 @@
     "store2": "^2.7.0",
     "strong-soap": "^1.6.2",
     "subscriptions-transport-ws": "^0.9.6",
+    "uuid": "^3.2.1",
     "vue-apollo": "^3.0.0-beta.4",
     "vue-highlight.js": "^2.2.0"
   },
