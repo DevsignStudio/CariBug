@@ -22,7 +22,7 @@ module.exports = {
   ** Add axios globally
   */
     modules: ['@nuxtjs/apollo'],
-    plugins: ['~/plugins/veb.js', '~/plugins/vue-highlight.js'],
+    plugins: ['~/plugins/veb.js', '~/plugins/vue-highlight.js', '~/plugins/vue-moment.js'],
     apollo: {
         clientConfigs: {
             default: '~/apollo/config/default.js'

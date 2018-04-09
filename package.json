@@ -45,7 +45,8 @@
     "subscriptions-transport-ws": "^0.9.6",
     "uuid": "^3.2.1",
     "vue-apollo": "^3.0.0-beta.4",
-    "vue-highlight.js": "^2.2.0"
+    "vue-highlight.js": "^2.2.0",
+    "vue-moment": "^3.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
