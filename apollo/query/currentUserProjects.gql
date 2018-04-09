@@ -1,0 +1,10 @@
+{
+    currentUserProjects {
+        _id
+        name
+        updatedAt
+        owner {
+            username
+        }
+    }
+}

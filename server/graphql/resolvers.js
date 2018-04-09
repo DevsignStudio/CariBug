@@ -43,7 +43,8 @@ export default async () => {
                     return context.user
                 },
                 currentUserProjects: async (root, args, context) => {
-                    let result = await collections.Project.find({ownerId: context.user._id}).toArray()
+                    console.log(context.user._id)
+                    let result = await collections.Project.find({insertedBy: context.user._id}).toArray()
                     return result
                 }
             },
@@ -58,8 +59,8 @@ export default async () => {
             //     }
             // },
             Project: {
-                owner: async ({ownerId}) => {
-                    let user = await collections.User.findOne({_id: ObjectId(ownerId)})
+                owner: async ({insertedBy}) => {
+                    let user = await collections.User.findOne({_id: insertedBy})
                     console.log(user[0])
                     return user
                 }
