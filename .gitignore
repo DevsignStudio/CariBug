@@ -10,8 +10,4 @@ npm-debug.log
 # Nuxt generate
 dist
 
-# Backpack build
-build
-
 .sass-cache/
-packages/veb-ui/
