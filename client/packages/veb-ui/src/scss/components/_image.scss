@@ -1,0 +1,10 @@
+$var: ".veb-image";
+
+#{$var} {
+    img {
+        width: 100%;
+        max-width: 100%;
+        position: absolute;
+        @extend .middle-center;
+    }
+}

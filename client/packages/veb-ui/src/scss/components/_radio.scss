@@ -1,0 +1,62 @@
+$var: ".veb-radio";
+#{$var} {
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+    float: left;
+    #{$var}-check,
+    #{$var}-uncheck {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+    }
+    #{$var}-check {
+        color: $theme-primary;
+        @include transform(scale(0));
+        @include transition((all 0.2s $animation-fast-out-slow-in-timing-function, opacity 0.25s $animation-fast-out-slow-in-timing-function));
+        opacity: 0;
+    }
+    #{$var}-uncheck {
+        color: rgba($color-black, 0.54);
+        @include transition((opacity 0.25s $animation-fast-out-slow-in-timing-function));
+    }
+    #{$var}-ripple {
+        width: 48px;
+        height: 48px;
+        @include border-radius(50%);
+        background: rgba($color-black, 0.1);
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+        opacity: 0;
+        &.active {
+            opacity: 1;
+        }
+    }
+    input[type="radio"] {
+        display: none;
+        &:checked~#{$var}-check {
+            @include transform(scale(1));
+            opacity: 1;
+        }
+        &:checked~#{$var}-uncheck {
+            opacity: 0;
+        }
+        &:checked~#{$var}-ripple {
+            background-color: rgba($theme-primary, 0.2);
+        }
+    }
+    input[type="radio"]:disabled,
+    input[type="radio"]:checked:disabled {
+        pointer-events: none;
+        &~#{$var}-check,
+        &~#{$var}-uncheck {
+            color: rgba($color-black, 0.26);
+        }
+    }
+    @include generateCreateRadio($var);
+}

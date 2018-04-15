@@ -1,0 +1,25 @@
+$var: ".veb-navigation";
+#{$var} {
+    height: 100vh;
+    width: 340px;
+    max-width: 90%;
+    @include transition(all 0.2s $animation-fast-out-linear-in-timing-function);
+    @include transform(translateX(-100%) translateZ(0));
+    @include elevation(0);
+    background-color: $color-white;
+    top: 0;
+    left: 0;
+    position: absolute;
+    &.right {
+        @include transform(translateX(100%) translateZ(0));
+        right: 0;
+        left: auto;
+    }
+}
+
+.veb-reveal.enable {
+    #{$var} {
+        @include transform(translateX(0) translateZ(0));
+        @include elevation(2);
+    }
+}

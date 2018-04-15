@@ -1,0 +1,52 @@
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width:100%
+}
+
+.loading-style1 {
+    position: relative;
+    background-color: $theme-primary;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 10px solid rgba($color-white,0.4);
+    
+    &:after, &:before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    
+    
+    &:after, &:before {
+      left: 10px;
+      top: -20px;
+      background-color: rgba(#fff, 0.9);
+      transform-origin: 10px 40px;
+      animation: axis 2s ease-in infinite;
+      z-index: 10;
+    }
+    
+    &:before {
+      animation-delay: 1s;
+      animation: axis 2s ease-out infinite;
+    }
+  
+  }
+  
+  @keyframes axis {
+    0% {
+      transform: rotateZ(0deg) translate3d(0,0,0);
+    }
+  
+    100% {
+      transform: rotateZ(720deg) translate3d(0,0,0);
+    }
+}

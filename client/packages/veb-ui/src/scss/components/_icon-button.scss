@@ -1,0 +1,97 @@
+$var: ".veb-icon-button";
+
+#{$var} {
+    width: 48px;
+	height: 48px;
+	// display: block;
+    padding: 0px;
+	color: inherit;
+	background: transparent;
+	margin: 0;
+	border: 0;
+    // display: inline-block;
+    cursor: pointer;
+    @include border-radius(50%);
+
+    #{$var}-inner {
+        cursor: pointer;
+        line-height: 48px;
+        text-align: center;
+        width: 48px;
+        height: 48px;
+        z-index: 2;
+        color: inherit;
+        background: rgba($color-white, 0);
+        @include transition((all $animation-linear-out-slow-in-timing-function 0.4s));
+        @include border-radius(50%);
+        .mdi {
+            color: inherit!important;
+            line-height: 48px;
+        }
+    }
+
+    #{$var}-ripple {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        left: 0;
+        top: 0;
+        @include border-radius(50%);
+        opacity: 0;
+        z-index: 1;
+        @include transform(translateZ(0));
+        @include transition((all $animation-linear-out-slow-in-timing-function 0.2s));
+        &.active {
+            -webkit-animation: ripple-icon-button 0.65s $animation-fast-out-slow-in-timing-function forwards;
+            -moz-animation: ripple-icon-button 0.65s $animation-fast-out-slow-in-timing-function forwards;
+            animation: ripple-icon-button 0.65s $animation-fast-out-slow-in-timing-function forwards;
+        }
+    }
+}
+
+
+@-webkit-keyframes ripple-icon-button {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    30% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes ripple-icon-button {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    30% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+@keyframes ripple-icon-button {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    30% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,54 @@
+$swipe-tab-color: $color-white;
+.slick-initialized {
+    height:100%;
+    width:100%;
+    .swipe-tab-content {
+        position: relative;
+    }
+    &.swipe-tabs {
+        max-height: 50px;
+        overflow: hidden;
+    }
+    .swipe-tab {
+        height: 50px;
+        background: none;
+        border: 0;
+        color: rgba($color-white, 0.6);
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 2px solid rgba($color-white, 0);
+        transition: all 0.5s;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        &:hover {
+            color: rgba($color-white, 0.7);
+        }
+        &.active-tab {
+            border-bottom-color: $color-white;
+            color: rgba($color-white, 1);
+        }
+    }
+
+    .slick-list {
+        height:100%;
+    }
+
+    .slick-track {
+        height: 100%;
+    }
+}
+
+.viu-tab-sub-header {
+    background: $theme-primary;
+    z-index: 2;
+}
+
+.main-container {
+    background: transparent;
+    height: 100%;
+    width:100%;
+}

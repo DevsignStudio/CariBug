@@ -1,0 +1,162 @@
+$var: ".veb-textfield";
+
+#{$var} {
+    padding-top: 28px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+
+    &.multiline {
+        height: auto;
+    }
+
+    #{$var}-line {
+        width: 100%;
+        border-bottom: 2px solid $theme-color;
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        z-index: 2;
+        @include transform(scaleX(0) translateZ(0));
+        @include transform-origin((0,50%));
+        @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+    }
+
+    #{$var}-floating-placeholder {
+        position: absolute;
+        top: 34px;
+        left: 0;
+        font-size: 16px;
+        color: $color-grey-500;
+        @include transform-origin((0));
+        @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+        @include transform(translateZ(0));
+    }
+
+    #{$var}-message {
+        position: absolute;
+        font-size: 12px;
+        color: $color-grey-500;
+        opacity: 0;
+        z-index: 0;
+        @include transform(translateY(-24px) translateZ(0));
+        @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+
+        &.force-message {
+            @include transform(translateY(0) translateZ(0));
+            opacity: 1;
+        }
+    }
+
+    textarea{
+        width: 100%;
+        resize: none;
+        height: 18px;
+        & ~ #{$var}-line {
+            bottom: 15px;
+        }
+    }
+    input, textarea {
+        z-index: 1;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        margin: 8px 0;
+        margin-bottom: 0;
+        padding-bottom: 7px;
+        background: transparent;
+        outline: none;
+        font-size: 16px;
+        line-height: 18px;
+        border-bottom: 1px solid $color-grey-300;
+        @include transform(translateZ(0));
+        &:focus, &:not(:disabled).always-show {
+            & ~ #{$var}-line {
+                @include transform(scaleX(1) translateZ(0));
+            }
+
+            & ~ #{$var}-floating-placeholder, & ~ #{$var}-message {
+                color: $theme-color;
+            }
+
+            & ~ #{$var}-message {
+                opacity: 1;
+                @include transform(translateY(0) translateZ(0));
+            }
+        }
+
+        &.has-text, &:focus {
+            & ~ #{$var}-floating-placeholder {
+                @include transform(scale(0.75) translateY(-28px) translateZ(0));
+            }
+        }
+
+        &:disabled {
+            cursor: auto;
+            pointer-events: none;
+            color: $color-grey-500;
+
+            & ~ #{$var}-floating-placeholder, & ~ #{$var}-message {
+                cursor: auto;
+                pointer-events: none;
+            }
+        }
+    }
+
+    &.is-info{
+        #{$var}-floating-placeholder,
+        #{$var}-message,
+        input, textarea {
+            color: $color-grey-700;
+        }
+
+        input, textarea {
+            border-bottom: 1px solid $color-grey-300;
+        }
+    }
+
+    &.accent {
+        #{$var}-line {
+            border-bottom: 2px solid $theme-accent;
+        }
+
+        input, textarea {
+            &:focus, &:not(:disabled).always-show {
+                & ~ #{$var}-floating-placeholder, & ~ #{$var}-message {
+                    color: $theme-accent;
+                }
+            }
+        }
+    }
+
+    &.success {
+        #{$var}-line {
+            border-bottom: 2px solid $color-green;
+        }
+
+        input, textarea {
+            &:focus, &:not(:disabled).always-show {
+                & ~ #{$var}-floating-placeholder, & ~ #{$var}-message {
+                    color: $color-green;
+                }
+            }
+        }
+    }
+
+    &.failed {
+        #{$var}-line {
+            border-bottom: 2px solid $color-red;
+        }
+
+        input, textarea {
+            &:focus, &:not(:disabled).always-show {
+                & ~ #{$var}-floating-placeholder, & ~ #{$var}-message {
+                    color: $color-red;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+$palette-royalblue:
+rgb(232, 235, 255)
+rgb(197, 206, 255)
+rgb(158, 173, 255)
+rgb(119, 140, 254)
+rgb(90, 115, 254)
+rgb(61, 90, 254)
+rgb(55, 82, 254)
+rgb(47, 72, 254)
+rgb(39, 63, 254)
+rgb(26, 46, 253)
+rgb(255, 255, 255)
+rgb(252, 253, 255)
+rgb(201, 205, 255)
+rgb(176, 182, 255)
+;
+
+$palette-royalblue-50: nth($palette-royalblue, 1);
+$palette-royalblue-100: nth($palette-royalblue, 2);
+$palette-royalblue-200: nth($palette-royalblue, 3);
+$palette-royalblue-300: nth($palette-royalblue, 4);
+$palette-royalblue-400: nth($palette-royalblue, 5);
+$palette-royalblue-500: nth($palette-royalblue, 6);
+$palette-royalblue-600: nth($palette-royalblue, 7);
+$palette-royalblue-700: nth($palette-royalblue, 8);
+$palette-royalblue-800: nth($palette-royalblue, 9);
+$palette-royalblue-900: nth($palette-royalblue, 10);
+$palette-royalblue-A100: nth($palette-royalblue, 11);
+$palette-royalblue-A200: nth($palette-royalblue, 12);
+$palette-royalblue-A400: nth($palette-royalblue, 13);
+$palette-royalblue-A700: nth($palette-royalblue, 14);
+
+
+$theme-color: $palette-royalblue-500;
+$theme-primary: $palette-royalblue-500;
+$theme-primary-50: $palette-royalblue-50;
+$theme-primary-100: $palette-royalblue-100;
+$theme-primary-200: $palette-royalblue-200;
+$theme-primary-300: $palette-royalblue-300;
+$theme-primary-400: $palette-royalblue-400;
+$theme-primary-500: $palette-royalblue-500;
+$theme-primary-600: $palette-royalblue-600;
+$theme-primary-700: $palette-royalblue-700;
+$theme-primary-800: $palette-royalblue-800;
+$theme-primary-900: $palette-royalblue-900;
+$theme-primary-light: $theme-primary-100;
+$theme-primary-dark: $theme-primary-700;
+$theme-text-color: $color-white;
+$theme-text-primary: $color-white;
+$theme-text-accent: $color-white;
+$theme-accent: $color-pink;
+$theme-accent-50: $color-pink-50;
+$theme-accent-100: $color-pink-100;
+$theme-accent-200: $color-pink-200;
+$theme-accent-300: $color-pink-300;
+$theme-accent-400: $color-pink-400;
+$theme-accent-500: $color-pink-500;
+$theme-accent-600: $color-pink-600;
+$theme-accent-700: $color-pink-700;
+$theme-accent-800: $color-pink-800;
+$theme-accent-900: $color-pink-900;
+$theme-accent-light: $color-pink-100;
+$theme-accent-dark: $color-pink-700;

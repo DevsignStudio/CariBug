@@ -1,48 +1,38 @@
-import express from 'express'
-import { Nuxt, Builder } from 'nuxt'
-import api from './api'
-
-import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
-import bodyParser from 'body-parser'
-
-import { Schema } from './graphql/schema'
-import { Context } from './graphql/context'
+import { GraphQLServer } from 'graphql-yoga'
+import typeDefs from './schema'
+import Resolvers from './resolver'
+import { directiveResolvers } from './helper/directives'
+import {DB} from './mongodb'
 import DotEnv from 'dotenv-safe'
 
-const Start = async () => {
-    try {
-        const app = express()
-        const host = process.env.HOST || '127.0.0.1'
-        const port = process.env.PORT || 3000
-        const dotEnvConf = DotEnv.config()
-        const schema = await Schema()
-        app.set('port', port)
-        app.use('/api', api)
-        app.use('/graphql', bodyParser.json(), graphqlExpress(async (req) => {
-            return {
-                schema,
-                context: await Context(req.headers, dotEnvConf.parsed)
-            }
-        }))
+const dotEnvConf = DotEnv.config()
 
-        app.use('/graphiql', graphiqlExpress({
-            endpointURL: '/graphql'
-        }))
 
-        let config = require('../nuxt.config.js')
-        config.dev = !(process.env.NODE_ENV === 'production')
-        const nuxt = new Nuxt(config)
-        if (config.dev) {
-            const builder = new Builder(nuxt)
-            builder.build()
-        }
-
-        app.use(nuxt.render)
-        app.listen(port, host)
-        console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console
-    } catch (e) {
-        console.log(e)
+export const context = async (req, secrets) => {
+    let mongo
+    if (!mongo) {
+        mongo = await DB()
+    }
+    // const user = await getUser(headers['authorization'], secrets, mongo)
+    return {
+        headers: req.request.headers,
+        secrets: dotEnvConf.parsed,
+        mongo
     }
 }
 
-Start()
+let start  = async () => {
+    const options = {
+        port: 4000,
+        endpoint: '/graphql',
+        subscriptions: '/subscriptions',
+        playground: '/playground',
+    }
+    let resolvers = await Resolvers()
+    const server = new GraphQLServer({ typeDefs, resolvers, context, directiveResolvers })
+    server.start(options, ({port}) => {
+        console.log(`Server is running on localhost:${port}`)
+    })
+}
+
+start()

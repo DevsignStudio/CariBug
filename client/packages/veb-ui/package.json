@@ -1,0 +1,48 @@
+{
+  "name": "veb-ui",
+  "version": "0.0.3",
+  "description": "A Vue.js project",
+  "jsnext": "dist/veb-ui.js",
+  "main": "dist/veb-ui.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "purge": "rm -rf dist/",
+    "compile": "rollup -c",
+    "build": "npm run purge && npm run compile",
+    "lint": "eslint src/* test/*",
+    "beforePublish": "npm run lint && npm run build"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "autosize": "^4.0.0",
+    "gemini-scrollbar": "^1.5.3",
+    "jquery": "^3.3.1",
+    "lodash": "^4.16.4",
+    "mdi": "^2.1.19",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7",
+    "slick-carousel": "^1.8.1",
+    "sugar": "^2.0.4",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "copy-dir": "^0.3.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-html": "^1.5.3",
+    "eslint-plugin-import": "^1.16.0",
+    "node-sass": "^3.10.1",
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-vue": "^2.2.6"
+  }
+}

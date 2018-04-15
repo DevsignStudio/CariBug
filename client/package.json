@@ -1,0 +1,38 @@
+{
+  "name": "caribug-client",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^3.0.6",
+    "apollo-cache-inmemory": "^1.1.12",
+    "apollo-link-context": "^1.0.8",
+    "apollo-link-http": "^1.5.4",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.8.0",
+    "highlight.js": "^9.12.0",
+    "nuxt": "^1.0.0",
+    "store2": "^2.7.0",
+    "vue-apollo": "^3.0.0-beta.5",
+    "vue-highlight.js": "^2.2.0",
+    "vue-moment": "^3.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "eslint-plugin-html": "^4.0.3",
+    "eslint-config-standard": "^11.0.0"
+  }
+}
