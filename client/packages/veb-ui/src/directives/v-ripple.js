@@ -9,15 +9,15 @@ export default {
         const $el = $(el)
         const computed = function () {
             let overflow = ''
-            let square = $el.outerWidth()
-            const height = $el.innerWidth()
-            if (square < height) {
-                square = height
-            }
 
             $el.addClass('peper-ripple')
             $el.unbind('mousedown.ripple mouseup.ripple mouseout.ripple')
             $el.on('mousedown.ripple', function (e) {
+                let square = $el.outerWidth()
+                const height = $el.innerWidth()
+                if (square < height) {
+                    square = height
+                }
                 const offset = $el.offset()
                 const offsetY = (e.pageY - offset.top)
                 const offsetX = (e.pageX - offset.left)
