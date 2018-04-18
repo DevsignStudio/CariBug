@@ -1,6 +1,6 @@
 <template>
     <div :class="elClass">
-        <textarea :class="{'always-show': alwaysShowColor}" v-if="isMultiline" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :disabled="disabled || isInfo" @focus="focusInput" ref="textarea" @input="updateValue($event.target.value)" v-model="textareaData"></textarea>
+        <textarea style="min-height: 52px;" :class="{'always-show': alwaysShowColor}" v-if="isMultiline" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :disabled="disabled || isInfo" @focus="focusInput" ref="textarea" @input="updateValue($event.target.value)" v-model="textareaData"></textarea>
         <input :class="{'always-show': alwaysShowColor}" v-if="!isMultiline" :disabled="disabled || isInfo" ref="input" :type="type" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :value="value" @focus="focusInput" @input="updateValue($event.target.value)">
         <div class="veb-textfield-floating-placeholder" @click="focusInput">{{placeholder}}</div>
         <div class="veb-textfield-line"></div>

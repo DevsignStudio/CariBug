@@ -83,3 +83,9 @@ export default {
     }
 }
 </script>
+
+<style>
+    .slick-slide > * {
+        height: 100%;
+    }
+</style>
