@@ -3,6 +3,9 @@
         <nuxt-link to="/dashboard/" exact>
             <veb-nav-list><veb-icon name="home"></veb-icon> Dashboard</veb-nav-list>
         </nuxt-link>
+        <nuxt-link to="/dashboard/project/new" exact>
+            <veb-nav-list><veb-icon name="plus"></veb-icon> New Project</veb-nav-list>
+        </nuxt-link>
         <veb-divider></veb-divider>
         <veb-nav-list :sublist="true">
             <veb-icon name="drawing"></veb-icon> Components

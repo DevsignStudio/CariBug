@@ -5213,6 +5213,31 @@ section {
       .simplebar .simplebar-track.horizontal .simplebar-scrollbar:hover {
         opacity: 0.4; }
 
+.veb-avatar {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  background-clip: padding-box;
+  background: #212121;
+  color: white;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  line-height: 48px; }
+  .veb-avatar img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; }
+
 .veb-blur-back {
   width: 100%;
   height: 100vh;
@@ -5885,7 +5910,7 @@ a.veb-color-button {
       margin-top: -12px;
       margin-bottom: -12px;
       margin-right: 20px; }
-    .veb-list .veb-list-item .peper-avatar {
+    .veb-list .veb-list-item .veb-avatar {
       display: inline-block;
       vertical-align: middle;
       width: 36px;
@@ -5932,7 +5957,7 @@ a.veb-color-button {
     font-size: 16px;
     line-height: 32px;
     padding: 6px 16px; }
-    .veb-list.not-auto-dense .veb-list-item .peper-avatar {
+    .veb-list.not-auto-dense .veb-list-item .veb-avatar {
       display: inline-block;
       vertical-align: middle;
       width: 40px;

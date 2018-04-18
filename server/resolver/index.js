@@ -22,9 +22,15 @@ export default async () => {
         const db = await DB()
         const User = Collection(db, 'users')
         const Project = Collection(db, 'projects')
+        const ProjectTeam = Collection(db, 'projectTeams')
+        const ProjectTeamRole = Collection(db, 'projectTeamRoles')
+        const ProjectList = Collection(db, 'projectLists')
         const collections = {
             User,
-            Project
+            Project,
+            ProjectTeamRole,
+            ProjectTeam,
+            ProjectList
         }
         return {
             DateTime,
@@ -42,8 +48,23 @@ export default async () => {
                 currentUser: (root, args, context) => {
                     return context.user
                 },
-                currentUserProjects: async (root, args, context) => {
-                    let result = await Project.find({insertedBy: context.user._id}).toArray()
+                currentUserProjects: async (root, args, {user}) => {
+                    let result = await ProjectTeam.find({userId: user._id}).toArray()
+                    let projectIds = result.map((res) => {
+                        return res.projectId
+                    })
+                    result = await Project.find({_id: {$in: projectIds}}).toArray()
+                    return result
+                },
+                currentProject: async (root, {_id}, {user}) => {
+                    let result = await Project.findOne({_id})
+                    return result
+                },
+                searchUsers: async (root, {queryString, limit}, {user}) => {
+                    if (!queryString) {
+                        return []
+                    }
+                    let result = await User.find({'username': {'$regex': queryString, '$options': 'i'}}).limit(limit).toArray()
                     return result
                 }
             },
@@ -51,6 +72,31 @@ export default async () => {
                 owner: async ({insertedBy}) => {
                     let user = await User.findOne({_id: insertedBy})
                     return user
+                },
+                lists: async ({_id}) => {
+                    let lists = await ProjectList.find({projectId: _id}).toArray()
+
+                    return lists
+                },
+                teams: async({_id}) => {
+                    let teams = await ProjectTeam.find({projectId: _id}).toArray()
+
+                    return teams
+                }
+            },
+            ProjectTeam: {
+                user: async({userId}) => {
+                    let user = await User.findOne({_id: userId})
+                    return user
+                },
+                project: async({projectId}) => {
+                    let project = await Project.findOne({_id: projectId})
+                    return project
+                },
+                roles: async({rolesId}) => {
+                    let roles = await ProjectTeamRole.find({_id: {$in: rolesId}}).toArray()
+
+                    return roles
                 }
             },
             Mutation: {
@@ -86,11 +132,47 @@ export default async () => {
                     if (!user) {
                         return false
                     }
-                    await Project.insert(user, {
-                        name,
-                        description
+                    let roleOwner = await ProjectTeamRole.findOne({name: 'Owner'})
+                    let project = await Project.insert(user, {name,description})
+
+                    console.log(project)
+                    if (!project) {
+                        return false
+                    }
+
+                    let projectOwner = await ProjectTeam.insert(user, {userId: user._id, rolesId: [roleOwner._id], projectId: project})
+
+                    return true
+                },
+                createProjectTeamRole: async (root, {name}, {user}) => {
+                    if (!user) {
+                        return false
+                    }
+
+                    let role = await ProjectTeamRole.findOne({name})
+
+                    if (role) {
+                        return false
+                    }
+
+                    await ProjectTeamRole.insert(user, {
+                        name
                     })
                     return true
+                },
+                createList: async (root, {name, _id}, {user}) => {
+                    if (!user) {
+                        return new Error('User not exists')
+                    }
+
+                    let list = await ProjectList.findOne({name, projectId: _id})
+
+                    if (list) {
+                        return new Error('List with same name already exists')
+                    }
+
+                    list = await ProjectList.insert(user, {name, projectId: _id})
+                    return list
                 }
             }
         }

@@ -2,7 +2,7 @@
     <div>
         <veb-page-container style="overflow-x: hidden">
             <div class="wrapper" v-if="!$apollo.loading">
-                <div class="row center-xs" style="margin-top: 64px;" v-if="!currentUserProjects.length">
+                <div class="row center-xs" style="margin-top: 64px;">
                     <div class="col-xs-fluid-24 col-md-fluid-9" >
                         <img src="~/assets/img/welcome.svg" style="width: 50%;" alt="">
                         <div class="font-center font-headline" style="margin-bottom: 10px; margin-top: 16px">Here's where your work shines through</div>
@@ -30,7 +30,7 @@
                                 <tbody>
                                     <tr v-for="(project, key) in currentUserProjects" :key="project._id">
                                         <td>{{++key}}</td>
-                                        <td><a :href="`/dashboard/projects/${project._id}`">{{project.name}}</a></td>
+                                        <td><nuxt-link :to="`/dashboard/project/${project._id}`">{{project.name}}</nuxt-link></td>
                                         <td>{{project.owner.username}}</td>
                                         <td>{{ project.updatedAt | moment("from", "now")}}</td>
                                     </tr>

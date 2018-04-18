@@ -32,6 +32,8 @@ export default `
         description: String
         ownerId: String
         owner: User
+        teams: [ProjectTeam]
+        lists: [ProjectList]
         insertedAt: DateTime @mongoDateConverter
         insertedBy: String
         updatedAt: DateTime @mongoDateConverter
@@ -54,6 +56,7 @@ export default `
         userId: String
         rolesId: [String]
         projectId: String
+        isConfirmed: Boolean
         user: User
         roles: [ProjectTeamRole]
         project: Project
@@ -64,15 +67,31 @@ export default `
         isDeleted: Boolean
     }
 
+    type ProjectList {
+        _id: String
+        name: String
+        projectId: String,
+        project: Project,
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
     type Query {
         currentUser: User @isAuthenticated
         currentUserProjects: [Project] @isAuthenticated
+        currentProject(_id: String): Project @isAuthenticated
+        searchUsers(queryString: String, limit: Int): [User] @isAuthenticated
     }
 
     type Mutation {
         signup(username: String, password: String): User
         login(username: String, password: String): User
         createProject(name: String, description: String): Boolean @isAuthenticated
+        createProjectTeamRole(name:String): Boolean @isAuthenticated
+        createList(name: String, _id: String): ProjectList @isAuthenticated
     }
 
     schema {

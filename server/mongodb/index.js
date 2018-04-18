@@ -19,14 +19,19 @@ export const Collection = (db, name) => {
     let findCommand = collection.find
     // let findOneCommand = collection.findOne
 
-    collection.insert = (user, ...args) => {
+    collection.insert = async (user, ...args) => {
         args[0]._id = uuid()
         args[0].insertedBy = user ? user._id : null
         args[0].updatedBy = user ? user._id : null
         args[0].insertedAt = new Date()
         args[0].updatedAt = new Date()
         args[0].isDeleted = false
-        return insertCommand.apply(collection, args)
+        let data = await insertCommand.apply(collection, args)
+
+        if (!data) {
+            return null
+        }
+        return collection.findOne({_id: args[0]._id})
     }
 
     collection.update = (user, ...args) => {

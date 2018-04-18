@@ -15,9 +15,14 @@ footer
   border-top: 1px solid #ddd;
 }
 
-a, a:hover, a:focus, a:visited
+table a, table a:hover, table a:focus, table a:visited
 {
-  color: #000;
+  color: #000 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+table a:hover {
+  text-decoration: underline !important;
 }
 
 .logo {

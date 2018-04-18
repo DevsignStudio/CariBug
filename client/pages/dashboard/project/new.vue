@@ -6,10 +6,6 @@
                     <div class="col-xs-fluid-24 col-md-fluid-9">
                         <veb-cards>
                             <form @submit.prevent="submit">
-                                <veb-cards-content>
-                                    
-                                </veb-cards-content>
-                                <veb-divider></veb-divider>
                                 <veb-cards-content style="padding: 30px">
                                     <div class="font-headline" style="margin-bottom: 10px">Add a New Project</div>
                                     <veb-divider></veb-divider>

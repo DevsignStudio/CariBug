@@ -6,7 +6,7 @@
         <span class="font-title toolbar-title color-white font-normal">{{ internalTitle }}</span> 
         
         <div slot="right">
-            <veb-icon-button name="dots-vertical" class="color-white"></veb-icon-button>
+            <veb-icon-button v-if="showIcon" :name="iconName" @click="iconAction" class="color-white"></veb-icon-button>
         </div>
     </veb-toolbar>
 </template>
@@ -19,25 +19,51 @@ export default {
     methods: {
         enable () {
             this.$emit('menuClick', 'click')
+        },
+        showOrHideIcon () {
+            if (this.$route.name === 'dashboard') {
+                this.iconName = 'plus'
+                this.iconAction = this.goToAddNewProject
+                return
+            }
+
+            this.iconName = ''
+        },
+        goToAddNewProject () {
+            return this.$router.push('/dashboard/project/new')
         }
     },
     data () {
         return {
-            dataTitle: null
+            dataTitle: null,
+            iconName: '',
+            iconAction: null
         }
     },
     computed: {
         internalTitle () {
             return this.dataTitle || this.title
+        },
+        showIcon () {
+            if (this.iconName) {
+                return true
+            }
+            return false
         }
     },
     mounted () {
+        this.showOrHideIcon()
         this.dataTitle = this.$meta().refresh().title
         this.$router.afterEach(() => {
             setTimeout(() => {
                 this.dataTitle = this.$meta().refresh().title
             }, 100)
         })
+    },
+    watch: {
+        '$route.name' (newVal) {
+            this.showOrHideIcon()
+        }
     }
 }
 </script>

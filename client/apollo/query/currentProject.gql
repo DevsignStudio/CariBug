@@ -1,0 +1,26 @@
+query CurrentProject($_id: String!) {
+	currentProject(_id: $_id) {
+        _id
+        name
+        description
+    	updatedAt
+        lists {
+            _id
+          	name
+          	insertedAt
+          	updatedAt
+        }
+        teams {
+            _id
+            roles {
+                name
+            }
+            user {
+                username
+            }
+        }
+        owner {
+            username
+        }
+    }
+}

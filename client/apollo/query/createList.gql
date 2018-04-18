@@ -1,0 +1,10 @@
+mutation CreateList($name: String!, $_id: String!) {
+    createList(name: $name, _id: $_id) {
+        _id
+        name
+        insertedAt
+        updatedAt
+        insertedBy
+        updatedBy
+    }
+}

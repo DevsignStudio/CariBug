@@ -1,4 +1,5 @@
 import Toolbar from './components/Toolbar.vue'
+import Avatar from './components/Avatar.vue'
 import Scrollbar from './components/Scrollbar.vue'
 import BlurBack from './components/BlurBack.vue'
 import Icon from './components/Icon.vue'
@@ -33,6 +34,7 @@ import DropdownSelect from './components/DropdownSelect.vue'
 
 export default function (Vue, options) {
     Vue.component('veb-toolbar', Toolbar)
+    Vue.component('veb-avatar', Avatar)
     Vue.component('veb-scrollbar', Scrollbar)
     Vue.component('veb-blur-back', BlurBack)
     Vue.component('veb-datatable', DataTable)
