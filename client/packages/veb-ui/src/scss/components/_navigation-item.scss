@@ -72,6 +72,7 @@ $var: ".veb-navigation-item";
     #{$var} {
         .nav-list {
             color: $theme-primary;
+            background: $color-grey;
             .mdi {
                 color: $theme-primary;
             }

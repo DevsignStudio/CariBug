@@ -97,7 +97,40 @@
                     </veb-tab-content>
                 </veb-navigation>
             </veb-reveal>
-            <people-picker ref="showAddUser" v-model="username" @getUser="getUser"></people-picker>
+            <veb-reveal ref="showRoleSelection">
+                <div class="row center-xs middle-xs">
+                    <div class="col-xs-fluid-24 col-xd-6">
+                        <veb-cards>
+                            <form submit="hello">
+                                <veb-cards-content class="background-primary" style="padding: 12px">
+                                    <div class="font-title color-white">Assign Role</div>
+                                </veb-cards-content>
+                                <veb-cards-content style="padding: 12px">
+                                    <veb-list ref="list" class="list" v-if="selectedRole && selectedRole.length">
+                                        <div v-for="(role, index) in getAllRoles" :key="role._id"> 
+                                            <veb-list-item style="cursor: pointer;" @click="selectedRole[index].state = !selectedRole[index].state"  v-ripple>
+                                                <span slot="left">
+                                                    <veb-checkbox v-model="selectedRole[index].state" name="selectedRole"></veb-checkbox>
+                                                </span>
+                                                <span>
+                                                    {{role.name}}
+                                                </span>
+                                            </veb-list-item>
+                                            <veb-divider></veb-divider>
+                                        </div>
+                                    </veb-list>
+                                </veb-cards-content>
+                                <veb-cards-action class="background-grey-100">
+                                    <div class="pull-right">
+                                        <veb-button type="submit" class="primary" v-ripple><veb-icon name="plus"></veb-icon>Assign</veb-button>
+                                    </div>
+                                </veb-cards-action>
+                            </form>
+                        </veb-cards>
+                    </div>
+                </div>
+            </veb-reveal>
+            <people-picker ref="showAddUser" v-model="username" @getUser="getUser" :exclude="currentProjectUserId"></people-picker>
         </veb-page-container>
     </div>
 </template>
@@ -108,6 +141,7 @@ import _ from 'lodash'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import CreateListGQL from '~/apollo/query/createList.gql'
+import GetAllRolesGQL from '~/apollo/query/getAllRoles.gql'
 import PeoplePicker from '~/components/PeoplePicker.vue'
 export default {
     components: {
@@ -121,7 +155,10 @@ export default {
             currentUserProjects: [],
             currentProject: null,
             name: '',
-            username: ''
+            username: '',
+            selectedUser: null,
+            selectedRole: [],
+            getAllRoles: [],
         }
     },
     head () {
@@ -132,6 +169,15 @@ export default {
     computed: {
         currentProjectEditable () {
             return {name: this.currentProject.name, description: this.currentProject.description}
+        },
+        currentProjectUserId () {
+            if (this.currentProject && this.currentProject.teams.length) {
+                return this.currentProject.teams.map((item) => {
+                    return item.user._id
+                })
+            }
+
+            return []
         }
     },
     methods: {
@@ -149,6 +195,13 @@ export default {
         showAddUser () {
             this.$refs.showUserList.disable()
             this.$refs.showAddUser.enable()
+        },
+        enableRoleSelection () {
+            this.$refs.showRoleSelection.enable()
+            this.selectedRole = []
+            this.getAllRoles.forEach(item => {
+                this.selectedRole.push({_id: item._id, state: false})
+            })
         },
         addList () {
             this.$apollo.mutate({
@@ -179,7 +232,6 @@ export default {
                 // }
             }).then((result) => {
                 if (result.data && result.data.createList) {
-                    console.log('hello')
                     this.name = ''
                 }
             }).catch((error) => {
@@ -193,7 +245,11 @@ export default {
             this.$refs.tabContent.$el.children[0].slick.reinit()
         },
         getUser (user) {
-            console.log(user)
+            this.selectedUser = user
+            this.enableRoleSelection()
+        },
+        addUserAndRole() {
+            //
         }
     },
     apollo: {
@@ -206,7 +262,8 @@ export default {
                     _id: this.$route.params.id
                 }
             }
-        }
+        },
+        getAllRoles: GetAllRolesGQL
     }
 }
 </script>

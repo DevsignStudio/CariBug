@@ -1,0 +1,6 @@
+query {
+	getAllRoles {
+        _id
+        name
+    }
+}

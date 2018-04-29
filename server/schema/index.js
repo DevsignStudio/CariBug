@@ -83,7 +83,8 @@ export default `
         currentUser: User @isAuthenticated
         currentUserProjects: [Project] @isAuthenticated
         currentProject(_id: String): Project @isAuthenticated
-        searchUsers(queryString: String, limit: Int): [User] @isAuthenticated
+        searchUsers(queryString: String, limit: Int, exclude: [String]): [User] @isAuthenticated
+        getAllRoles: [ProjectTeamRole] @isAuthenticated
     }
 
     type Mutation {
@@ -92,6 +93,7 @@ export default `
         createProject(name: String, description: String): Boolean @isAuthenticated
         createProjectTeamRole(name:String): Boolean @isAuthenticated
         createList(name: String, _id: String): ProjectList @isAuthenticated
+        addUserAndRoles(projectId: [String], userId: String, rolesId: [String]): Boolean @isAuthenticated
     }
 
     schema {

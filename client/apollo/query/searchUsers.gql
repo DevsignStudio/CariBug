@@ -1,5 +1,5 @@
-query SearchUsers($queryString: String, $limit: Int) {
-    searchUsers(queryString: $queryString, limit: $limit) {
+query SearchUsers($queryString: String, $limit: Int, $exclude: [String]) {
+    searchUsers(queryString: $queryString, limit: $limit, exclude: $exclude) {
         _id
         username
     }

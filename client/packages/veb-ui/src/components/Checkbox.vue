@@ -25,6 +25,11 @@ export default {
             default: 'checkbox-blank-outline'
         }
     },
+    watch: {
+        value (val) {
+            console.log(val)
+        }
+    },
     methods: {
         elOnClick () {
             $(this.$refs.checkbox).trigger('click')

@@ -17,6 +17,7 @@ query CurrentProject($_id: String!) {
             }
             user {
                 username
+                _id
             }
         }
         owner {

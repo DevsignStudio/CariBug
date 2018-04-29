@@ -60,12 +60,16 @@ export default async () => {
                     let result = await Project.findOne({_id})
                     return result
                 },
-                searchUsers: async (root, {queryString, limit}, {user}) => {
+                searchUsers: async (root, {queryString, limit, exclude}, {user}) => {
                     if (!queryString) {
                         return []
                     }
-                    let result = await User.find({'username': {'$regex': queryString, '$options': 'i'}}).limit(limit).toArray()
+                    let result = await User.find({'username': {'$regex': queryString, '$options': 'i'}, '_id': {$nin: exclude}}).limit(limit).toArray()
                     return result
+                },
+                getAllRoles: async (root, args, {user}) => {
+                    let roles = await ProjectTeamRole.find().toArray()
+                    return roles
                 }
             },
             Project: {
@@ -135,12 +139,11 @@ export default async () => {
                     let roleOwner = await ProjectTeamRole.findOne({name: 'Owner'})
                     let project = await Project.insert(user, {name,description})
 
-                    console.log(project)
                     if (!project) {
                         return false
                     }
 
-                    let projectOwner = await ProjectTeam.insert(user, {userId: user._id, rolesId: [roleOwner._id], projectId: project})
+                    let projectOwner = await ProjectTeam.insert(user, {userId: user._id, rolesId: [roleOwner._id], projectId: project._id})
 
                     return true
                 },
@@ -173,6 +176,18 @@ export default async () => {
 
                     list = await ProjectList.insert(user, {name, projectId: _id})
                     return list
+                },
+                addUserAndRoles: async (root, {projectId, userId, rolesId}, {user}) => {
+                    let userSelected = await User.findOne({_id: userId})
+                    let project = await Project.findOne({_id: projectId})
+                    let projectTeam = await ProjectTeam.findOne({userId, projectId})
+                    await ProjectTeam.insert(user, {
+                        userId: userId,
+                        projectId: projectId,
+                        rolesId: rolesId
+                    })
+
+                    return true
                 }
             }
         }

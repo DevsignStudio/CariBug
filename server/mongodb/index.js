@@ -42,6 +42,9 @@ export const Collection = (db, name) => {
     }
 
     collection.find = (...args) => {
+        if (!args[0]) {
+            args[0] = {}
+        }
         args[0].isDeleted = false
 
         let data = findCommand.apply(collection, args)

@@ -8,8 +8,8 @@
                             <div class="font-title color-white">Add New User</div>
                         </veb-cards-content>
                         <veb-cards-content style="padding: 12px 24px">
-                            <veb-textfield v-model="internalValue" placeholder="Search Username"></veb-textfield>
-                            <veb-list ref="list" class="list">
+                            <veb-textfield v-model="internalValue" placeholder="Search Username" message="Only top 3 search results will show here"></veb-textfield>
+                            <veb-list ref="list" class="list" style="margin-top: 6px">
                                 <div v-for="(user, index) in searchUsers" :key="user._id" @click="setAsCheck(index)"> 
                                     <veb-list-item style="cursor: pointer;height: 60px" v-ripple>
                                         <span slot="left">
@@ -53,13 +53,15 @@ import SearchUsersGQL from '~/apollo/query/searchUsers.gql'
 import Helper from '~/packages/veb-ui/src/helper'
 export default {
     props: {
-        value: String
+        value: String,
+        exclude: Array
     },
     data () {
         return {
             internalValue: this.value,
             searchUsers: [],
-            selectedIndex: null
+            selectedIndex: null,
+            
         }
     },
     watch: {
@@ -99,7 +101,8 @@ export default {
             variables () {
                 return {
                     queryString: this.internalValue,
-                    limit: 3
+                    limit: 3,
+                    exclude: this.exclude
                 }
             }
         }
