@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div style="padding-top: 20px;">
         <nuxt-link to="/dashboard/" exact>
             <veb-nav-list><veb-icon name="home"></veb-icon> Dashboard</veb-nav-list>
         </nuxt-link>
         <nuxt-link to="/dashboard/project/new" exact>
             <veb-nav-list><veb-icon name="plus"></veb-icon> New Project</veb-nav-list>
         </nuxt-link>
-        <veb-divider></veb-divider>
+        <!-- <veb-divider></veb-divider> -->
         <veb-nav-list :sublist="true">
             <veb-icon name="drawing"></veb-icon> Components
             <span slot="sublist">
@@ -44,7 +44,7 @@
                 </nuxt-link>
             </span>
         </veb-nav-list>
-        <veb-divider></veb-divider>
+        <!-- <veb-divider></veb-divider> -->
         <veb-nav-list @click="signout"><veb-icon name="key"></veb-icon> Sign Out</veb-nav-list>
         
     </div>
@@ -58,6 +58,9 @@ export default {
             store('token', null)
             return this.$router.push('/')
         }
+    },
+    mounted () {
+        this.$snackbar.run('Test 1 23')
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
-    <div class="veb-navigation-item unselectable">
-        <div class="nav-list" v-ripple="{background: '#d1d1d1'}">
+    <div :class="rootClass">
+        <div class="nav-list" v-ripple="{background: '#ccc'}">
             <slot></slot>
             <div class="chevron open" v-if="sublist=== true">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
@@ -35,6 +35,13 @@ export default {
                 return 'div'
             }
             return 'a'
+        },
+        rootClass () {
+            return {
+                'veb-navigation-item': true,
+                'unselectable': true,
+                'is-sublist': this.sublist
+            }
         }
     },
     mounted () {
@@ -49,7 +56,7 @@ export default {
 
                 Helper.addClass(chevron, 'open')
 
-                const hasActive = Helper.children(navSublist.children[0], 'router-link-active')
+                const hasActive = Helper.children(navSublist.children[0], 'router-link-active') || Helper.children(navSublist.children[0], 'nuxt-link-active') 
                 if (hasActive) {
                     navSublist.style.maxHeight = '100%'
                     Helper.addClass(navSublist, 'open')
@@ -91,7 +98,7 @@ export default {
                 // Observe a specific DOM element:
                 observeDOM(navSublist, function () {
                     if (Helper.hasClass(navSublist, 'open')) {
-                        sublistHeight = navSublist.scrollHeight
+                        sublistHeight = navSublist.scrollHeight === 0 ? sublistHeight : navSublist.scrollHeight
                         navSublist.style.maxHeight = sublistHeight + 'px'
                     }
                 })
