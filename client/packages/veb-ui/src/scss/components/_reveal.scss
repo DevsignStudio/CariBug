@@ -19,6 +19,11 @@ $var: ".veb-reveal";
         top: 0;
         left: 0;
     }
+
+    &  .veb-cards {
+        @include transform(scale(0.2));
+        @include transition(all 0.35s $animation-fast-out-linear-in-timing-function);
+    }
     // &>*:not(#{$var}-overlay) {
     //     @include transition(all 0.2s $animation-fast-out-linear-in-timing-function);
     //     @include transform(translateY(100px) translateZ(0));
@@ -35,5 +40,8 @@ $var: ".veb-reveal";
     &.front {
         z-index: 1001;
         display: flex !important;
+        &  .veb-cards {
+            @include transform(scale(1));
+        }
     }
 }
