@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import Vue from 'vue/dist/vue.js'
 import Snackbar from '../components/Snackbar'
 
@@ -23,6 +22,7 @@ export default {
     },
     removeContent (callback) {
         this.queue[0].el.$destroy()
+        this.queue[0].el.$el.remove()
         this.active = false
         this.queue.shift()
         this.show()
@@ -36,11 +36,13 @@ export default {
     active: false,
     show() {
         if (this.queue.length !== 0 && !this.active) {
-            let area = $('<div class="veb-snackbar-area"></div>')
-            $("body").prepend(area);
+            let area = document.createElement('div')
+            area.className = 'veb-snackbar-area'
+            let body = document.querySelector('body')
+            body.prepend(area)
             this.active = true
             let currentEl = this.queue[0].el;
-            currentEl.$mount(area[0])
+            currentEl.$mount(area)
         }
     }
 }

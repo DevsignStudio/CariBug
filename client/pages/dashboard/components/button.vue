@@ -3,7 +3,7 @@
         <veb-page-container>
             <div class="components-panel">
                 <div class="components-panel-inner">
-                    <veb-button button-style="flat">Button</veb-button>
+                    <veb-button @click="test" button-style="flat">Button</veb-button>
                     <veb-button button-style="flat" v-ripple>Button</veb-button>
                     <veb-button button-style="flat" class="primary" v-ripple>Button</veb-button>
                     <veb-button button-style="flat" class="accent" v-ripple>Button</veb-button>
@@ -103,6 +103,11 @@ export default {
     head () {
         return {
             title: this.pageTitle
+        }
+    },
+    methods: {
+        test () {
+            this.$confirmation.run('hello', () => console.log('hello'), () => console.log('cancel'))
         }
     }
 }

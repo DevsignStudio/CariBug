@@ -1,7 +1,7 @@
 <template>
     <div class="reveal">
         <div class="veb-reveal row no-gutter" ref="element">
-            <div :class="{innerClass: true, 'veb-reveal-overlay': true, 'has-overlay': hideOverlay}" @click="disable"></div>
+            <div :class="{innerClass: true, 'veb-reveal-overlay': true, 'has-overlay': hideOverlay}" @click="overlayClick"></div>
             <slot></slot>
         </div>
     </div>
@@ -40,10 +40,13 @@ export default {
                 this.disable()
             }
         },
+        overlayClick() {
+            if (!this.enableOverlayClick) {
+                return
+            }
+            this.disable()
+        },
         disable () {
-            // if (!this.enableOverlayClick) {
-            //     return
-            // }
             const el = this.$refs.element
             Helper.removeClass(el, 'enable')
             this.$emit('close')
