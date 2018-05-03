@@ -1,10 +1,18 @@
 .loading-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
     height: 100%;
-    width:100%
+    width:100%;
+    padding-top: 80px;
+    padding-bottom: 60px;
 }
 
 .loading-style1 {
@@ -41,6 +49,64 @@
   
   }
   
+.loading-style2 {
+      width: 50px;
+      height: 50px;
+      margin: auto;
+      &:before {
+        content: '';
+        width: 50px;
+        height: 5px;
+        background: #000;
+        opacity: 0.1;
+        position: absolute;
+        top: 59px;
+        left: 0;
+        border-radius: 50%;
+        animation: shadow .5s $animation-linear-out-slow-in-timing-function infinite;
+      }
+      &:after {
+        content: '';
+        width: 50px;
+        height: 50px;
+        background: $theme-primary;
+        animation: animate .5s $animation-linear-out-slow-in-timing-function infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 3px;
+      }
+}
+
+@keyframes animate {
+  17% {
+    border-bottom-right-radius: 3px;
+  }
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+  50% {
+    transform: translateY(18px) scale(1, .9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+
+@keyframes shadow {
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+
   @keyframes axis {
     0% {
       transform: rotateZ(0deg) translate3d(0,0,0);
@@ -49,4 +115,22 @@
     100% {
       transform: rotateZ(720deg) translate3d(0,0,0);
     }
+}
+
+@keyframes loading {
+  0% {
+    border: 0px solid white;
+  }
+  
+  20% {
+    border: 8px solid white;
+    width: 0%;
+    height: 0%;
+  }
+  
+  100% {
+    border: 8px solid white;
+    width: 100%;
+    height: 100%;
+  }
 }

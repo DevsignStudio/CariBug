@@ -3,7 +3,7 @@
         <div class="row center-xs  middle-xs">
             <div class="col-xd-6" style="padding: 0 8px;">
                 <veb-cards class="elevation z3">
-                    <veb-cards-content  class="background-grey-200" style="padding: 12px">
+                    <veb-cards-content  class="background-grey-50" style="padding: 12px">
                         <div class="font-subhead font-bold no-margin">{{title}}</div>
                     </veb-cards-content>
                     <veb-cards-content class="scrollable" style="padding: 12px">

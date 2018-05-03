@@ -58,9 +58,6 @@ export default {
             store('token', null)
             return this.$router.push('/')
         }
-    },
-    mounted () {
-        this.$snackbar.run('Test 1 23')
     }
 }
 </script>

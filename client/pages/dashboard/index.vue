@@ -1,7 +1,7 @@
 <template>
     <div>
         <veb-page-container style="overflow-x: hidden">
-            <div class="wrapper" v-if="!$apollo.loading">
+            <div class="wrapper">
                 <div class="row center-xs" style="margin-top: 64px;">
                     <div class="col-xs-fluid-24 col-md-fluid-9" >
                         <img src="~/assets/img/welcome.svg" style="width: 50%;" alt="">
@@ -14,7 +14,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row center-xs" v-if="currentUserProjects.length">
+                <div class="loading-container" v-if="$apollo.loading">
+                    <div class="loading-style2"></div>
+                </div>
+                <div class="row center-xs" v-if="currentUserProjects.length && !$apollo.loading">
                     <div class="col-xs-fluid-24 col-md-fluid-15" >
                         <div class="font-display1" style="margin-bottom: 10px; margin-top: 16px">Projects</div>
                         <veb-datatable @headerClick="orderData" :sortable="true">

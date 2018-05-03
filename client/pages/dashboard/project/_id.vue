@@ -1,8 +1,8 @@
 <template>
     <div>
         <veb-page-container style="overflow-x: hidden">
-            <div class="wrapper" v-if="!$apollo.loading">
-                <div class="row has-gutter">
+            <div class="wrapper">
+                <div>
                     <div class="row center-xs" style="margin-top: 64px;">
                         <div class="col-xs-fluid-24 col-md-fluid-9" >
                             <img src="~/assets/img/notes.svg" style="width: 50%;" alt="">
@@ -14,8 +14,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
                     <div class="row center-xs" v-if="currentProject && currentProject.lists.length">
-                        <div class="col-xs-fluid-24 col-md-fluid-15" >
+                        <div class="col-xs-fluid-24 col-md-fluid-15" v-if="!$apollo.loading">
                             <div class="font-display1" style="margin-bottom: 10px; margin-top: 16px">Lists</div>
                             <div class="row has-gutter">
                                 <div class="col-xs-fluid-8" v-for="list in currentProject.lists" :key="list._id">
@@ -37,6 +38,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="loading-container" v-if="$apollo.loading">
+                        <div class="loading-style2"></div>
                     </div>
                 </div>
             </div>
@@ -181,14 +185,6 @@ export default {
         }
     },
     methods: {
-        orderData (header, order) {
-            if (header === 'Last Update') {
-                header = 'updatedAt'
-            } else if (header === 'Name') {
-                header = 'name'
-            }
-            this.currentUserProjects = _.orderBy(this.currentUserProjects, header, order)
-        },
         showAdd () {
             this.$refs.addList.enable()
         },
@@ -254,7 +250,6 @@ export default {
     },
     apollo: {
         currentUser: CurrentuserGQL,
-        currentUserProjects: CurrentuserProjectsGQL,
         currentProject: {
             query: CurrentProjectGQL,
             variables () {

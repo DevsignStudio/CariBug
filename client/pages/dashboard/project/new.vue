@@ -1,7 +1,7 @@
 <template>
     <div>
         <veb-page-container style="overflow-x: hidden">
-            <div class="wrapper" v-if="!$apollo.loading">
+            <div class="wrapper">
                 <div class="row center-xs" style="margin-top: 24px;">
                     <div class="col-xs-fluid-24 col-md-fluid-9">
                         <veb-cards>
@@ -29,6 +29,7 @@
 
 <script>
 import CreateProjectGQL from '~/apollo/query/createProject.gql'
+import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 export default {
     data () {
         return {
@@ -52,7 +53,10 @@ export default {
                 variables: {
                     name: this.name,
                     description: this.description
-                }
+                },
+                refetchQueries: [{
+                    query: CurrentuserProjectsGQL
+                }],
                 // Update the cache with the result
                 // The query will be updated with the optimistic response
                 // and then with the real result of the mutation

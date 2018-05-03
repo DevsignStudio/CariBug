@@ -17,7 +17,7 @@ module.exports = {
   ** Customize the progress bar color
   */
     mode: 'spa',
-    loading: { color: '#FFFFFF' },
+    loading: { color: '#FFFFFF',  },
     css: ['~/assets/css/main.css'],
     modules: ['@nuxtjs/apollo'],
     plugins: ['~/plugins/veb.js', '~/plugins/vue-highlight.js', '~/plugins/vue-moment.js'],
