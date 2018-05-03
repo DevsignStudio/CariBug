@@ -86,6 +86,10 @@ export default async () => {
                     let teams = await ProjectTeam.find({projectId: _id}).toArray()
 
                     return teams
+                },
+                numberOfLists: async ({_id}) => {
+                    let count = await ProjectList.count({projectId: _id})
+                    return count
                 }
             },
             ProjectTeam: {

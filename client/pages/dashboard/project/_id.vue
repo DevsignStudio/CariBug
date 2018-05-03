@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="loading-container" v-if="$apollo.loading">
+                    <div class="loading-container" v-if="currentProjectNumberOfList && $apollo.loading">
                         <div class="loading-style2"></div>
                     </div>
                 </div>
@@ -180,8 +180,16 @@ export default {
                     return item.user._id
                 })
             }
-
             return []
+        },
+        currentProjectNumberOfList () {
+            let count = 0
+            this.currentUserProjects.forEach((data) => {
+                if(data._id === this.$route.params.id ) {
+                    count = data.numberOfLists
+                }
+            })
+            return count
         }
     },
     methods: {
@@ -250,6 +258,7 @@ export default {
     },
     apollo: {
         currentUser: CurrentuserGQL,
+        currentUserProjects: CurrentuserProjectsGQL,
         currentProject: {
             query: CurrentProjectGQL,
             variables () {

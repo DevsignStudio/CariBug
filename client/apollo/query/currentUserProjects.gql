@@ -3,6 +3,7 @@
         _id
         name
         updatedAt
+        numberOfLists
         owner {
             username
         }

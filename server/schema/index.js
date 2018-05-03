@@ -39,6 +39,7 @@ export default `
         updatedAt: DateTime @mongoDateConverter
         updatedBy: String
         isDeleted: Boolean
+        numberOfLists: Int
     }
 
     type ProjectTeamRole {
