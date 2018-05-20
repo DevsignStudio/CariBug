@@ -20,7 +20,7 @@ $var: ".veb-navigation-item";
         background: $color-white;
         border-top-left-radius: 24px;
         border-bottom-left-radius: 24px;
-        @include transition(all $animation-fast-out-linear-in-timing-function 0.35s);
+        @include transition(all $animation-acceleration-curve-timing-function 0.35s);
         .mdi {
             color: $color-grey-500;
             vertical-align: middle;
@@ -32,7 +32,7 @@ $var: ".veb-navigation-item";
             top: 12px;
             width: 24px;
             height: 24px;
-            @include transition(all $animation-fast-out-linear-in-timing-function 0.28s);
+            @include transition(all $animation-acceleration-curve-timing-function 0.28s);
             & svg {
                 fill: $color-grey;
             }
@@ -53,7 +53,7 @@ $var: ".veb-navigation-item";
         padding-left: 48px;
         @include transform(translateZ(0));
         @include transform-origin(top);
-        @include transition(all $animation-fast-out-linear-in-timing-function 0.28s);
+        @include transition(all $animation-standard-curve-timing-function 0.28s);
         .nav-list {
             // padding-left: 48px;
             font-weight: 400;

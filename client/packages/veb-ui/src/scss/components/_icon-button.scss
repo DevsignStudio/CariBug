@@ -22,7 +22,7 @@ $var: ".veb-icon-button";
         z-index: 2;
         color: inherit;
         background: rgba($color-white, 0);
-        @include transition((all $animation-linear-out-slow-in-timing-function 0.4s));
+        @include transition((all $animation-deceleration-curve-timing-function 0.4s));
         @include border-radius(50%);
         .mdi {
             color: inherit!important;
@@ -40,11 +40,11 @@ $var: ".veb-icon-button";
         opacity: 0;
         z-index: 1;
         @include transform(translateZ(0));
-        @include transition((all $animation-linear-out-slow-in-timing-function 0.2s));
+        @include transition((all $animation-deceleration-curve-timing-function 0.2s));
         &.active {
-            -webkit-animation: ripple-icon-button 0.65s $animation-fast-out-slow-in-timing-function forwards;
-            -moz-animation: ripple-icon-button 0.65s $animation-fast-out-slow-in-timing-function forwards;
-            animation: ripple-icon-button 0.65s $animation-fast-out-slow-in-timing-function forwards;
+            -webkit-animation: ripple-icon-button 0.65s $animation-standard-curve-timing-function forwards;
+            -moz-animation: ripple-icon-button 0.65s $animation-standard-curve-timing-function forwards;
+            animation: ripple-icon-button 0.65s $animation-standard-curve-timing-function forwards;
         }
     }
 }

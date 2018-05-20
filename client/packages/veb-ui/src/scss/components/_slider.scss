@@ -23,7 +23,7 @@
         right: -9px;
         background: $theme-primary;
         @include border-radius(50%);
-        @include transition(all $animation-fast-out-linear-in-timing-function 0.2s);
+        @include transition(all $animation-sharp-curve-timing-function 0.2s);
         cursor: pointer;
         &:before, &:after {
             display: none;

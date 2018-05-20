@@ -9,7 +9,7 @@ $var: '.veb-chip';
     padding: 4px 12px;
     display: inline-table;
     @include border-radius(14px);
-    @include transition((all 0.2s $animation-fast-out-slow-in-timing-function, opacity 0.25s $animation-fast-out-slow-in-timing-function));
+    @include transition((all 0.2s $animation-standard-curve-timing-function, opacity 0.25s $animation-standard-curve-timing-function));
     cursor: default;
     margin: 4px 4px;
     #{$var}-text{
@@ -56,7 +56,7 @@ $var: '.veb-chip';
         z-index: 1;
         content: "";
         background-color: rgba($color-black, 0);
-        @include transition((all 0.2s $animation-fast-out-slow-in-timing-function, opacity 0.25s $animation-fast-out-slow-in-timing-function));
+        @include transition((all 0.2s $animation-standard-curve-timing-function, opacity 0.25s $animation-standard-curve-timing-function));
         @include border-radius(16px);
     }
     &:hover {

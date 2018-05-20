@@ -3,7 +3,7 @@ $var: ".veb-navigation";
     height: 100vh;
     width: 340px;
     max-width: 90%;
-    @include transition(all 0.2s $animation-fast-out-linear-in-timing-function);
+    @include transition(all 0.2s $animation-sharp-curve-timing-function);
     @include transform(translateX(-100%) translateZ(0));
     @include elevation(0);
     background-color: $color-white;

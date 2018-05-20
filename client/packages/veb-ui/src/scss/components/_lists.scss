@@ -39,7 +39,7 @@ $var: ".veb-list";
         padding: 4px 16px;
         font-size: 14px;
         cursor: default;
-        @include transition(all 0.2s $animation-linear-out-slow-in-timing-function);
+        @include transition(all 0.2s $animation-deceleration-curve-timing-function);
         @include displayFlex();
         justify-content: center;
         align-items: center;

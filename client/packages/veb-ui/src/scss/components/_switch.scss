@@ -14,7 +14,7 @@ $var: ".veb-switch";
         left: 0px;
         @include border-radius(7px);
         background: rgba($color-black, 0.38);
-        @include transition(all 0.15s $animation-fast-out-slow-in-timing-function);
+        @include transition(all 0.15s $animation-sharp-curve-timing-function);
     }
     #{$var}-thumb {
         width: 20px;
@@ -25,7 +25,7 @@ $var: ".veb-switch";
         @include border-radius(50%);
         background: $color-grey-50;
         @include elevation(1);
-        @include transition(all 0.15s $animation-fast-out-slow-in-timing-function);
+        @include transition(all 0.15s $animation-sharp-curve-timing-function);
     }
     #{$var}-ripple {
         width: 40px;
@@ -35,7 +35,7 @@ $var: ".veb-switch";
         top: 4px;
         left: -10px;
         position: absolute;
-        @include transition(all 0.15s $animation-fast-out-slow-in-timing-function);
+        @include transition(all 0.15s $animation-sharp-curve-timing-function);
         opacity: 0;
         &.active {
             opacity: 1;

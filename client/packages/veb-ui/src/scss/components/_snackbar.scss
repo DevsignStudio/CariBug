@@ -12,7 +12,7 @@
     bottom: 0px;
     left: 0;
     @include renderIssue();
-    @include transition(all 0.15s $animation-fast-out-slow-in-timing-function);
+    @include transition(all 0.15s $animation-sharp-curve-timing-function);
     @include transform(translateY(100%) translateZ(0));
     @include breakpoint("xd") {
         min-width: 288px;
@@ -36,7 +36,7 @@
         }
     }
     &.show {
-        @include transition(all 0.15s $animation-fast-out-slow-in-timing-function 0.5s);
+        @include transition(all 0.15s $animation-sharp-curve-timing-function 0.5s);
         @include transform(translateY(0) translateZ(0));
         @include breakpoint("xd") {
             @include transform(translateY(0) translateX(-50%) translateZ(0));

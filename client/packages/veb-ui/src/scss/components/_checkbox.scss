@@ -17,12 +17,12 @@ $var: '.veb-checkbox';
     #{$var}-check {
         color: $theme-primary;
         @include transform(scale(0));
-        @include transition((all 0.2s $animation-fast-out-slow-in-timing-function, opacity 0.25s $animation-fast-out-slow-in-timing-function));
+        @include transition((all 0.2s $animation-standard-curve-timing-function, opacity 0.25s $animation-standard-curve-timing-function));
         opacity: 0;
     }
     #{$var}-uncheck {
         color: rgba($color-black, 0.54);
-        @include transition((opacity 0.25s $animation-fast-out-slow-in-timing-function));
+        @include transition((opacity 0.25s $animation-standard-curve-timing-function));
     }
     #{$var}-ripple {
         width: 48px;
@@ -32,7 +32,7 @@ $var: '.veb-checkbox';
         top: 0px;
         left: 0px;
         position: absolute;
-        @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+        @include transition(all 0.2s $animation-standard-curve-timing-function);
         opacity: 0;
         &.active {
             opacity: 1;

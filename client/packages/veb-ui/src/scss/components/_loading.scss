@@ -63,14 +63,14 @@
         top: 59px;
         left: 0;
         border-radius: 50%;
-        animation: shadow .5s $animation-linear-out-slow-in-timing-function infinite;
+        animation: shadow .5s $animation-deceleration-curve-timing-function infinite;
       }
       &:after {
         content: '';
         width: 50px;
         height: 50px;
         background: $theme-primary;
-        animation: animate .5s $animation-linear-out-slow-in-timing-function infinite;
+        animation: animate .5s $animation-deceleration-curve-timing-function infinite;
         position: absolute;
         top: 0;
         left: 0;

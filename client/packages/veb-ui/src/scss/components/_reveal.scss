@@ -9,7 +9,7 @@ $var: ".veb-reveal";
     display: none !important;
     opacity: 0;
     @include transform(translateZ(0));
-    @include transition(all 0.15s $animation-fast-out-linear-in-timing-function);
+    @include transition(all 0.15s $animation-sharp-curve-timing-function);
     #{$var}-overlay {
         position: absolute;
         width: 100%;
@@ -22,7 +22,7 @@ $var: ".veb-reveal";
 
     &  .veb-cards {
         @include transform(scale(0.2));
-        @include transition(all 0.35s $animation-fast-out-linear-in-timing-function);
+        @include transition(all 0.35s $animation-sharp-curve-timing-function);
     }
     // &>*:not(#{$var}-overlay) {
     //     @include transition(all 0.2s $animation-fast-out-linear-in-timing-function);
@@ -31,7 +31,7 @@ $var: ".veb-reveal";
     //     max-height: calc(100% - 16px);
     // }
     &.enable {
-        @include transition(opacity 0.15s $animation-fast-out-linear-in-timing-function);
+        @include transition(opacity 0.15s $animation-sharp-curve-timing-function);
         opacity: 1;
         // &>*:not(#{$var}-overlay) {
         //     @include transform(translateY(0) translateZ(0));

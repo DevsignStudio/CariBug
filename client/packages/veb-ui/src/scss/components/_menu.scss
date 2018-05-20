@@ -14,13 +14,13 @@
     @include renderIssue();
     opacity: 0;
     max-height: 288px;
-    @include transition((all 0.25s $animation-fast-out-slow-in-timing-function, opacity 0.2s $animation-fast-out-linear-in-timing-function));
+    @include transition((all 0.25s $animation-standard-curve-timing-function, opacity 0.2s $animation-standard-curve-timing-function));
     display: -ms-flex; 
     display: -webkit-flex; 
     display: flex; 
     &.show {
         @include transform(translateZ(0) scale(1, 1));
-        @include transition((all 0.18s $animation-fast-out-slow-in-timing-function, opacity 0.25s $animation-fast-out-linear-in-timing-function));
+        @include transition((all 0.18s $animation-standard-curve-timing-function, opacity 0.25s $animation-standard-curve-timing-function));
         visibility: visible;
         opacity: 1;
     }
@@ -50,7 +50,7 @@
     @include typography-menu;
     line-height: 32px;
     cursor: pointer;
-    @include transition(all 0.1s $animation-fast-out-slow-in-timing-function);
+    @include transition(all 0.1s $animation-standard-curve-timing-function);
     color: $color-grey-800;
     vertical-align: middle;
     &:hover {
@@ -128,7 +128,7 @@
         font-size: 12px;
         color: $color-grey-500;
         @include transform-origin((0));
-        @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+        @include transition(all 0.2s $animation-standard-curve-timing-function);
         @include transform(translateZ(0));
         white-space: nowrap;
     }
