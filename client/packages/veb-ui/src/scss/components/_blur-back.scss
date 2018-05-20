@@ -10,7 +10,7 @@ $var: ".veb-blur-back";
         margin-top: -20px; 
         width: calc(100% + 40px); 
         height: calc(100% + 40px); 
-        @include transition(filter 1000ms $animation-linear-out-slow-in-timing-function);
+        @include transition(filter 1000ms $animation-deceleration-curve-timing-function);
         @include filter(blur, 10px);
         will-change: filter;
         background-size: cover;

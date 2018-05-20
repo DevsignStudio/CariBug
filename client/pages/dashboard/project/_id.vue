@@ -3,43 +3,51 @@
         <veb-page-container style="overflow-x: hidden">
             <div class="wrapper">
                 <div>
-                    <div class="row center-xs" style="margin-top: 64px;">
-                        <div class="col-xs-fluid-24 col-md-fluid-9" >
-                            <img src="~/assets/img/notes.svg" style="width: 50%;" alt="">
-                            <div class="font-center font-headline" style="margin-bottom: 10px; margin-top: 16px">Here's where your work shines through</div>
-                            <div class="font-center font-body">Set up a project to get going with your issues tracking. After that, you’ll find your relevant repositories and work right here.</div>
-                            <div class="button-center-container" style="margin-top: 20px">
-                                <veb-button @click="showAdd" class="primary" button-style="raised" v-ripple v-elevation><veb-icon name="plus"></veb-icon>Create New List</veb-button>
-                                <veb-button @click="showUserList" class="primary" button-style="flat" v-ripple v-elevation><veb-icon name="settings"></veb-icon>Settings</veb-button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="row center-xs" v-if="currentProject && currentProject.lists.length">
-                        <div class="col-xs-fluid-24 col-md-fluid-15" v-if="!$apollo.loading">
-                            <div class="font-display1" style="margin-bottom: 10px; margin-top: 16px">Lists</div>
-                            <div class="row has-gutter">
-                                <div class="col-xs-fluid-8" v-for="list in currentProject.lists" :key="list._id">
-                                    <nuxt-link to="/hello" class="cards">
-                                        <veb-cards style="border-left: 2px solid #3d5afe " >
-                                            <veb-cards-content style="padding: 24px 12px">
-                                                <div class="font-caption color-grey-600">List Name</div>
-                                                <div class="font-title color-grey-800">{{list.name}}</div>
-                                                <div class="font-caption color-grey-600" style="margin-top: 20px">Last Updated</div>
-                                                <div class="font-subhead font-normal color-grey-800">{{ list.updatedAt | moment("from", "now")}}</div>
-                                            </veb-cards-content>
-                                            <!-- <veb-cards-action class="background-grey-50">
-                                                <div class="pull-right">
-                                                    <veb-button button-style="flat" v-ripple><veb-icon name="plus"></veb-icon>Create List</veb-button>
-                                                </div>
-                                            </veb-cards-action> -->
-                                        </veb-cards>
-                                    </nuxt-link>
+                    <fade-transition>
+                        <div class="row center-xs" style="margin-top: 64px;">
+                            <div class="col-xs-fluid-24 col-md-fluid-9" >
+                                <img src="~/assets/img/notes.svg" style="width: 50%;" alt="">
+                                <div class="font-center font-headline" style="margin-bottom: 10px; margin-top: 16px">Here's where your work shines through</div>
+                                <div class="font-center font-body">Set up a project to get going with your issues tracking. After that, you’ll find your relevant repositories and work right here.</div>
+                                <div class="button-center-container" style="margin-top: 20px">
+                                    <veb-button @click="showAdd" class="primary" button-style="raised" v-ripple v-elevation><veb-icon name="plus"></veb-icon>Create New List</veb-button>
+                                    <veb-button @click="showUserList" class="primary" button-style="flat" v-ripple v-elevation><veb-icon name="settings"></veb-icon>Settings</veb-button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="loading-container" v-if="currentProjectNumberOfList && $apollo.loading">
+                    </fade-transition>
+                    
+                    <div class="clearfix"></div>
+                    
+                        <div class="row center-xs" v-if="currentProject && currentProject.lists.length">
+                            <div class="col-xs-fluid-24 col-md-fluid-15">
+                                <div class="font-display1" style="margin-bottom: 10px; margin-top: 16px">Lists</div>
+                                <div class="row has-gutter">
+                                    <div class="col-xs-fluid-8" v-for="list in currentProject.lists" :key="list._id">
+                                        <slide-y-down-transition>
+                                            <nuxt-link :to="`/dashboard/lists/${list._id}`" class="cards">
+                                                <veb-cards style="border-left: 2px solid #3d5afe " >
+                                                    <veb-cards-content style="padding: 24px 12px">
+                                                        <div class="font-caption color-grey-600">List Name</div>
+                                                        <div class="font-title color-grey-800">{{list.name}}</div>
+                                                        <div class="font-caption color-grey-600" style="margin-top: 20px">Last Updated</div>
+                                                        <div class="font-subhead font-normal color-grey-800">{{ list.updatedAt | moment("from", "now")}}</div>
+                                                    </veb-cards-content>
+                                                    <!-- <veb-cards-action class="background-grey-50">
+                                                        <div class="pull-right">
+                                                            <veb-button button-style="flat" v-ripple><veb-icon name="plus"></veb-icon>Create List</veb-button>
+                                                        </div>
+                                                    </veb-cards-action> -->
+                                                </veb-cards>
+                                            </nuxt-link>
+                                        </slide-y-down-transition>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    
+                    <div class="loading-container" v-if="(currentProjectNumberOfList && $apollo.loading) || (currentProjectNumberOfList === null && $apollo.loading)">
                         <div class="loading-style2"></div>
                     </div>
                 </div>
@@ -49,13 +57,11 @@
                     <div class="col-xs-fluid-24 col-xd-6">
                         <veb-cards>
                             <form @submit.prevent="addList">
-                                <veb-cards-content class="background-primary" style="padding: 12px">
-                                    <div class="font-title color-white">Add New List</div>
-                                </veb-cards-content>
-                                <veb-cards-content style="padding: 24px">
+                                <veb-cards-content style="padding: 24px; padding-bottom: 0;">
+                                    <div class="font-headline font-medium" style="margin-bottom: 8px">Add New List</div>
                                     <veb-textfield v-model="name" placeholder="List Name"></veb-textfield>
                                 </veb-cards-content>
-                                <veb-cards-action class="background-grey-100">
+                                <veb-cards-action>
                                     <div class="pull-right">
                                         <veb-button type="submit" class="primary" v-ripple><veb-icon name="plus"></veb-icon>Create List</veb-button>
                                     </div>
@@ -74,7 +80,7 @@
                     <veb-tab-content ref="tabContent" element="#tab" :size="2" class="background-white">
                         <veb-tab-content-item >
                             <veb-list class="hover">
-                                <veb-list-item v-for="c in currentProject.teams" :key="c._id"  style="cursor: pointer;height: 60px" v-ripple>
+                                <veb-list-item  v-for="c in currentProject.teams" :key="c._id" @click="selectUser(c)"  style="cursor: pointer;height: 60px" v-ripple>
                                     <span slot="left">
                                         <veb-avatar :text="c.user.username"></veb-avatar>
                                     </span>
@@ -86,7 +92,9 @@
                                 <veb-divider></veb-divider>
                                 <veb-list-item class="color-grey-600" style="cursor: pointer" @click="showAddUser" v-ripple>
                                     <span class="left">
-                                        <veb-icon name="plus" class="color-grey-600"></veb-icon>
+                                        <veb-avatar class="background-primary elevation z3" v-elevation>
+                                            <veb-icon name="plus"></veb-icon>
+                                        </veb-avatar>
                                     </span>
                                     Add User
                                 </veb-list-item>
@@ -105,12 +113,10 @@
                 <div class="row center-xs middle-xs">
                     <div class="col-xs-fluid-24 col-xd-6">
                         <veb-cards>
-                            <form submit="hello">
-                                <veb-cards-content class="background-primary" style="padding: 12px">
-                                    <div class="font-title color-white">Assign Role</div>
-                                </veb-cards-content>
-                                <veb-cards-content style="padding: 12px">
-                                    <veb-list ref="list" class="list" v-if="selectedRole && selectedRole.length">
+                            <form @submit.prevent="addUserAndRole">
+                                <veb-cards-content style="padding: 24px; padding-bottom: 0">
+                                    <div class="font-headline font-medium" style="margin-bottom: 8px">Assign Role</div>
+                                    <veb-list ref="list" class="list" v-if="selectedRole && selectedRole.length" style="margin-left: -8px; margin-right: -8px;">
                                         <div v-for="(role, index) in getAllRoles" :key="role._id"> 
                                             <veb-list-item style="cursor: pointer;" @click="selectedRole[index].state = !selectedRole[index].state"  v-ripple>
                                                 <span slot="left">
@@ -124,7 +130,7 @@
                                         </div>
                                     </veb-list>
                                 </veb-cards-content>
-                                <veb-cards-action class="background-grey-100">
+                                <veb-cards-action>
                                     <div class="pull-right">
                                         <veb-button type="submit" class="primary" v-ripple><veb-icon name="plus"></veb-icon>Assign</veb-button>
                                     </div>
@@ -147,6 +153,7 @@ import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import CreateListGQL from '~/apollo/query/createList.gql'
 import GetAllRolesGQL from '~/apollo/query/getAllRoles.gql'
 import PeoplePicker from '~/components/PeoplePicker.vue'
+import addUserAndRolesGQL from '~/apollo/query/addUserAndRoles.gql'
 export default {
     components: {
         PeoplePicker
@@ -183,7 +190,7 @@ export default {
             return []
         },
         currentProjectNumberOfList () {
-            let count = 0
+            let count = null
             this.currentUserProjects.forEach((data) => {
                 if(data._id === this.$route.params.id ) {
                     count = data.numberOfLists
@@ -200,12 +207,22 @@ export default {
             this.$refs.showUserList.disable()
             this.$refs.showAddUser.enable()
         },
-        enableRoleSelection () {
+        enableRoleSelection (clear = true) {
             this.$refs.showRoleSelection.enable()
-            this.selectedRole = []
+            let tempSelectedRole = []
+            if(clear) {
+                this.selectedRole = []
+            }
             this.getAllRoles.forEach(item => {
-                this.selectedRole.push({_id: item._id, state: false})
+                tempSelectedRole.push({_id: item._id, state: false})
             })
+            tempSelectedRole.forEach((item) => {
+                let matched = _.find(this.selectedRole, {_id: item._id})
+                if (matched) {
+                    item.state = matched.state
+                }
+            })
+            this.selectedRole = tempSelectedRole
         },
         addList () {
             this.$apollo.mutate({
@@ -237,9 +254,10 @@ export default {
             }).then((result) => {
                 if (result.data && result.data.createList) {
                     this.name = ''
+                    this.$snackbar.run({message: 'Successfully added new list'})
                 }
             }).catch((error) => {
-                console.error(error)
+                this.$snackbar.run({message: 'Failed to add new list', type: 'color-pink'})
             })
             this.$refs.addList.disable()
         },
@@ -252,8 +270,36 @@ export default {
             this.selectedUser = user
             this.enableRoleSelection()
         },
+        selectUser (teamMember) {
+            this.selectedUser = teamMember.user
+            this.$refs.showUserList.disable()
+            this.selectedRole = teamMember.roles.map((role) => {
+                return {_id: role._id, state: true}
+            })
+
+            this.enableRoleSelection(false)
+        },
         addUserAndRole() {
-            //
+            this.$refs.showRoleSelection.disable()
+            let rolesId = this.selectedRole.filter((role) => role.state).map((role) => role._id)
+            this.$apollo.mutate({
+                mutation: addUserAndRolesGQL,
+                variables: {
+                    userId: this.selectedUser._id,
+                    projectId: this.$route.params.id,
+                    rolesId
+                },
+                refetchQueries: [{
+                    query: CurrentProjectGQL,
+                    variables: {
+                        _id: this.$route.params.id
+                    }
+                }],
+            }).then((result) => {
+                this.$snackbar.run({message: 'Successfully assigned role'})
+            }).catch((error) => {
+                this.$snackbar.run({message: 'Failed to assigned role', type: 'color-pink'})
+            })
         }
     },
     apollo: {
@@ -265,7 +311,8 @@ export default {
                 return {
                     _id: this.$route.params.id
                 }
-            }
+            },
+            fetchPolicy: 'cache-and-network'
         },
         getAllRoles: GetAllRolesGQL
     }

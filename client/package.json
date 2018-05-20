@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/apollo": "^3.0.6",
+    "animated-vue": "^0.5.3",
     "apollo-cache-inmemory": "^1.1.12",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
@@ -21,10 +22,12 @@
     "graphql-tag": "^2.8.0",
     "highlight.js": "^9.12.0",
     "nuxt": "^1.0.0",
+    "perf_hooks": "0.0.1",
     "store2": "^2.7.0",
     "vue-apollo": "^3.0.0-beta.5",
     "vue-highlight.js": "^2.2.0",
-    "vue-moment": "^3.2.0"
+    "vue-moment": "^3.2.0",
+    "vue2-transitions": "^0.2.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

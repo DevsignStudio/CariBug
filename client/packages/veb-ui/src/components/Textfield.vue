@@ -1,7 +1,7 @@
 <template>
-    <div :class="elClass">
-        <textarea style="min-height: 52px;" :class="{'always-show': alwaysShowColor}" v-if="isMultiline" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :disabled="disabled || isInfo" @focus="focusInput" ref="textarea" @input="updateValue($event.target.value)" v-model="textareaData"></textarea>
-        <input :class="{'always-show': alwaysShowColor}" v-if="!isMultiline" :disabled="disabled || isInfo" ref="input" :type="type" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :value="value" @focus="focusInput" @input="updateValue($event.target.value)">
+    <div :class="elClass" style="min-height: 56px">
+        <textarea style="min-height: 31px" :class="{'always-show': alwaysShowColor}" v-if="isMultiline" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :disabled="disabled || isInfo" @blur="blur" @focus="focusInput" ref="textarea" @input="updateValue($event.target.value)" v-model="textareaData"></textarea>
+        <input :class="{'always-show': alwaysShowColor}" v-if="!isMultiline" :disabled="disabled || isInfo" ref="input" :type="type" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :value="value" @blur="blur" @focus="focusInput" @input="updateValue($event.target.value)">
         <div class="veb-textfield-floating-placeholder" @click="focusInput">{{placeholder}}</div>
         <div class="veb-textfield-line"></div>
         <div :class="messageClass">{{message}}</div>
@@ -64,14 +64,15 @@ export default {
         messageClass () {
             return {
                 'veb-textfield-message': true,
-                'force-message': this.forceMessage
+                'force-message': this.forceMessage,
             }
         },
         elClass () {
             return {
                 'veb-textfield': true,
                 'is-info': this.isInfo,
-                'multiline': this.isMultiline
+                'multiline': this.isMultiline,
+                'disabled': this.disabled
             }
         },
         isMultiline () {
@@ -79,18 +80,23 @@ export default {
                 return true
             }
             return false
-        }
-    },
-    data () {
-        return {
-            textareaData: this.value
+        },
+        textareaData: {
+            get () {
+                return this.value
+            },
+            set (newValue) {
+                this.updateValue(newValue)
+            }
         }
     },
     mounted () {
         this.checkIfHasValue()
-        if (this.isMultiline) {
-            autosize(this.$refs.textarea)
-        }
+        this.$nextTick(() => {
+            if (this.isMultiline) {
+                autosize(this.$refs.textarea)
+            }
+        })
     },
     watch: {
         value (val) {
@@ -123,12 +129,14 @@ export default {
             }
 
             $el.focus()
+            Helper.addClass(this.$el, 'on-focus')
             if (this.selectAll) {
                 $el.select()
             }
         },
         blur () {
-            var $el = this.$refs.input
+            var $el = this.type ===  'multiline' ? this.$refs.textarea : this.$refs.input
+            Helper.removeClass(this.$el, 'on-focus')
             $el.blur()
         }
     }

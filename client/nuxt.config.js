@@ -20,7 +20,7 @@ module.exports = {
     loading: { color: '#FFFFFF',  },
     css: ['~/assets/css/main.css'],
     modules: ['@nuxtjs/apollo'],
-    plugins: ['~/plugins/veb.js', '~/plugins/vue-highlight.js', '~/plugins/vue-moment.js'],
+    plugins: ['~/plugins/veb.js', '~/plugins/vue-highlight.js', '~/plugins/vue-moment.js', '~/plugins/vue-animate.js'],
     apollo: {
         clientConfigs: {
             default: '~/apollo/config/default.js'

@@ -1,6 +1,6 @@
 html, body
 {
-  background-color: #fff;
+  background-color: #ECEFF1!important;
   color: #000;
   letter-spacing: 0.5px;
   font-family: "Source Sans Pro", Arial, sans-serif;
@@ -59,9 +59,44 @@ pre code {
 }
 
 .veb-dark-theme .components-panel{
-  background: #212121;
+  background: #263238;
 }
 
 .veb-dark-theme  pre {
-  background: #212121;
+  background: #263238;
+}
+
+
+.page-enter-active, .page-leave-active {
+  transition: all .2s ease-out;
+  opacity: 1;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+.page-enter-active {
+  animation: acrossIn .25s ease-out both;
+} 
+
+.page-leave-active {
+  animation: acrossOut .35s ease-in both;
+} 
+
+@keyframes acrossIn {
+  0% {
+    transform: translate3d(0, -20px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes acrossOut {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 50px, 0);
+  }
 }

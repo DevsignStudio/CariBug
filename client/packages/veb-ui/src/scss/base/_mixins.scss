@@ -14,12 +14,12 @@ $col-size: 24;
     .col-#{$size} {
         @extend .col-default;
     }
-    @for $i from 0 to $col-size+1 {
+    @for $i from 0 to $col-size {
         .col-#{$size}-fluid-#{$i} {
             @extend .col-default;
         }
     }
-    @for $i from 0 to $col-size+1 {
+    @for $i from 0 to $col-size {
         .col-#{$size}-#{$i} {
             @extend .col-default;
         }
@@ -38,6 +38,8 @@ $col-size: 24;
         flex-basis: $number/$col-size * 100%;
         max-width: $number/$col-size * 100%;
         width: 100%;
+        height: initial;
+        overflow: initial;
     }
 }
 
@@ -48,6 +50,8 @@ $col-size: 24;
         flex-basis: $number * 64px;
         max-width: $number * 64px;
         width: 100%;
+        height: initial;
+        overflow: initial;
     }
 }
 
@@ -146,12 +150,20 @@ $col-size: 24;
 }
 
 @mixin generate-flexbox($size) {
-    @for $i from 0 to $col-size+1 {
+    @for $i from 0 to $col-size {
         @include fluid-flexbox($i, $size);
     }
-    @for $i from 0 to $col-size+1 {
+    @for $i from 0 to $col-size {
         @include normal-flexbox($i, $size);
     }
+
+    .col-#{$size}-fluid-0,
+    .col-#{$size}-0 {
+        // overflow: hidden;
+        // height: 0;
+        max-width: 0;
+    }
+
     @for $i from 0 to $col-size {
         @include col-offset($i, $size);
     }

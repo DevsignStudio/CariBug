@@ -1,6 +1,6 @@
 <template>
     <div class="gm-scrollbar-container" style="height: 100%">
-        <div>
+        <div style="height: 100%;">
             <slot></slot>
         </div>
     </div>
@@ -17,20 +17,21 @@ export default {
                 element: this.$el
             }).create()
 
-            // window.onNuxtReady(() => {
-            //     setTimeout(() => {
-            //         this.myScrollbar.update()
-            //     }, 300)
-            //     console.log('hello')
-                
-            // })
+            setInterval(() => {
+                this.myScrollbar.update()
+            }, 500)
 
             this.$router.afterEach((to, from) => {
                 setTimeout(() => {
                     this.myScrollbar.update()
-                }, 300)
+                }, 700)
             })
         })
+    },
+    methods: {
+        scrollTop () {
+            this.myScrollbar.getViewElement().scrollTop = 0
+        }
     }
 }
 </script>

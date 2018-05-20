@@ -1,0 +1,88 @@
+.veb-slider {
+    height: 30px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    .noUi-connects {
+        height: 4px;
+        top: 13px;
+        background: $theme-primary-200;
+        cursor: pointer;
+        .noUi-connect {
+            height:  4px;
+            background: $theme-primary;
+        }
+    }
+
+    .noUi-base > .noUi-origin > div.noUi-handle {
+        width: 18px;
+        height: 18px;
+        box-shadow: none;
+        border: 0;
+        top: 6px;
+        right: -9px;
+        background: $theme-primary;
+        @include border-radius(50%);
+        @include transition(all $animation-fast-out-linear-in-timing-function 0.2s);
+        cursor: pointer;
+        &:before, &:after {
+            display: none;
+        }
+
+        &:before {
+            content: '';
+            @include border-radius(50%);
+            display: block;
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            height: 48px;
+            width: 48px;
+            z-index: 4;
+            background: rgba($theme-primary, 0.2);
+            @include transform(scale(0));
+            @include transition(all $animation-fast-out-linear-in-timing-function 0.2s);
+        }
+
+        &:hover:before, &.noUi-active:before {
+            @include transform(scale(1));
+        }
+
+        .noUi-tooltip {
+            display: none;
+        }
+        &.noUi-active .noUi-tooltip,&:hover .noUi-tooltip {
+            display: block;
+            top: -50px;
+            height: 32px;
+            line-height: 24px;
+            font-size: 12px;
+            padding: 4px;
+            @include border-radius(4px 8px);
+            background: $theme-primary-700;
+            border: 0;
+            color:white;
+        }
+    }
+
+    &.accent {
+        .noUi-connects {
+            background: $theme-accent-200;
+            .noUi-connect {
+                background: $theme-accent;
+            }
+        }
+
+        .noUi-base > .noUi-origin > div.noUi-handle {
+            background: $theme-accent;
+    
+            &:before {
+                background: rgba($theme-accent, 0.2);
+            }
+    
+            &.noUi-active .noUi-tooltip,&:hover .noUi-tooltip {
+                background: $theme-accent-700;
+            }
+        }
+    }
+}

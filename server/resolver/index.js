@@ -185,11 +185,21 @@ export default async () => {
                     let userSelected = await User.findOne({_id: userId})
                     let project = await Project.findOne({_id: projectId})
                     let projectTeam = await ProjectTeam.findOne({userId, projectId})
-                    await ProjectTeam.insert(user, {
-                        userId: userId,
-                        projectId: projectId,
-                        rolesId: rolesId
-                    })
+
+                    if(!projectTeam) {
+                        let projectTeam = await ProjectTeam.insert(user, {
+                            userId: userId,
+                            projectId: projectId,
+                            rolesId: rolesId
+                        })
+                    } else {
+                        console.log(rolesId)
+                        await ProjectTeam.update(user, {userId, projectId}, {
+                            $set: {
+                                rolesId
+                            }
+                        })
+                    }
 
                     return true
                 }

@@ -1,6 +1,7 @@
 $raised-button : ".veb-raised-button";
 $color-button : ".veb-color-button";
 $flat-button : ".veb-flat-button";
+$outline-button : ".veb-outline-button";
 
 @include dark-theme {
     button#{$raised-button},
@@ -20,7 +21,7 @@ $flat-button : ".veb-flat-button";
 
 button#{$raised-button},
 a#{$raised-button} {
-    background: $color-grey-100;
+    background: $color-white;
     color: $color-grey-900;
     @include elevation(1);
     &.hover,
@@ -83,8 +84,16 @@ a#{$raised-button} {
 
 @include dark-theme {
     button#{$flat-button},
-    a#{$flat-button} {
-        color: $color-grey-100;
+    a#{$flat-button}, 
+    button#{$outline-button},
+    a#{$outline-button} {
+        color: $color-white;
+
+        &.hover,
+        &:hover,
+        &:focus {
+            background: rgba(#ffffff, 0.1);
+        }
 
         &.primary {
             color: $theme-primary-400;
@@ -105,14 +114,55 @@ a#{$raised-button} {
             pointer-events: none;
         }
     }
+
+    button#{$outline-button},
+    a#{$outline-button} {
+        border: 1px solid rgba($color-white, 0.5);
+        &:hover {
+            background: $color-white;
+            color: $theme-primary-dark;
+        }
+        &.primary {
+            border: 1px solid $theme-primary-500;
+
+            &:hover {
+                background: $theme-primary;
+                color: $color-white;
+            }
+        }
+
+        &.accent {
+            border: 1px solid $theme-accent-500;
+
+            &:hover {
+                background: $theme-accent;
+                color: $color-white;
+            }
+        }
+
+        &:disabled,
+        &.disabled,
+        &[disabled],
+        &.disabled:focus,
+        &.disabled.hover {
+            color: $color-grey-500;
+            border: 1px solid $color-grey-500;
+            background: transparent;
+            @include elevation(0);
+            pointer-events: none;
+        }
+    }
 }
 
 button#{$flat-button},
-a#{$flat-button} {
+a#{$flat-button}, 
+button#{$outline-button},
+a#{$outline-button} {
     background: transparent;
     color: $color-grey-900;
     
     &.hover,
+    &:hover,
     &:focus {
         background: rgba(0, 0, 0, 0.1);
     }
@@ -130,6 +180,49 @@ a#{$flat-button} {
     &.disabled.hover {
         color: $color-grey-500;
         background: transparent;
+        @include elevation(0);
+        pointer-events: none;
+    }
+}
+
+button#{$outline-button},
+a#{$outline-button} {
+    background: transparent;
+    color: $color-grey-900;
+    border: 1px solid rgba($theme-primary-dark, 0.5);
+    
+    &.hover,
+    &:hover,
+    &:focus {
+        background: rgba(0, 0, 0, 1);
+        color: $color-white;
+    }
+    &.primary {
+        border: 1px solid rgba($theme-primary, 1);
+        color: $theme-primary;
+        &:hover {
+            background: $theme-primary;
+            color: $color-white;
+        }
+    }
+    &.accent {
+        border: 1px solid rgba($theme-accent, 1);
+        color: $theme-accent;
+
+        &:hover {
+            background: $theme-accent;
+            color: $color-white;
+        }
+    }
+    
+    &:disabled,
+    &.disabled,
+    &[disabled],
+    &.disabled:focus,
+    &.disabled.hover {
+        color: $color-grey-500;
+        background: transparent;
+        border: 1px solid rgba($theme-primary-dark, 0.3);
         @include elevation(0);
         pointer-events: none;
     }
@@ -159,7 +252,7 @@ a#{$flat-button} {
 
 button#{$color-button},
 a#{$color-button} {
-    background: $color-grey-900;
+    background: $theme-primary-dark;
     color: $color-white;
     &.primary {
         background: $theme-primary;
@@ -218,6 +311,8 @@ button#{$raised-button},
 a#{$raised-button},
 button#{$flat-button},
 a#{$flat-button},
+button#{$outline-button},
+a#{$outline-button},
 button#{$color-button},
 a#{$color-button} {
     @include typography-button;
@@ -227,7 +322,6 @@ a#{$color-button} {
     height: 36px;
     line-height: 24px;
     padding: 6px 12px;
-    border: 0;
     margin: 6px 2px;
     cursor: pointer;
     display: block;
@@ -263,6 +357,15 @@ a#{$color-button} {
         }
     }
     
+}
+
+button#{$raised-button},
+a#{$raised-button},
+button#{$flat-button},
+a#{$flat-button},
+button#{$color-button},
+a#{$color-button} {
+    border: 0;
 }
 
 .button-center-container {

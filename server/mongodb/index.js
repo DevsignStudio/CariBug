@@ -35,8 +35,8 @@ export const Collection = (db, name) => {
     }
 
     collection.update = (user, ...args) => {
-        args[0].updatedAt = (new Date()).toString()
-        args[0].updatedBy = user ? user._id : null
+        args[1].$set.updatedAt = (new Date()).toString()
+        args[1].$set.updatedBy = user ? user._id : null
 
         return updateCommand.apply(collection, args)
     }

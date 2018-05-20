@@ -4,10 +4,8 @@
             <div class="col-xs-fluid-24 col-xd-6">
                 <veb-cards>
                     <form @submit.prevent="getUser">
-                        <veb-cards-content class="background-primary" style="padding: 12px">
-                            <div class="font-title color-white">Add New User</div>
-                        </veb-cards-content>
-                        <veb-cards-content style="padding: 12px 24px">
+                        <veb-cards-content style="padding: 24px; padding-bottom: 0">
+                            <div class="font-headline font-medium" style="margin-bottom: 8px">Add New User</div>
                             <veb-textfield v-model="internalValue" placeholder="Search Username" message="Only top 3 search results will show here"></veb-textfield>
                             <veb-list ref="list" class="list" style="margin-top: 6px">
                                 <div v-for="(user, index) in searchUsers" :key="user._id" @click="setAsCheck(index)"> 
@@ -35,7 +33,7 @@
                                 </veb-list-item>
                             </veb-list>
                         </veb-cards-content>
-                        <veb-cards-action class="background-grey-100">
+                        <veb-cards-action>
                             <div class="pull-right">
                                 <veb-button @click="disable" button-style="flat" v-ripple>cancel</veb-button>
                                 <veb-button type="submit" class="primary" v-ripple><veb-icon name="account"></veb-icon>Confirm</veb-button>

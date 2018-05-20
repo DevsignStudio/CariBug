@@ -4,18 +4,17 @@
             <div class="wrapper">
                 <div class="row center-xs" style="margin-top: 24px;">
                     <div class="col-xs-fluid-24 col-md-fluid-9">
-                        <veb-cards>
+                        <veb-cards class="elevation z2">
                             <form @submit.prevent="submit">
-                                <veb-cards-content style="padding: 30px">
+                                <veb-cards-content style="padding: 12px 24px">
                                     <div class="font-headline" style="margin-bottom: 10px">Add a New Project</div>
-                                    <veb-divider></veb-divider>
                                     <veb-textfield v-model="name" placeholder="Project Name"></veb-textfield>
                                     <veb-textfield type="multiline" v-model="description" placeholder="Project Description"></veb-textfield>
                                 </veb-cards-content>
-                                <veb-cards-action class="background-grey-50">
+                                <veb-cards-action>
                                     <div class="pull-right">
-                                        <veb-button class="primary" type="submit" v-ripple>New Project</veb-button>
                                         <veb-button button-style="flat" class="primary" @click="back" v-ripple>Cancel</veb-button>
+                                        <veb-button class="primary" type="submit" v-ripple>New Project</veb-button>
                                     </div>
                                 </veb-cards-action>
                             </form>
@@ -30,7 +29,9 @@
 <script>
 import CreateProjectGQL from '~/apollo/query/createProject.gql'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
+
 export default {
+    transition: 'page',
     data () {
         return {
             pageTitle: 'New Project',

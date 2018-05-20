@@ -1,19 +1,37 @@
 $palette-royalblue:
-rgb(232, 235, 255)
-rgb(197, 206, 255)
-rgb(158, 173, 255)
-rgb(119, 140, 254)
-rgb(90, 115, 254)
-rgb(61, 90, 254)
-rgb(55, 82, 254)
-rgb(47, 72, 254)
-rgb(39, 63, 254)
-rgb(26, 46, 253)
+rgb(230, 234, 255)
+rgb(193, 202, 255)
+rgb(152, 167, 255)
+rgb(110, 132, 254)
+rgb(79, 105, 254)
+rgb(48, 79, 254)
+rgb(43, 72, 254)
+rgb(36, 63, 254)
+rgb(30, 54, 254)
+rgb(19, 38, 253)
 rgb(255, 255, 255)
-rgb(252, 253, 255)
-rgb(201, 205, 255)
-rgb(176, 182, 255)
+rgb(248, 249, 255)
+rgb(197, 201, 255)
+rgb(172, 177, 255)
 ;
+
+$palette-royalorange:
+rgb(255, 235, 228)
+rgb(255, 205, 189)
+rgb(255, 171, 145)
+rgb(255, 137, 100)
+rgb(255, 112, 67)
+rgb(255, 87, 34)
+rgb(255, 79, 30)
+rgb(255, 70, 25)
+rgb(255, 60, 20)
+rgb(255, 44, 12)
+rgb(255, 255, 255)
+rgb(255, 247, 246)
+rgb(255, 201, 195)
+rgb(255, 178, 169)
+;
+
 
 $palette-royalblue-50: nth($palette-royalblue, 1);
 $palette-royalblue-100: nth($palette-royalblue, 2);
@@ -30,6 +48,21 @@ $palette-royalblue-A200: nth($palette-royalblue, 12);
 $palette-royalblue-A400: nth($palette-royalblue, 13);
 $palette-royalblue-A700: nth($palette-royalblue, 14);
 
+$palette-royalorange-50: nth($palette-royalorange, 1);
+$palette-royalorange-100: nth($palette-royalorange, 2);
+$palette-royalorange-200: nth($palette-royalorange, 3);
+$palette-royalorange-300: nth($palette-royalorange, 4);
+$palette-royalorange-400: nth($palette-royalorange, 5);
+$palette-royalorange-500: nth($palette-royalorange, 6);
+$palette-royalorange-600: nth($palette-royalorange, 7);
+$palette-royalorange-700: nth($palette-royalorange, 8);
+$palette-royalorange-800: nth($palette-royalorange, 9);
+$palette-royalorange-900: nth($palette-royalorange, 10);
+$palette-royalorange-A100: nth($palette-royalorange, 11);
+$palette-royalorange-A200: nth($palette-royalorange, 12);
+$palette-royalorange-A400: nth($palette-royalorange, 13);
+$palette-royalorange-A700: nth($palette-royalorange, 14);
+
 
 $theme-color: $palette-royalblue-500;
 $theme-primary: $palette-royalblue-500;
@@ -43,21 +76,21 @@ $theme-primary-600: $palette-royalblue-600;
 $theme-primary-700: $palette-royalblue-700;
 $theme-primary-800: $palette-royalblue-800;
 $theme-primary-900: $palette-royalblue-900;
-$theme-primary-light: $theme-primary-100;
-$theme-primary-dark: $theme-primary-700;
+$theme-primary-light: $color-white;
+$theme-primary-dark: #263238;
 $theme-text-color: $color-white;
 $theme-text-primary: $color-white;
 $theme-text-accent: $color-white;
-$theme-accent: $color-pink;
-$theme-accent-50: $color-pink-50;
-$theme-accent-100: $color-pink-100;
-$theme-accent-200: $color-pink-200;
-$theme-accent-300: $color-pink-300;
-$theme-accent-400: $color-pink-400;
-$theme-accent-500: $color-pink-500;
-$theme-accent-600: $color-pink-600;
-$theme-accent-700: $color-pink-700;
-$theme-accent-800: $color-pink-800;
-$theme-accent-900: $color-pink-900;
-$theme-accent-light: $color-pink-100;
-$theme-accent-dark: $color-pink-700;
+$theme-accent: $palette-royalorange-500;
+$theme-accent-50: $palette-royalorange-50;
+$theme-accent-100: $palette-royalorange-100;
+$theme-accent-200: $palette-royalorange-200;
+$theme-accent-300: $palette-royalorange-300;
+$theme-accent-400: $palette-royalorange-400;
+$theme-accent-500: $palette-royalorange-500;
+$theme-accent-600: $palette-royalorange-600;
+$theme-accent-700: $palette-royalorange-700;
+$theme-accent-800: $palette-royalorange-800;
+$theme-accent-900: $palette-royalorange-900;
+$theme-accent-light: $color-white;
+$theme-accent-dark: #263238;

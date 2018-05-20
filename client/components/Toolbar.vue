@@ -2,6 +2,7 @@
     <veb-toolbar class="background-primary elevation z2" style="z-index:100" v-elevation>
         <span style="display: inline-block">
             <veb-icon-button name="menu" class="color-white show-xs hidden-lg hidden-xlg" @click="enable"></veb-icon-button>  
+            <veb-icon-button name="menu" class="color-white hidden-xs hidden-xd hidden-md hidden-sm show-lg show-xlg" @click="bigMenuClick"></veb-icon-button>  
         </span>
         <span class="font-title toolbar-title color-white font-normal">{{ internalTitle }}</span> 
         
@@ -19,6 +20,9 @@ export default {
     methods: {
         enable () {
             this.$emit('menuClick', 'click')
+        },
+        bigMenuClick () {
+            this.$emit('bigMenuClick', 'click')
         },
         showOrHideIcon () {
             if (this.$route.name === 'dashboard') {
@@ -57,7 +61,7 @@ export default {
         this.$router.afterEach(() => {
             setTimeout(() => {
                 this.dataTitle = this.$meta().refresh().title
-            }, 100)
+            }, 500)
         })
     },
     watch: {

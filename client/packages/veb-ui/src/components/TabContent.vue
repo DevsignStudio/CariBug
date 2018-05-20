@@ -77,6 +77,7 @@ export default {
             })
             $swipeTabsContentContainer.on('afterChange', function (slick, currentSlide) {
                 self.$emit('slideChange', currentSlide.currentSlide)
+                self.$children[currentSlide.currentSlide].$children[0].scrollTop()
             // self.lastSlide = (currentSlide.slideCount -1) === currentSlide.currentSlide;
             })
         })

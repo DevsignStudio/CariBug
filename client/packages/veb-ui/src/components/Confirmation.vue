@@ -1,19 +1,17 @@
 <template>
     <veb-reveal :enable-overlay-click="false" ref="reveal">
-        <div class="row center-xs  middle-xs">
-            <div class="col-xd-6" style="padding: 0 8px;">
+        <div class="row center-xs  middle-xs has-gutter" style="padding: 0px 8px;">
+            <div class="col-xd-8">
                 <veb-cards class="elevation z3">
-                    <veb-cards-content  class="background-grey-50" style="padding: 12px">
-                        <div class="font-subhead font-bold no-margin">{{title}}</div>
-                    </veb-cards-content>
-                    <veb-cards-content class="scrollable" style="padding: 12px">
+                    <veb-cards-content class="scrollable" style="padding: 24px 24px">
+                        <div class="font-headline font-medium" style="margin-bottom: 8px">{{title}}</div>
                         <div class="font-body no-margin dialog-message">
                             {{message}}
                         </div>
                     </veb-cards-content>
                     <veb-cards-action>
                         <div class="pull-right">
-                            <veb-button @click="cancel" button-style="flat" class="dialog-confirm-button" v-ripple>{{cancelText}}</veb-button>
+                            <veb-button v-if="showCancel" @click="cancel" button-style="flat" class="dialog-confirm-button" v-ripple>{{cancelText}}</veb-button>
                             <veb-button @click="confirm" class="dialog-cancel-button primary" v-ripple>{{confirmText}}</veb-button>
                         </div>
                     </veb-cards-action>

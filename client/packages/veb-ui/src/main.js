@@ -5,6 +5,7 @@ import Confirmation from './function/confirmation'
 
 export const VebUI = {
     install (Vue, options = {}) {
+        require('nouislider/distribute/nouislider.css')
         require('./css/veb.css')
         require('mdi/css/materialdesignicons.css')
         components(Vue, options)

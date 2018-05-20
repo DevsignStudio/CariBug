@@ -13,6 +13,7 @@ query CurrentProject($_id: String!) {
         teams {
             _id
             roles {
+                _id
                 name
             }
             user {

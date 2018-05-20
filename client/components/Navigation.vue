@@ -13,11 +13,14 @@
                 <nuxt-link to="/dashboard/components/button" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Button</veb-nav-list>
                 </nuxt-link>
+                <nuxt-link to="/dashboard/components/cards" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Cards</veb-nav-list>
+                </nuxt-link>
                 <nuxt-link to="/dashboard/components/checkbox" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Checkbox</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/cards" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Cards</veb-nav-list>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Chip</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/toolbar" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Toolbar</veb-nav-list>

@@ -17,4 +17,11 @@
         width: 100%;
         z-index: 10;
     }
+
+    .mdi {
+        top: 0;
+        position: absolute;
+        padding: 6px;
+        color: inherit !important;
+    }
 }

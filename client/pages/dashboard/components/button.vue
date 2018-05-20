@@ -31,8 +31,8 @@
                 <div class="components-panel-inner">
                     <veb-button button-style="raised">Button</veb-button>
                     <veb-button button-style="raised" v-ripple>Button</veb-button>
-                    <veb-button button-style="raised" class="primary" v-ripple>Button</veb-button>
-                    <veb-button button-style="raised" class="accent" v-ripple>Button</veb-button>
+                    <veb-button button-style="raised" class="primary" v-elevation v-ripple>Button</veb-button>
+                    <veb-button button-style="raised" class="accent" v-elevation v-ripple>Button</veb-button>
                     <veb-button button-style="raised" class="primary-gradient" v-ripple>Button</veb-button>
                     <veb-button button-style="raised" class="accent-gradient" v-ripple>Button</veb-button>
                     <veb-button button-style="raised" class="color-white background-green" v-ripple>Button</veb-button>
@@ -44,7 +44,7 @@
                     <div class="components-panel-inner">
                         <veb-button button-style="raised">Button</veb-button>
                         <veb-button button-style="raised" v-ripple>Button</veb-button>
-                        <veb-button button-style="raised" class="primary" v-ripple>Button</veb-button>
+                        <veb-button button-style="raised" v-elevation class="primary" v-ripple>Button</veb-button>
                         <veb-button button-style="raised" class="accent" v-ripple>Button</veb-button>
                         <veb-button button-style="raised" class="primary-gradient" v-ripple>Button</veb-button>
                         <veb-button button-style="raised" class="accent-gradient" v-ripple>Button</veb-button>
@@ -86,6 +86,30 @@
             <div class="clearfix"></div>
             <highlight-code lang="html">{{button3}}</highlight-code>
         </veb-page-container>
+        <veb-page-container>
+            <div class="components-panel">
+                <div class="components-panel-inner">
+                    <veb-button @click="test" button-style="outline">Button</veb-button>
+                    <veb-button button-style="outline" v-ripple>Button</veb-button>
+                    <veb-button button-style="outline" class="primary" v-ripple>Button</veb-button>
+                    <veb-button button-style="outline" class="accent" v-ripple>Button</veb-button>
+                    <veb-button button-style="outline" disabled>Button</veb-button>
+                </div>
+            </div>
+            <div class="veb-dark-theme">
+                <div class="components-panel">
+                    <div class="components-panel-inner">
+                        <veb-button button-style="outline">Button</veb-button>
+                        <veb-button button-style="outline" v-ripple>Button</veb-button>
+                        <veb-button button-style="outline" class="primary" v-ripple>Button</veb-button>
+                        <veb-button button-style="outline" class="accent" v-ripple>Button</veb-button>
+                        <veb-button button-style="outline" disabled>Button</veb-button>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <highlight-code lang="html">{{button1}}</highlight-code>
+        </veb-page-container>
     </div>
 </template>
 
@@ -107,7 +131,13 @@ export default {
     },
     methods: {
         test () {
-            this.$confirmation.run('hello', () => console.log('hello'), () => console.log('cancel'))
+            this.$confirmation.run({
+                message: 'Some Gmail features have failed to load. If this problem persists, try reloading the page, or using the  version. Learn More.',
+                confirmText: 'Try Again',
+                showCancel: false
+            }, 
+            () => console.log('hello'), 
+            () => console.log('cancel'))
         }
     }
 }

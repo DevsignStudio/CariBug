@@ -2,13 +2,22 @@ export default {
     bind: (el, binding, vnode) => {
         const $ = require('jquery')
         let background = null
-        if (binding.value && binding.value.background) {
-            background = binding.value.background
+        let takeFromFont = false
+        if (binding.value) {
+            if (binding.value.background) {
+                background = binding.value.background
+            } else if (binding.value.fromFont) {
+                takeFromFont = true
+            }
         }
 
         const $el = $(el)
         const computed = function () {
             let overflow = ''
+            if(takeFromFont)  {
+                background = $el.css('color')
+                console.log(background)
+            }
 
             $el.addClass('peper-ripple')
             $el.unbind('mousedown.ripple mouseup.ripple mouseout.ripple')

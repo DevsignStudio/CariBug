@@ -94,7 +94,7 @@ export default `
         createProject(name: String, description: String): Boolean @isAuthenticated
         createProjectTeamRole(name:String): Boolean @isAuthenticated
         createList(name: String, _id: String): ProjectList @isAuthenticated
-        addUserAndRoles(projectId: [String], userId: String, rolesId: [String]): Boolean @isAuthenticated
+        addUserAndRoles(projectId: String, userId: String, rolesId: [String]): Boolean @isAuthenticated
     }
 
     schema {

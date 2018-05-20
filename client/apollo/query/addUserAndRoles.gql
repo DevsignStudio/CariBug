@@ -1,0 +1,3 @@
+mutation AddUserAndRoles($projectId: String!, $userId: String!, $rolesId: [String]!) {
+    addUserAndRoles(projectId: $projectId, userId: $userId, rolesId: $rolesId)
+}

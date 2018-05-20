@@ -9,11 +9,12 @@
         z-index: 25;
         @include renderIssue();
         pointer-events: none;
+        will-change: transform;
         @include transform(translateZ(0));
-        @include transition(background $animation-linear-out-slow-in-timing-function 0.6s);
-        -webkit-animation: ripple-circle-big 0.35s $animation-linear-out-slow-in-timing-function forwards;
-        -moz-animation: ripple-circle-big 0.35s $animation-linear-out-slow-in-timing-function forwards;
-        animation: ripple-circle-big 0.35s $animation-linear-out-slow-in-timing-function forwards;
+        @include transition(background $animation-deceleration-curve-timing-function 0.6s);
+        -webkit-animation: ripple-circle-big 0.35s $animation-deceleration-curve-timing-function forwards;
+        -moz-animation: ripple-circle-big 0.35s $animation-deceleration-curve-timing-function forwards;
+        animation: ripple-circle-big 0.35s $animation-deceleration-curve-timing-function forwards;
     }
 }
 

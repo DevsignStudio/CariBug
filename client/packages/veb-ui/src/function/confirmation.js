@@ -2,7 +2,7 @@ import Vue from 'vue/dist/vue.js'
 import Confirmation from '../components/Confirmation'
 
 export default {
-    run(message, callbackConfirm = function() {}, callbackCancel = function() {}, title = "Confirm", confirmText = "Confirm", cancelText = "Cancel") {
+    run ({message, title = "Confirmation", confirmText = "Confirm", cancelText = "Cancel", showCancel = true}, callbackConfirm = () => {}, callbackCancel = () => {}) {
         var element = Vue.extend(Confirmation)
         let self = this
         let el = new element({
@@ -10,7 +10,8 @@ export default {
                 message,
                 confirmText,
                 cancelText,
-                title
+                title,
+                showCancel
             },
             methods: {
                 confirmed () {

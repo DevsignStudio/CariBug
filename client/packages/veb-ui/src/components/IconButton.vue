@@ -1,6 +1,6 @@
 <template>
     <button class="veb-icon-button" @click="click">
-        <div class="veb-icon-button-inner" @click="click">
+        <div class="veb-icon-button-inner">
             <veb-icon @click="$emit('click')" :name="name"></veb-icon>
         </div>
         <div class="veb-icon-button-ripple" ref="ripple"></div>
@@ -25,7 +25,9 @@ export default {
             this.$emit('mousedown')
             Helper.addClass(this.$refs.ripple, 'active')
             setTimeout(() => {
-                Helper.removeClass(this.$refs.ripple, 'active')
+                if (this.$refs.ripple) {
+                    Helper.removeClass(this.$refs.ripple, 'active')
+                }
             }, 650)
         }
     },

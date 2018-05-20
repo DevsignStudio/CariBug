@@ -31,6 +31,10 @@ import MenuItem from './components/MenuItem.vue'
 import MenuOption from './components/MenuOption.vue'
 import DropdownMenu from './components/DropdownMenu.vue'
 import DropdownSelect from './components/DropdownSelect.vue'
+import Tooltip from './components/Tooltip.vue'
+import Chip from './components/Chip.vue'
+import Progress from './components/Progress.vue'
+import Slider from './components/Slider.vue'
 
 export default function (Vue, options) {
     Vue.component('veb-toolbar', Toolbar)
@@ -66,4 +70,8 @@ export default function (Vue, options) {
     Vue.component('veb-option', MenuOption)
     Vue.component('veb-dropdown-menu', DropdownMenu)
     Vue.component('veb-select', DropdownSelect)
+    Vue.component('veb-tooltip', Tooltip)
+    Vue.component('veb-chip', Chip)
+    Vue.component('veb-progress', Progress)
+    Vue.component('veb-slider', Slider)
 }

@@ -119,6 +119,21 @@ section {
     text-align: center;
     line-height: 24px;
     font-size: 24px;
+    z-index: 1;
+    overflow: hidden;
+    vertical-align: middle;
+    -webkit-box-sizing: initial;
+    -ms-box-sizing:initial;
+    -o-box-sizing: initial;
+    box-sizing: initial;
+
+    &:before {
+        -webkit-box-sizing: initial;
+        -ms-box-sizing:initial;
+        -o-box-sizing: initial;
+        box-sizing: initial;
+        position: relative;
+    }
 }
 
 .middle-top,

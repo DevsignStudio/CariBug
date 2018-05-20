@@ -2,7 +2,7 @@ import Vue from 'vue/dist/vue.js'
 import Snackbar from '../components/Snackbar'
 
 export default {
-    run(message, callback = function() {}, buttonText = "OK", type = "color-green") {
+    run({message, buttonText = "OK", type = "color-green"}, callback = function() {}) {
         var element = Vue.extend(Snackbar)
         let self = this
         let el = new element({

@@ -1,0 +1,30 @@
+.veb-tooltip {
+    background-color: $theme-primary-dark;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 1000;
+    color: $color-white;
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    @include border-radius(2px);
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    @include transition(all 0.2s $animation-fast-out-slow-in-timing-function);
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        @include transform(translateY(14px));
+        &.bottom {
+            @include transform(translateY(-14px));
+        }
+    }
+    @include breakpoint("xd") {
+        font-size: 12px;
+        line-height: 24px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
