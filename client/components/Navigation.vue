@@ -11,6 +11,9 @@
             <veb-icon name="drawing"></veb-icon> Components
             <span slot="sublist">
                 <nuxt-link to="/dashboard/components/button" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Avatar (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/button" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Button</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/cards" exact>
@@ -22,14 +25,41 @@
                 <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Chip</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/toolbar" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Toolbar</veb-nav-list>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Dialog (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Icon (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Icon Button (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> List (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Menu (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Snackbar (WIP)</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/radio" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Radio</veb-nav-list>
                 </nuxt-link>
+                <nuxt-link to="/dashboard/components/radio" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Reveal (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/switch" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Progress (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/switch" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Slider (WIP)</veb-nav-list>
+                </nuxt-link>
                 <nuxt-link to="/dashboard/components/switch" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Switch</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/table" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Tab (WIP)</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/table" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Table</veb-nav-list>
@@ -37,13 +67,22 @@
                 <nuxt-link to="/dashboard/components/textfield" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Textfield</veb-nav-list>
                 </nuxt-link>
+                <nuxt-link to="/dashboard/components/toolbar" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Toolbar</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/toolbar" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Tooltip (WIP)</veb-nav-list>
+                </nuxt-link>
             </span>
         </veb-nav-list>
         <veb-nav-list :sublist="true">
             <veb-icon name="chart-bubble"></veb-icon> Directives
             <span slot="sublist">
                 <nuxt-link to="/dashboard/users/" exact>
-                    <veb-nav-list><veb-icon name="chart-bubble"></veb-icon> Ripple</veb-nav-list>
+                    <veb-nav-list><veb-icon name="chart-bubble"></veb-icon> Ripple (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/users/" exact>
+                    <veb-nav-list><veb-icon name="chart-bubble"></veb-icon> Elevation (WIP)</veb-nav-list>
                 </nuxt-link>
             </span>
         </veb-nav-list>
