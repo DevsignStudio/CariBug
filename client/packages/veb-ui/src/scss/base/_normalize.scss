@@ -95,6 +95,18 @@ form {
     margin: 0 !important;
 }
 
+.margin-bottom-small {
+    margin-bottom: 12px;
+}
+
+.margin-bottom-medium {
+    margin-bottom: 18px;
+}
+
+.margin-bottom-large {
+    margin-bottom: 24px;
+}
+
 .unselectable {
     @include unselectable();
 }

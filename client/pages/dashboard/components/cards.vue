@@ -36,7 +36,7 @@
                                 <div class="font-headline">Lizard</div>
                                 <div class="font-body">Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica</div> 
                             </veb-cards-content>
-                            <veb-divider></veb-divider>
+                            <!-- <veb-divider></veb-divider> -->
                             <veb-cards-action>
                                 <div class="pull-right">
                                     <veb-button button-style="flat" v-ripple>Learn More</veb-button>
@@ -73,6 +73,174 @@
                                     <veb-image src="/10993a62b6858a778d88d72229d60d4b.jpg" :resolution="100" v-ripple/>
                                 </div>
                             </div>
+                        </veb-cards>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <highlight-code lang="html">{{cards3}}</highlight-code>
+        </veb-page-container>
+
+        <veb-page-container>
+            <div class="components-panel">
+                <div class="row center-xs" style="width: 100%">
+                    <div class="col-xs-fluid-24 col-xd-6">
+                        <veb-cards>
+                            <div class="row has-gutter">
+                                <div class="col-xs">
+                                    <veb-cards-content class="has-padding row" style="flex-direction: column">
+                                        <div class="col-xs">
+                                            <div class="flex-fill-height">
+                                                <div>
+                                                    <div class="font-headline margin-bottom-small">John Doe</div>
+                                                    <div class="font-body color-grey-800 no-margin">Senior Project Designer</div>
+                                                    <div class="font-body color-grey-800 no-margin">From Netherland</div>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 10px;">
+                                                <veb-button button-style="outline" class="primary" v-ripple>Follow</veb-button>
+                                            </div>
+                                        </div>
+                                    </veb-cards-content>
+                                </div>
+                                <div class="col-xs-10 col-xd-3">
+                                    <veb-cards-content class="has-padding">
+                                        <veb-image src="/team.jpg" :resolution="100" v-ripple/>
+                                    </veb-cards-content>
+                                </div>
+                            </div>
+                        </veb-cards>
+                        <veb-cards>
+                            <div class="row has-gutter">
+                                <div class="col-xs-10 col-xd-3">
+                                    <veb-cards-content class="has-padding">
+                                        <veb-image src="/team.jpg" :resolution="100" v-ripple/>
+                                    </veb-cards-content>
+                                </div>
+                                <div class="col-xs">
+                                    <veb-cards-content class="has-padding row" style="flex-direction: column">
+                                        <div class="col-xs">
+                                            <div class="flex-fill-height">
+                                                <div>
+                                                    <div class="font-headline margin-bottom-small">John Doe</div>
+                                                    <div class="font-body color-grey-800 no-margin">Senior Project Designer</div>
+                                                    <div class="font-body color-grey-800 no-margin">From Netherland</div>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 10px;">
+                                                <div class="pull-right">
+                                                    <veb-button button-style="outline" class="primary" v-ripple>Follow</veb-button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </veb-cards-content>
+                                </div>
+                            </div>
+                        </veb-cards>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <highlight-code lang="html">{{cards3}}</highlight-code>
+        </veb-page-container>
+
+        <veb-page-container>
+            <div class="components-panel">
+                <div class="row center-xs" style="width: 100%">
+                    <div class="col-xs-fluid-24 col-xd-6">
+                        <veb-cards>
+                            <veb-cards-action style="padding: 8px;">
+                                <div class="row has-gutter">
+                                    <div class="col-xs-1">
+                                        <div class="row center-xs middle-xs">
+                                            <veb-avatar class="small" text="Nizul Zaim"></veb-avatar>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="row middle-xs">
+                                            <div>
+                                                <div class="font-subhead color-grey-900" style="line-height: px;">Johny Vahn Doe</div>
+                                                <div class="font-body color-grey-600" style="line-height: px;">23 Feb 2018 23:00 PM</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <div class="row middle-xs end-xs">
+                                            <veb-icon-button name="dots-vertical"></veb-icon-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </veb-cards-action>
+                            <veb-cards-action style="padding: 8px 16px;">
+                                <div class="font-body color-grey-900">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero ut totam a modi atque facere quod consectetur error itaque in tempora veniam, exercitationem facilis culpa nostrum obcaecati commodi, enim aspernatur?
+                                </div>
+                            </veb-cards-action>
+                            <veb-image src="/image1.jpg" v-ripple/>
+                            <veb-cards-action style="padding-left: 8px; padding-right: 8px;">
+                                <div class="row">
+                                    <div class="col-xs">
+                                        <div class="button-left-container">
+                                            <veb-button button-style="flat" class="color-pink" v-ripple><veb-icon name="heart"></veb-icon> Like</veb-button>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="button-center-container">
+                                            <veb-button button-style="flat" class="color-grey-600" v-ripple><veb-icon name="comment"></veb-icon> Comment</veb-button>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="button-right-container">
+                                            <veb-button button-style="flat" class="color-grey-600" v-ripple><veb-icon name="share"></veb-icon> Share</veb-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </veb-cards-action>
+                        </veb-cards>
+
+                        <veb-cards>
+                            <veb-cards-action style="padding: 8px;">
+                                <div class="row has-gutter">
+                                    <div class="col-xs-1">
+                                        <div class="row center-xs middle-xs">
+                                            <veb-avatar class="small" text="Nizul Zaim"></veb-avatar>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="row middle-xs">
+                                            <div>
+                                                <div class="font-subhead color-grey-900" style="line-height: px;">Johny Vahn Doe</div>
+                                                <div class="font-body color-grey-600" style="line-height: px;">23 Feb 2018 23:00 PM</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <div class="row middle-xs end-xs">
+                                            <veb-icon-button name="dots-vertical"></veb-icon-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </veb-cards-action>
+                            <veb-image src="/image1.jpg" v-ripple/>
+                            <veb-cards-action style="padding-left: 8px; padding-right: 8px;">
+                                <div class="row">
+                                    <div class="col-xs">
+                                        <div class="button-left-container">
+                                            <veb-button button-style="flat" class="color-pink" v-ripple><veb-icon name="heart"></veb-icon> Like</veb-button>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="button-center-container">
+                                            <veb-button button-style="flat" class="color-grey-600" v-ripple><veb-icon name="comment"></veb-icon> Comment</veb-button>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="button-right-container">
+                                            <veb-button button-style="flat" class="color-grey-600" v-ripple><veb-icon name="share"></veb-icon> Share</veb-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </veb-cards-action>
                         </veb-cards>
                     </div>
                 </div>

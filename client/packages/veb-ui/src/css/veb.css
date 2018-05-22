@@ -1420,6 +1420,15 @@ form {
 .no-margin {
   margin: 0 !important; }
 
+.margin-bottom-small {
+  margin-bottom: 12px; }
+
+.margin-bottom-medium {
+  margin-bottom: 18px; }
+
+.margin-bottom-large {
+  margin-bottom: 24px; }
+
 .unselectable, table thead tr th {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -5339,6 +5348,11 @@ section {
     position: absolute;
     padding: 6px;
     color: inherit !important; }
+  .veb-avatar.small {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px; }
 
 .veb-blur-back {
   width: 100%;
@@ -5369,7 +5383,6 @@ section {
     transform: translateZ(0); }
 
 .veb-toolbar {
-  height: 56px;
   width: 100%;
   background: #000000;
   padding-left: 12px;
@@ -5591,7 +5604,7 @@ a.veb-raised-button {
 
 .veb-dark-theme button.veb-outline-button,
 .veb-dark-theme a.veb-outline-button {
-  border: 1px solid rgba(255, 255, 255, 0.5); }
+  border: 1px solid rgba(255, 255, 255, 0.3); }
   .veb-dark-theme button.veb-outline-button:hover,
   .veb-dark-theme a.veb-outline-button:hover {
     background: #ffffff;
@@ -5852,8 +5865,8 @@ a.veb-color-button {
     button.veb-color-button,
     a.veb-color-button {
       line-height: 29px;
-      padding-top: 5px;
-      padding-bottom: 2px; } }
+      padding-top: 4px;
+      padding-bottom: 3px; } }
   button.veb-raised-button .mdi,
   a.veb-raised-button .mdi,
   button.veb-flat-button .mdi,
@@ -5862,9 +5875,9 @@ a.veb-color-button {
   a.veb-outline-button .mdi,
   button.veb-color-button .mdi,
   a.veb-color-button .mdi {
-    float: left;
     margin-right: 4px;
-    opacity: 0.8; }
+    opacity: 0.8;
+    margin-bottom: -2px; }
     button.veb-raised-button .mdi:before,
     a.veb-raised-button .mdi:before,
     button.veb-flat-button .mdi:before,
@@ -5886,6 +5899,16 @@ a.veb-color-button {
 .button-center-container {
   display: table;
   margin-left: auto;
+  margin-right: auto; }
+
+.button-right-container {
+  display: table;
+  margin-left: auto;
+  margin-right: 0; }
+
+.button-left-container {
+  display: table;
+  margin-left: 0;
   margin-right: auto; }
 
 .veb-reveal {

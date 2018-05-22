@@ -1,6 +1,6 @@
 <template>
     <div :class="['veb-toolbar', classSelected]">
-        <div class="row middle-xs no-gutter" style="height: 100%">
+        <div class="row middle-xs no-gutter" style="min-height: 56px;">
             <div class="pull-left col-xs">
                 <div>
                     <slot></slot>
@@ -9,8 +9,8 @@
             <div class="pull-right">
                 <slot name="right"></slot>
             </div>
+            
         </div>
-        
     </div>
 </template>
 

@@ -117,7 +117,7 @@ a#{$raised-button} {
 
     button#{$outline-button},
     a#{$outline-button} {
-        border: 1px solid rgba($color-white, 0.5);
+        border: 1px solid rgba($color-white, 0.3);
         &:hover {
             background: $color-white;
             color: $theme-primary-dark;
@@ -345,13 +345,14 @@ a#{$color-button} {
     }
     @include webkit-fix {
         line-height: 29px;
-        padding-top: 5px;
-        padding-bottom: 2px;
+        padding-top: 4px;
+        padding-bottom: 3px;
     }
     .mdi {
-        float: left;
+        // float: left;
         margin-right: 4px;
         opacity: 0.8;
+        margin-bottom: -2px;
         &:before {
             font-size: 22px;
         }
@@ -371,5 +372,17 @@ a#{$color-button} {
 .button-center-container {
     display: table;
     margin-left: auto;
+    margin-right: auto;
+}
+
+.button-right-container {
+    display: table;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button-left-container {
+    display: table;
+    margin-left: 0;
     margin-right: auto;
 }
