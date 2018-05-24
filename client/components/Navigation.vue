@@ -97,7 +97,7 @@ import store from 'store2'
 export default {
     methods: {
         signout () {
-            store('token', null)
+            this.$cookies.set('token', null)
             return this.$router.push('/')
         }
     }

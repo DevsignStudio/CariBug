@@ -81,7 +81,6 @@
 <script>
 import LoginGQL from '~/apollo/query/login.gql'
 import CurrentuserGQL from '~/apollo/query/currentUser.gql'
-import store from 'store2'
 export default {
     data () {
         return {
@@ -94,7 +93,7 @@ export default {
         }
     },
     created () {
-        if (store('token')) {
+        if (this.$cookies.get('token')) {
             this.$apollo.addSmartQuery('currentUser', {
                 query: CurrentuserGQL,
                 result ({ data, loading }) {
@@ -139,7 +138,7 @@ export default {
                 // }
             }).then((result) => {
                 if (result.data && result.data.login) {
-                    store('token', result.data.login.token)
+                    this.$cookies.set('token', result.data.login.token, {maxAge:31536000})
                     return this.$router.push('/dashboard/')
                 }
             }).catch((error) => {

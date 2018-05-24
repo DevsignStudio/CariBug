@@ -16,10 +16,10 @@ module.exports = {
     /*
   ** Customize the progress bar color
   */
-    mode: 'spa',
+    // mode: 'spa',
     loading: { color: '#FFFFFF',  },
     css: ['~/assets/css/main.css'],
-    modules: ['@nuxtjs/apollo'],
+    modules: ['@nuxtjs/apollo', 'cookie-universal-nuxt'],
     plugins: ['~/plugins/veb.js', '~/plugins/vue-highlight.js', '~/plugins/vue-moment.js', '~/plugins/vue-animate.js'],
     apollo: {
         clientConfigs: {
