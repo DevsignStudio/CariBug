@@ -20,9 +20,9 @@
 
     .mdi {
         top: 0;
+        left: 0;
         position: absolute;
-        padding: 6px;
-        color: inherit !important;
+        padding: 12px;
     }
 
     &.small {
@@ -30,5 +30,10 @@
         height: 40px;
         line-height: 40px;
         font-size: 20px;
+
+        .mdi {
+            padding: 8px;
+            color: inherit !important;
+        }
     }
 }

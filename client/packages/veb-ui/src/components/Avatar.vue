@@ -15,15 +15,24 @@ export default {
         },
         background: {
             default: undefined,
-        }
+        },
+        char: String
     },
     computed: {
         firstChar() {
+            if (this.char) {
+                if (this.char.length === 1) {
+                    return this.char.toUpperCase().charAt(0)
+                }
+                return this.char.toUpperCase().charAt(0) + this.char.toUpperCase().charAt(1) 
+            }
             if (this.text) {
                 return this.text.toUpperCase().charAt(0)
             }
+            
             return null
-        }
+        },
+        
     },
     mounted() {
         var self = this

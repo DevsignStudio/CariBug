@@ -5345,14 +5345,17 @@ section {
     z-index: 10; }
   .veb-avatar .mdi {
     top: 0;
+    left: 0;
     position: absolute;
-    padding: 6px;
-    color: inherit !important; }
+    padding: 12px; }
   .veb-avatar.small {
     width: 40px;
     height: 40px;
     line-height: 40px;
     font-size: 20px; }
+    .veb-avatar.small .mdi {
+      padding: 8px;
+      color: inherit !important; }
 
 .veb-blur-back {
   width: 100%;

@@ -10,8 +10,8 @@
         <veb-nav-list :sublist="true">
             <veb-icon name="drawing"></veb-icon> Components
             <span slot="sublist">
-                <nuxt-link to="/dashboard/components/button" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Avatar (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/avatar" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Avatar</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/button" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Button</veb-nav-list>
