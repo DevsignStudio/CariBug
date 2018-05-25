@@ -8,6 +8,7 @@
 
 <script>
 import GeminiScrollbar from 'gemini-scrollbar'
+import Helper from '../helper'
 export default {
     mounted () {
         this.$nextTick(() => {
@@ -16,7 +17,19 @@ export default {
             this.myScrollbar = new GeminiScrollbar({
                 element: this.$el
             }).create()
+            let viewElement = this.myScrollbar.getViewElement()
+            
 
+            let updateZ =  () => {
+                viewElement.style.zIndex = '0'
+                let containerElement = viewElement.querySelectorAll('.gm-scrollbar-container:not(.dont-count)')
+                if (containerElement.length > 0) {
+                    viewElement.style.zIndex = '100'
+                }
+            }
+            
+            updateZ()
+            
             setInterval(() => {
                 this.myScrollbar.update()
             }, 500)
@@ -24,6 +37,7 @@ export default {
             this.$router.afterEach((to, from) => {
                 setTimeout(() => {
                     this.myScrollbar.update()
+                    updateZ()
                 }, 700)
             })
         })

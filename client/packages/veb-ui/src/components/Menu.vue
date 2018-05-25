@@ -1,7 +1,7 @@
 <template>
     <div class="veb-menu-content">
         <div>
-            <veb-scrollbar>
+            <veb-scrollbar class="dont-count">
                 <div>
                     <slot></slot>
                 </div>

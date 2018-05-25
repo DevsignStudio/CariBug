@@ -1,6 +1,6 @@
 <template>
     <veb-cards :class="elClass">
-        <veb-scrollbar>
+        <veb-scrollbar class="dont-count">
             <div>
                 <slot></slot>
             </div>
