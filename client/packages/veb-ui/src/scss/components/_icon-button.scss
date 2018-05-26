@@ -47,6 +47,11 @@ $var: ".veb-icon-button";
             animation: ripple-icon-button 0.65s $animation-standard-curve-timing-function forwards;
         }
     }
+
+    &.disabled  {
+        color: $color-grey-400;
+        pointer-events: none;
+    }
 }
 
 

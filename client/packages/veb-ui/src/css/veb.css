@@ -5455,6 +5455,9 @@ section {
       -webkit-animation: ripple-icon-button 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       -moz-animation: ripple-icon-button 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       animation: ripple-icon-button 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .veb-icon-button.disabled {
+    color: #bdbdbd;
+    pointer-events: none; }
 
 @-webkit-keyframes ripple-icon-button {
   0% {
