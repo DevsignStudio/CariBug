@@ -48,7 +48,7 @@
 
 <script>
 import SearchUsersGQL from '~/apollo/query/searchUsers.gql'
-import Helper from '~/packages/veb-ui/src/helper'
+import Helper from '~/assets/helper'
 export default {
     props: {
         value: String,

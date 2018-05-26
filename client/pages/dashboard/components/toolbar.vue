@@ -32,7 +32,7 @@
 
 <script>
 import {Toolbar1, Toolbar2} from '~/assets/code/toolbar.js'
-import Helper from '~/packages/veb-ui/src/helper.js'
+import Helper from '~/assets/helper'
 export default {
     data () {
         return {

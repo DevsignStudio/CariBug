@@ -173,7 +173,7 @@ import CurrentuserGQL from '~/apollo/query/currentUser.gql'
 import _ from 'lodash'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
-import Helper from '~/packages/veb-ui/src/helper'
+import Helper from '~/assets/helper'
 export default {
     data () {
         return {

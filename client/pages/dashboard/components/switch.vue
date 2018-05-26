@@ -40,7 +40,7 @@
 
 <script>
 import {Switch1} from '~/assets/code/switch.js'
-import Helper from '~/packages/veb-ui/src/helper.js'
+import Helper from '~/assets/helper'
 export default {
     data () {
         return {
