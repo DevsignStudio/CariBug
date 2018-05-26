@@ -23,13 +23,13 @@
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Checkbox</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/chip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Confirmation (WIP)</veb-nav-list>
+                </nuxt-link>
+                <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Chip</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/chip" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Dialog (WIP)</veb-nav-list>
-                </nuxt-link>
-                <nuxt-link to="/dashboard/components/chip" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Icon (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/icon" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Icon</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Icon Button (WIP)</veb-nav-list>
@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import store from 'store2'
+
 export default {
     methods: {
         signout () {

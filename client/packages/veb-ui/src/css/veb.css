@@ -1646,6 +1646,8 @@ section {
     .row.has-small-gutter [class^="col-"] {
       padding-right: 4px;
       padding-left: 4px; }
+  .row [class^="col-"] {
+    will-change: width; }
 
 .row.reverse {
   -webkit-box-orient: horizontal;
