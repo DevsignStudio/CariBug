@@ -31,8 +31,8 @@
                 <nuxt-link to="/dashboard/components/icon" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Icon</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/chip" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Icon Button (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/icon-button" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Icon Button</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> List (WIP)</veb-nav-list>

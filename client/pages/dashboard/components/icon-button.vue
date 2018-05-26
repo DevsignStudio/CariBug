@@ -43,13 +43,13 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-            <highlight-code lang="html">{{code.Icon1}}</highlight-code>
+            <highlight-code lang="html">{{code.IconButton1}}</highlight-code>
         </veb-page-container>
     </div>
 </template>
 
 <script>
-import Code from '~/assets/code/icon.js'
+import Code from '~/assets/code/icon-button.js'
 export default {
     data () {
         return {
