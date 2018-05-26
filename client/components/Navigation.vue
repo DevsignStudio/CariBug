@@ -22,8 +22,8 @@
                 <nuxt-link to="/dashboard/components/checkbox" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Checkbox</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/chip" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Confirmation (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/confirmation" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Confirmation</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Chip</veb-nav-list>
