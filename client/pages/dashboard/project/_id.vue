@@ -82,7 +82,7 @@
                             <veb-list class="hover">
                                 <veb-list-item  v-for="c in currentProject.teams" :key="c._id" @click="selectUser(c)"  style="cursor: pointer;height: 60px" v-ripple>
                                     <span slot="left">
-                                        <veb-avatar :text="c.user.username"></veb-avatar>
+                                        <veb-avatar :text="c.user.username" class="small"></veb-avatar>
                                     </span>
                                     <span>
                                         {{c.user.username}} 
@@ -92,7 +92,7 @@
                                 <veb-divider></veb-divider>
                                 <veb-list-item class="color-grey-600" style="cursor: pointer" @click="showAddUser" v-ripple>
                                     <span class="left">
-                                        <veb-avatar class="background-primary elevation z3" v-elevation>
+                                        <veb-avatar class="background-primary elevation z3 small" v-elevation>
                                             <veb-icon name="plus"></veb-icon>
                                         </veb-avatar>
                                     </span>
