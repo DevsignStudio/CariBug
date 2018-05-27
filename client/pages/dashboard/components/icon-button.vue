@@ -6,35 +6,35 @@
                     <div class="row center-xs">
                         <div class="col-xs-1" >
                             <div style="margin: 0 auto">
-                                <veb-tooltip :text="key">
+                                <veb-tooltip>
                                     <veb-icon-button trigger-tooltip name="account"></veb-icon-button>
                                 </veb-tooltip>
                             </div>
                         </div>
                         <div class="col-xs-1" >
                             <div style="margin: 0 auto">
-                                <veb-tooltip :text="key">
+                                <veb-tooltip>
                                     <veb-icon-button trigger-tooltip name="account" class="color-primary"></veb-icon-button>
                                 </veb-tooltip>
                             </div>
                         </div>
                         <div class="col-xs-1" >
                             <div style="margin: 0 auto">
-                                <veb-tooltip :text="key">
+                                <veb-tooltip>
                                     <veb-icon-button trigger-tooltip name="account" class="color-accent"></veb-icon-button>
                                 </veb-tooltip>
                             </div>
                         </div>
                         <div class="col-xs-1" >
                             <div style="margin: 0 auto">
-                                <veb-tooltip :text="key">
+                                <veb-tooltip>
                                     <veb-icon-button trigger-tooltip name="account" class="color-grey-600"></veb-icon-button>
                                 </veb-tooltip>
                             </div>
                         </div>
                         <div class="col-xs-1" >
                             <div style="margin: 0 auto">
-                                <veb-tooltip :text="key">
+                                <veb-tooltip>
                                     <veb-icon-button trigger-tooltip name="account" class="disabled"></veb-icon-button>
                                 </veb-tooltip>
                             </div>
