@@ -49,8 +49,8 @@
                 <nuxt-link to="/dashboard/components/radio" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Reveal (WIP)</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/switch" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Progress (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/progress" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Progress</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/switch" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Slider (WIP)</veb-nav-list>

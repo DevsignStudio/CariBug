@@ -6223,9 +6223,6 @@ a.veb-color-button {
     .veb-list .veb-list-item .veb-avatar {
       display: inline-block;
       vertical-align: middle;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
       margin-right: 20px; }
     .veb-list .veb-list-item .right-content {
       display: -webkit-box;
