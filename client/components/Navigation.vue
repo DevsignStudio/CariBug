@@ -40,8 +40,8 @@
                 <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Menu (WIP)</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/chip" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Snackbar (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/snackbar" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Snackbar</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/radio" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Radio</veb-nav-list>
