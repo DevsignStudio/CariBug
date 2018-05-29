@@ -256,6 +256,7 @@
 import {Cards1, Cards2, Cards3} from '~/assets/code/cards.js'
 import Helper from '~/packages/veb-ui/src/helper.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Cards',

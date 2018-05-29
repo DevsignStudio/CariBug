@@ -33,6 +33,7 @@
 import {Checkbox1} from '~/assets/code/checkbox.js'
 import Helper from '~/packages/veb-ui/src/helper.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Chip',

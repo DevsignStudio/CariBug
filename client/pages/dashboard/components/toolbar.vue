@@ -34,6 +34,7 @@
 import {Toolbar1, Toolbar2} from '~/assets/code/toolbar.js'
 import Helper from '~/assets/helper'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Toolbar',

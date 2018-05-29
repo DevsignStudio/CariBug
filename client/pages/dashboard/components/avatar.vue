@@ -76,6 +76,7 @@
 <script>
 import Code from '~/assets/code/avatar.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Avatar',

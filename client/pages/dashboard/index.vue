@@ -69,6 +69,7 @@ import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import { setTimeout } from 'timers';
 export default {
+    layout: 'dashboardLayout',
     transition: 'page',
     data () {
         return {
@@ -104,6 +105,7 @@ export default {
     mounted () {
         this.$nextTick(() => {
             setTimeout(() => {
+                console.log(this)
                 this.test = 20
             }, 5000)
         })

@@ -17,6 +17,7 @@
 
 <script>
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Access Denied',

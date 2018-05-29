@@ -22,6 +22,7 @@
 <script>
 import Code from '~/assets/code/snackbar.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Snackbar',

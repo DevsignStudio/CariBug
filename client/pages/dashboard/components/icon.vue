@@ -32,6 +32,7 @@
 <script>
 import Code from '~/assets/code/icon.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             icons: [

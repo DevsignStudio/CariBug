@@ -43,6 +43,7 @@
 import {Radio1} from '~/assets/code/radio.js'
 import Helper from '~/packages/veb-ui/src/helper.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Toolbar',

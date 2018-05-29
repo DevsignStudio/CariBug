@@ -31,6 +31,7 @@ import CreateProjectGQL from '~/apollo/query/createProject.gql'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 
 export default {
+    layout: 'dashboardLayout',
     transition: 'page',
     data () {
         return {

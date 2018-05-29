@@ -26,6 +26,7 @@
 <script>
 import Code from '~/assets/code/progress.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Progress',

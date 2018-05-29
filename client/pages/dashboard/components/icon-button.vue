@@ -51,6 +51,7 @@
 <script>
 import Code from '~/assets/code/icon-button.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Icon Button',

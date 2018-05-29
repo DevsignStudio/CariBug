@@ -131,6 +131,7 @@
 import {Table1, Table2} from '~/assets/code/table.js'
 import _ from 'lodash'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Table',

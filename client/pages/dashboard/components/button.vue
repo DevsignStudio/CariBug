@@ -116,6 +116,7 @@
 <script>
 import {Button1, Button2, Button3} from '~/assets/code/button.js'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Button',

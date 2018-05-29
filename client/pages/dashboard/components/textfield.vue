@@ -32,6 +32,7 @@
 import {Textfield1} from '~/assets/code/textfield.js'
 import Helper from '~/assets/helper'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Textfield',

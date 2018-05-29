@@ -155,6 +155,7 @@ import GetAllRolesGQL from '~/apollo/query/getAllRoles.gql'
 import PeoplePicker from '~/components/PeoplePicker.vue'
 import addUserAndRolesGQL from '~/apollo/query/addUserAndRoles.gql'
 export default {
+    layout: 'dashboardLayout',
     components: {
         PeoplePicker
     },

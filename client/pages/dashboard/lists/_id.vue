@@ -175,6 +175,7 @@ import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import Helper from '~/assets/helper'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Dashboard',

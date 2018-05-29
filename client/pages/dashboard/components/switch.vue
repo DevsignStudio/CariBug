@@ -42,6 +42,7 @@
 import {Switch1} from '~/assets/code/switch.js'
 import Helper from '~/assets/helper'
 export default {
+    layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Toolbar',
