@@ -16,18 +16,15 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Access Denied',
         }
-    },
-    head () {
-        return {
-            title: this.pageTitle
-        }
-    },
+    }
 }
 </script>
 

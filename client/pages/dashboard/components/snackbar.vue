@@ -20,18 +20,15 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import Code from '~/assets/code/snackbar.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Snackbar',
             code: Code
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

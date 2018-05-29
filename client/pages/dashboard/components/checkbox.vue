@@ -40,9 +40,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Checkbox1} from '~/assets/code/checkbox.js'
 import Helper from '~/packages/veb-ui/src/helper.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -52,11 +54,6 @@ export default {
             checkboxDataFalse: false,
             switchData: '',
             radioData: ''
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

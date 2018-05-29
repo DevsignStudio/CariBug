@@ -39,20 +39,18 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Switch1} from '~/assets/code/switch.js'
 import Helper from '~/assets/helper'
+
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Toolbar',
             Switch1,
             switchData: ''
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

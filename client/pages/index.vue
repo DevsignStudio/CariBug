@@ -79,9 +79,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import LoginGQL from '~/apollo/query/login.gql'
 import CurrentuserGQL from '~/apollo/query/currentUser.gql'
 export default {
+    mixins: [pageMixins],
     data () {
         return {
             hello: '',

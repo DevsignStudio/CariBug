@@ -29,8 +29,11 @@
 <script>
 import CreateProjectGQL from '~/apollo/query/createProject.gql'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
+import pageMixins from '~/mixins/pageMixins.js'
 
 export default {
+    mixins: [pageMixins],
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     transition: 'page',
     data () {
@@ -38,11 +41,6 @@ export default {
             pageTitle: 'New Project',
             name: '',
             description: ''
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

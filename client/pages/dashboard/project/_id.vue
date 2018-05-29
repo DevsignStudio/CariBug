@@ -146,6 +146,7 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import CurrentuserGQL from '~/apollo/query/currentUser.gql'
 import _ from 'lodash'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
@@ -155,6 +156,7 @@ import GetAllRolesGQL from '~/apollo/query/getAllRoles.gql'
 import PeoplePicker from '~/components/PeoplePicker.vue'
 import addUserAndRolesGQL from '~/apollo/query/addUserAndRoles.gql'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     components: {
         PeoplePicker
@@ -171,11 +173,6 @@ export default {
             selectedUser: null,
             selectedRole: [],
             getAllRoles: [],
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     computed: {

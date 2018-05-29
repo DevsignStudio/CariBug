@@ -40,9 +40,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Radio1} from '~/assets/code/radio.js'
 import Helper from '~/packages/veb-ui/src/helper.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -50,11 +52,6 @@ export default {
             Radio1,
             switchData: '',
             radioData: 'radio1'
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

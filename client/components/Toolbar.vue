@@ -48,12 +48,12 @@ export default {
         }
     },
     mounted () {
-        this.dataTitle = this.$meta().refresh().title
+        this.dataTitle = this.$meta().refresh().title.replace('Caribug | ', '')
         this.$root.mainToolbar = this
         this.$router.afterEach(() => {
             this.iconActionStore = null
             setTimeout(() => {
-                this.dataTitle = this.$meta().refresh().title
+                this.dataTitle = this.$meta().refresh().title.replace('Caribug | ', '')
             }, 500)
         })
     }

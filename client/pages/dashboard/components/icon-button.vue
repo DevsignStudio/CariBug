@@ -49,8 +49,10 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import Code from '~/assets/code/icon-button.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -58,11 +60,6 @@ export default {
             code: Code
         }
     },
-    head () {
-        return {
-            title: this.pageTitle
-        }
-    }
 }
 </script>
 

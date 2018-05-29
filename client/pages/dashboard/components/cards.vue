@@ -253,9 +253,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Cards1, Cards2, Cards3} from '~/assets/code/cards.js'
 import Helper from '~/packages/veb-ui/src/helper.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -263,11 +265,6 @@ export default {
             cards1: Cards1,
             cards2: Cards2,
             cards3: Cards3
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

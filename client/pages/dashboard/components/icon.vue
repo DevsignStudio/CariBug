@@ -30,8 +30,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import Code from '~/assets/code/icon.js'
+
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -2282,11 +2285,6 @@ export default {
             ],
             pageTitle: 'Components > Icon',
             code: Code
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     }
 }

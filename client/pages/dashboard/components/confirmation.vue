@@ -20,18 +20,15 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import Code from '~/assets/code/confirmation.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Confirmation',
             code: Code
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

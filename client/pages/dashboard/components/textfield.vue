@@ -29,9 +29,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Textfield1} from '~/assets/code/textfield.js'
 import Helper from '~/assets/helper'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -39,11 +41,6 @@ export default {
             Textfield1,
             testData: '',
             testDataWithValue: 'Example Value'
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

@@ -114,8 +114,10 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Button1, Button2, Button3} from '~/assets/code/button.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -123,11 +125,6 @@ export default {
             button1: Button1,
             button2: Button2,
             button3: Button3
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

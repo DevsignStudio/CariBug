@@ -169,12 +169,14 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import CurrentuserGQL from '~/apollo/query/currentUser.gql'
 import _ from 'lodash'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import Helper from '~/assets/helper'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -182,11 +184,6 @@ export default {
             selectValue: '',
             currentUser: null,
             currentUserProjects: []
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

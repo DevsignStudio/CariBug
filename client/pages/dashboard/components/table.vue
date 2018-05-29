@@ -128,9 +128,11 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Table1, Table2} from '~/assets/code/table.js'
 import _ from 'lodash'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
@@ -140,11 +142,6 @@ export default {
             exampleData1: [],
             exampleData2: [],
             exampleData3: []
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     mounted () {

@@ -74,18 +74,15 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import Code from '~/assets/code/avatar.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Avatar',
             code: Code
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

@@ -24,20 +24,18 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import Code from '~/assets/code/progress.js'
+
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Progress',
             code: Code
         }
-    },
-    head () {
-        return {
-            title: this.pageTitle
-        }
-    },
+    }
 }
 </script>
 

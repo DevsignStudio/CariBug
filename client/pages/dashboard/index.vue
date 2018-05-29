@@ -68,21 +68,17 @@ import _ from 'lodash'
 import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import { setTimeout } from 'timers';
+import pageMixins from '~/mixins/pageMixins.js'
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
-    transition: 'page',
     data () {
         return {
-            pageTitle: 'Dashboard',
             selectValue: '',
             currentUser: null,
+            pageTitle: 'Dashboard',
             currentUserProjects: [],
             test: 10
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {

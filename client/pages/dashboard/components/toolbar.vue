@@ -31,20 +31,18 @@
 </template>
 
 <script>
+import pageMixins from '~/mixins/pageMixins.js'
 import {Toolbar1, Toolbar2} from '~/assets/code/toolbar.js'
 import Helper from '~/assets/helper'
+
 export default {
+    mixins: [pageMixins],
     layout: 'dashboardLayout',
     data () {
         return {
             pageTitle: 'Components > Toolbar',
             toolbar1: Toolbar1,
             toolbar2: Toolbar2
-        }
-    },
-    head () {
-        return {
-            title: this.pageTitle
         }
     },
     methods: {
