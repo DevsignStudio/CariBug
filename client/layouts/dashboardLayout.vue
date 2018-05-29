@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import store from 'store2'
 import Toolbar from '~/components/Toolbar'
 import NavigationBig from '~/components/NavigationBig'
 import NavigationSmall from '~/components/NavigationSmall'

@@ -97,8 +97,10 @@
 export default {
     methods: {
         signout () {
-            this.$cookies.remove('token')
-            return this.$router.push('/')
+            this.$cookies.remove('token', {
+                path: '/'
+            })
+            this.$router.push('/')
         }
     }
 }

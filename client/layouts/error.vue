@@ -48,7 +48,6 @@ export default {
     },
     methods: {
         returnHome () {
-            
             if (this.$route.fullPath.includes('/dashboard/')) {
                 return this.$router.push('/dashboard/')
             }

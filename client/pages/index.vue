@@ -138,7 +138,7 @@ export default {
                 // }
             }).then((result) => {
                 if (result.data && result.data.login) {
-                    this.$cookies.set('token', result.data.login.token, {maxAge:31536000})
+                    this.$cookies.set('token', result.data.login.token, {maxAge:31536000, path: '/'})
                     return this.$router.push('/dashboard/')
                 }
             }).catch((error) => {
