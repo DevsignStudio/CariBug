@@ -1,9 +1,11 @@
 <template>
     <veb-reveal ref="navigation" >
         <veb-navigation style="height:100vh">
-            <veb-scrollbar>
-                <navigation></navigation>
-            </veb-scrollbar>
+            <div style="height: 100%">
+                <veb-scrollbar class="flex-fill-height">
+                    <navigation></navigation>
+                </veb-scrollbar>
+            </div>
         </veb-navigation>
     </veb-reveal>
 </template>

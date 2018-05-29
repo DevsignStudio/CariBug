@@ -7,11 +7,12 @@ $var: '.veb-chip';
     font-size: 12px;    
     background-color: rgba($color-black, 0.1);
     padding: 4px 12px;
-    display: inline-table;
+    display: inline-flex;
     @include border-radius(14px);
     @include transition((all 0.2s $animation-standard-curve-timing-function, opacity 0.25s $animation-standard-curve-timing-function));
     cursor: default;
     margin: 4px 4px;
+    overflow: hidden;
     #{$var}-text{
         vertical-align: middle;
     }

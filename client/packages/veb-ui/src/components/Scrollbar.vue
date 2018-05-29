@@ -17,10 +17,8 @@ export default {
             this.myScrollbar = new GeminiScrollbar({
                 element: this.$el
             }).create()
-            this.$el.style.height= this.$el.offsetHeight + 'px'
             let viewElement = this.myScrollbar.getViewElement()
             
-
             let updateZ =  () => {
                 viewElement.style.zIndex = '0'
                 let containerElement = viewElement.querySelectorAll('.gm-scrollbar-container:not(.dont-count)')
@@ -32,6 +30,10 @@ export default {
             updateZ()
             
             setInterval(() => {
+                // console.log(this.$refs.inner.scrollHeight, this.$el.scrollHeight)
+                // if (this.$refs.inner.scrollHeight < this.$el.scrollHeight) {
+                //     this.$refs.inner.style.height = this.$el.scrollHeight + 'px'
+                // }
                 this.myScrollbar.update()
             }, 500)
 
