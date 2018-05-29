@@ -105,9 +105,12 @@ export default {
     mounted () {
         this.$nextTick(() => {
             setTimeout(() => {
-                console.log(this)
                 this.test = 20
             }, 5000)
+
+            this.$root.mainToolbar.registerIconAction({iconName: 'plus'},() => {
+                this.$router.push('/dashboard/project/new')
+            })
         })
     }
 }
