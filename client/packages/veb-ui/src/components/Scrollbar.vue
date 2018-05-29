@@ -17,7 +17,7 @@ export default {
             this.myScrollbar = new GeminiScrollbar({
                 element: this.$el
             }).create()
-            this.$refs.inner.style.height = this.$el.offsetHeight + 'px'
+            this.$el.style.height= this.$el.offsetHeight + 'px'
             let viewElement = this.myScrollbar.getViewElement()
             
 
