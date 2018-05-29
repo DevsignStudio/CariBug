@@ -1,6 +1,6 @@
 <template>
     <div class="gm-scrollbar-container" style="height: 100%">
-        <div style="height: 100%;">
+        <div style="height: 100%" ref="inner">
             <slot></slot>
         </div>
     </div>
@@ -17,6 +17,7 @@ export default {
             this.myScrollbar = new GeminiScrollbar({
                 element: this.$el
             }).create()
+            this.$refs.inner.style.height = this.$el.offsetHeight + 'px'
             let viewElement = this.myScrollbar.getViewElement()
             
 
