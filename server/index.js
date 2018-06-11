@@ -1,6 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga'
 import typeDefs from './schema'
-import resolvers from './resolver.js'
+import resolvers from './controller/resolver.js'
 import { directiveResolvers } from './helper/directives'
 import {DB, Collection} from './mongodb'
 import DotEnv from 'dotenv-safe'
