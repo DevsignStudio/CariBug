@@ -150,10 +150,10 @@ $col-size: 24;
 }
 
 @mixin generate-flexbox($size) {
-    @for $i from 0 to $col-size {
+    @for $i from 0 to $col-size+1 {
         @include fluid-flexbox($i, $size);
     }
-    @for $i from 0 to $col-size {
+    @for $i from 0 to $col-size+1 {
         @include normal-flexbox($i, $size);
     }
 

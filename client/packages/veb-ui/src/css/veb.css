@@ -1944,6 +1944,15 @@ section {
   height: initial;
   overflow: initial; }
 
+.col-xs-fluid-24 {
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  max-width: 100%;
+  width: 100%;
+  height: initial;
+  overflow: initial; }
+
 .col-xs-0 {
   -webkit-flex-basis: 0px;
   -ms-flex-preferred-size: 0px;
@@ -2156,6 +2165,15 @@ section {
   -ms-flex-preferred-size: 1472px;
   flex-basis: 1472px;
   max-width: 1472px;
+  width: 100%;
+  height: initial;
+  overflow: initial; }
+
+.col-xs-24 {
+  -webkit-flex-basis: 1536px;
+  -ms-flex-preferred-size: 1536px;
+  flex-basis: 1536px;
+  max-width: 1536px;
   width: 100%;
   height: initial;
   overflow: initial; }
@@ -2599,6 +2617,14 @@ section {
     width: 100%;
     height: initial;
     overflow: initial; }
+  .col-xd-fluid-24 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
   .col-xd-0 {
     -webkit-flex-basis: 0px;
     -ms-flex-preferred-size: 0px;
@@ -2788,6 +2814,14 @@ section {
     -ms-flex-preferred-size: 1472px;
     flex-basis: 1472px;
     max-width: 1472px;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
+  .col-xd-24 {
+    -webkit-flex-basis: 1536px;
+    -ms-flex-preferred-size: 1536px;
+    flex-basis: 1536px;
+    max-width: 1536px;
     width: 100%;
     height: initial;
     overflow: initial; }
@@ -3132,6 +3166,14 @@ section {
     width: 100%;
     height: initial;
     overflow: initial; }
+  .col-sm-fluid-24 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
   .col-sm-0 {
     -webkit-flex-basis: 0px;
     -ms-flex-preferred-size: 0px;
@@ -3321,6 +3363,14 @@ section {
     -ms-flex-preferred-size: 1472px;
     flex-basis: 1472px;
     max-width: 1472px;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
+  .col-sm-24 {
+    -webkit-flex-basis: 1536px;
+    -ms-flex-preferred-size: 1536px;
+    flex-basis: 1536px;
+    max-width: 1536px;
     width: 100%;
     height: initial;
     overflow: initial; }
@@ -3665,6 +3715,14 @@ section {
     width: 100%;
     height: initial;
     overflow: initial; }
+  .col-md-fluid-24 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
   .col-md-0 {
     -webkit-flex-basis: 0px;
     -ms-flex-preferred-size: 0px;
@@ -3854,6 +3912,14 @@ section {
     -ms-flex-preferred-size: 1472px;
     flex-basis: 1472px;
     max-width: 1472px;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
+  .col-md-24 {
+    -webkit-flex-basis: 1536px;
+    -ms-flex-preferred-size: 1536px;
+    flex-basis: 1536px;
+    max-width: 1536px;
     width: 100%;
     height: initial;
     overflow: initial; }
@@ -4198,6 +4264,14 @@ section {
     width: 100%;
     height: initial;
     overflow: initial; }
+  .col-lg-fluid-24 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
   .col-lg-0 {
     -webkit-flex-basis: 0px;
     -ms-flex-preferred-size: 0px;
@@ -4387,6 +4461,14 @@ section {
     -ms-flex-preferred-size: 1472px;
     flex-basis: 1472px;
     max-width: 1472px;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
+  .col-lg-24 {
+    -webkit-flex-basis: 1536px;
+    -ms-flex-preferred-size: 1536px;
+    flex-basis: 1536px;
+    max-width: 1536px;
     width: 100%;
     height: initial;
     overflow: initial; }
@@ -4731,6 +4813,14 @@ section {
     width: 100%;
     height: initial;
     overflow: initial; }
+  .col-xlg-fluid-24 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
   .col-xlg-0 {
     -webkit-flex-basis: 0px;
     -ms-flex-preferred-size: 0px;
@@ -4920,6 +5010,14 @@ section {
     -ms-flex-preferred-size: 1472px;
     flex-basis: 1472px;
     max-width: 1472px;
+    width: 100%;
+    height: initial;
+    overflow: initial; }
+  .col-xlg-24 {
+    -webkit-flex-basis: 1536px;
+    -ms-flex-preferred-size: 1536px;
+    flex-basis: 1536px;
+    max-width: 1536px;
     width: 100%;
     height: initial;
     overflow: initial; }
@@ -6705,6 +6803,7 @@ table {
     height: 50px;
     background: none;
     border: 0;
+    padding: 0 24px;
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     text-align: center;
@@ -6722,7 +6821,8 @@ table {
       border-bottom-color: #ffffff;
       color: white; }
   .slick-initialized .slick-list {
-    height: 100%; }
+    height: 100%;
+    margin: 0 auto; }
   .slick-initialized .slick-track {
     height: 100%; }
 
@@ -7717,14 +7817,24 @@ table {
     background: rgba(0, 0, 0, 0.05); }
 
 .veb-menu-select {
-  padding-top: 12px;
-  padding-bottom: 8px;
+  padding-bottom: 9px;
+  padding-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
   margin-bottom: 8px;
   display: inline-block;
   vertical-align: middle;
   width: 100%;
-  height: 72px;
-  cursor: pointer; }
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  background: rgba(0, 0, 0, 0.02);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  -moz-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  -ms-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  -o-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1); }
   .veb-menu-select select {
     width: 0;
     height: 0;
@@ -7734,21 +7844,20 @@ table {
     top: -10000px; }
   .veb-menu-select .mdi {
     position: absolute;
-    right: 0;
-    top: 32px;
+    right: 4px;
+    top: 20px;
     color: #757575; }
   .veb-menu-select .veb-menu-select-description {
     z-index: 1;
     width: 100%;
     border: 0;
-    margin: 0;
-    padding: 24px 0;
-    padding-bottom: 7px;
+    margin: 0 -8px;
+    padding: 24px 8px;
+    padding-bottom: 0px;
     background: transparent;
     outline: none;
     font-size: 16px;
     line-height: 18px;
-    border-bottom: 1px solid #e0e0e0;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -7777,6 +7886,8 @@ table {
     -o-transform: translateZ(0);
     transform: translateZ(0);
     white-space: nowrap; }
+  .veb-menu-select:not(.disabled):hover {
+    background: rgba(0, 0, 0, 0.04); }
   .veb-menu-select.disabled {
     pointer-events: none;
     color: #bdbdbd; }

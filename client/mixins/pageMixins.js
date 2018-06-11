@@ -3,5 +3,5 @@ export default {
         return {
             title: 'Caribug' + (this.pageTitle ? ' | ' + this.pageTitle : '') 
         }
-    },
+    }
 }

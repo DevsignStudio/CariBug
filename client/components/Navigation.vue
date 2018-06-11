@@ -37,8 +37,8 @@
                 <nuxt-link to="/dashboard/components/chip" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> List (WIP)</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/chip" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Menu (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/menu" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Menu</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/snackbar" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Snackbar</veb-nav-list>
@@ -46,14 +46,14 @@
                 <nuxt-link to="/dashboard/components/radio" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Radio</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/radio" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Reveal (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/reveal" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Reveal</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/progress" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Progress</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/switch" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Slider (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/slider" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Slider</veb-nav-list>
                 </nuxt-link>
                 <nuxt-link to="/dashboard/components/switch" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Switch</veb-nav-list>
@@ -70,8 +70,8 @@
                 <nuxt-link to="/dashboard/components/toolbar" exact>
                     <veb-nav-list><veb-icon name="blur"></veb-icon> Toolbar</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/components/toolbar" exact>
-                    <veb-nav-list><veb-icon name="blur"></veb-icon> Tooltip (WIP)</veb-nav-list>
+                <nuxt-link to="/dashboard/components/tooltip" exact>
+                    <veb-nav-list><veb-icon name="blur"></veb-icon> Tooltip</veb-nav-list>
                 </nuxt-link>
             </span>
         </veb-nav-list>

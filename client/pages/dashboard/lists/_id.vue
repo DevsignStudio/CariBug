@@ -5,9 +5,9 @@
                 <veb-tab-item v-ripple>To-do</veb-tab-item>
                 <veb-tab-item v-ripple>Done</veb-tab-item>
                 <veb-tab-item v-ripple>Verified</veb-tab-item>
-                <veb-tab-item v-ripple>In Production</veb-tab-item>
+                <veb-tab-item v-ripple>Production</veb-tab-item>
             </veb-tab>
-            <veb-tab-content ref="tabContent" element="#tab" :size="4"  class="flex-fill-height">
+            <veb-tab-content ref="tabContent" element="#tab" :size="3"  class="flex-fill-height">
                 <veb-tab-content-item >
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
@@ -121,50 +121,9 @@
                 </veb-tab-content-item>
             </veb-tab-content>
         </div>
-        
-        <!-- <div class="wrapper">
-            <div class="row center-xs" >
-                <div class="col-xs-fluid-24 col-md-fluid-15" >
-                    <div class="font-display1" style="margin-bottom: 10px; margin-top: 16px">Projects</div>
-                    <veb-datatable @headerClick="orderData" :sortable="true">
-                        <table style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th class="unsortable">#</th>
-                                    <th>Name</th>
-                                    <th>Owner</th>
-                                    <th>Last Update</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(project, key) in currentUserProjects" :key="project._id">
-                                    <td>{{++key}}</td>
-                                    <td>
-                                        <veb-tooltip text="View Details">
-                                            <nuxt-link trigger-tooltip :to="`/dashboard/project/${project._id}`">{{project.name}}</nuxt-link>
-                                        </veb-tooltip>
-                                    </td>
-                                    <td>{{project.owner.username}}</td>
-                                    <td>{{ project.updatedAt | moment("from", "now")}}</td>
-                                </tr>
-                                <tr class="no-hover" v-if="!currentUserProjects.length && !$apollo.loading">
-                                    <td colspan="100">
-                                        <div class="font-center">No Data</div>
-                                    </td>
-                                </tr>
-                                <tr class="no-hover" v-if="$apollo.loading">
-                                    <td colspan="100">
-                                        <div class="loading-container table" >
-                                            <div class="loading-style2"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </veb-datatable>
-                </div>
-            </div>
-        </div> -->
+        <veb-reveal ref="addItem">
+
+        </veb-reveal>
     </div>
 </template>
 
@@ -180,11 +139,18 @@ export default {
     layout: 'dashboardLayout',
     data () {
         return {
-            pageTitle: 'Dashboard',
+            pageTitle: 'Lists',
             selectValue: '',
             currentUser: null,
             currentUserProjects: []
         }
+    },
+    mounted () {
+        this.$nextTick(() => [
+            this.$root.mainToolbar.registerIconAction({iconName: 'plus'},() => {
+                this.$refs.addItem.enable()
+            })
+        ])
     },
     methods: {
         orderData (header, order) {

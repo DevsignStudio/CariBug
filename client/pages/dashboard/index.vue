@@ -7,10 +7,6 @@
                         <img src="~/assets/img/welcome.svg" style="width: 50%;" alt="">
                         <div class="font-center font-headline" style="margin-bottom: 10px; margin-top: 16px">Here's where your work shines through</div>
                         <div class="font-center font-body">Set up a project to get going with your issues tracking. After that, you’ll find your relevant repositories and work right here.</div>
-                        <div>
-                            <veb-slider v-model="test"></veb-slider>
-                            {{test}}
-                        </div>
                         <div class="button-center-container" style="margin-top: 20px">
                             <nuxt-link to="/dashboard/project/new">
                                 <veb-button class="primary" v-ripple><veb-icon name="plus"></veb-icon>New project</veb-button>

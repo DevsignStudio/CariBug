@@ -48,6 +48,7 @@ export default {
         NavigationSmall
     },
     created () {
+        console.log('hellyeah')
         if (!this.$cookies.get('token')) {
             return this.$router.push('/')
         }

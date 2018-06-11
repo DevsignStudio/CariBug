@@ -38,16 +38,8 @@ export default {
                 $swipeTabs.removeClass(activeTabClassName)
                 $(this).find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
             })
-            $swipeTabsContainer.slick({
-                slidesToShow: self.size,
-                slidesToScroll: 1,
-                arrows: false,
-                infinite: false,
-                swipeToSlide: true,
-                touchThreshold: 10
-            })
+
             $swipeTabsContentContainer.slick({
-                asNavFor: $swipeTabsContainer,
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 arrows: false,
@@ -59,21 +51,65 @@ export default {
                 speed: 200,
                 touchThreshold: 10
             })
+
+            $swipeTabsContainer.slick({
+                slidesToShow: self.size,
+                slidesToScroll: 1,
+                arrows: false,
+                swipe: false,
+                infinite: false,
+                swipeToSlide: true,
+                touchThreshold: 10,
+                asNavFor: $swipeTabsContentContainer,
+                variableWidth: true
+            })
+            
             $swipeTabs.on('click', function (event) {
-                // gets index of clicked tab
+                let containerWidth = $swipeTabsContainer.width()
+                let threshold = 0;
+                let totalWidth = 0
+                $swipeTabs.each(function(item) {
+                    totalWidth += $(this).outerWidth()
+                    if (totalWidth <= containerWidth) {
+                        threshold = item;
+                    }
+                })
+
+                let beforeIndex = currentIndex
                 currentIndex = $(this).parent().parent().data('slick-index')
                 $swipeTabs.removeClass(activeTabClassName)
                 $swipeTabsContainer.find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
-                $swipeTabsContainer.slick('slickGoTo', (currentIndex - 1))
                 $swipeTabsContentContainer.slick('slickGoTo', currentIndex)
+                if (containerWidth > totalWidth) {
+                    $swipeTabsContainer.slick('slickGoTo', 0)
+                } else if(currentIndex > threshold){
+                    $swipeTabsContainer.slick('slickGoTo', threshold -1)
+                } else {
+                    if (beforeIndex < currentIndex) {
+                        $swipeTabsContainer.slick('slickGoTo', (currentIndex - 1))
+                    } else {
+                        $swipeTabsContainer.slick('slickGoTo', (currentIndex - 2))
+                    }
+                }
+                
+                
             })
             // initializes slick navigation tabs swipe handler
             $swipeTabsContentContainer.on('swipe', function (event, slick, direction) {
-                currentIndex = $(this).slick('slickCurrentSlide')
+                let containerWidth = $swipeTabsContainer.width()
+                let totalWidth = 0
+                $swipeTabs.each(function() {
+                    totalWidth += $(this).outerWidth()
+                })
+                currentIndex = slick.getCurrent()
                 $swipeTabs.removeClass(activeTabClassName)
                 $swipeTabsContainer.find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
-                $swipeTabsContainer.slick('slickGoTo', (currentIndex - 1))
-            // console.log(currentIndex - 1);
+
+                if (containerWidth > totalWidth) {
+                    $swipeTabsContainer.slick('slickGoTo', 0)
+                } else {
+                    $swipeTabsContainer.slick('slickGoTo', (currentIndex - 1))
+                }
             })
             $swipeTabsContentContainer.on('afterChange', function (slick, currentSlide) {
                 self.$emit('slideChange', currentSlide.currentSlide)

@@ -1,5 +1,5 @@
 <template>
-    <div :class="elClass">
+    <div :class="elClass" v-ripple>
         <veb-dropdown-menu ref="dropdown">
             <div class="veb-floating-placeholder" v-if="value !== '' && value !== undefined">{{label}}</div>
             <div trigger-menu @click="activate" class="veb-menu-select-description">{{description}}</div>
