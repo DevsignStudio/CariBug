@@ -1,8 +1,8 @@
 import { GraphQLServer } from 'graphql-yoga'
 import typeDefs from './schema'
-import Resolvers from './resolver'
+import resolvers from './resolver.js'
 import { directiveResolvers } from './helper/directives'
-import {DB} from './mongodb'
+import {DB, Collection} from './mongodb'
 import DotEnv from 'dotenv-safe'
 
 const dotEnvConf = DotEnv.config()
@@ -13,11 +13,22 @@ export const context = async (req, secrets) => {
     if (!mongo) {
         mongo = await DB()
     }
-    // const user = await getUser(headers['authorization'], secrets, mongo)
+
+    let db = {
+        User: Collection(mongo, 'users'),
+        Project: Collection(mongo, 'projects'),
+        ProjectTeamRole: Collection(mongo, 'projectTeamRoles'),
+        ProjectTeam: Collection(mongo, 'projectTeams'),
+        ProjectList: Collection(mongo, 'projectLists'),
+        WorkflowInstance: Collection(mongo, 'workflowInstances'),
+        WorkflowConfiguration: Collection(mongo, 'workflowConfigurations'),
+        WorkflowState: Collection(mongo, 'workflowStates')
+    }
     return {
         headers: req.request.headers,
         secrets: dotEnvConf.parsed,
-        mongo
+        mongo,
+        db
     }
 }
 
@@ -28,7 +39,6 @@ let start  = async () => {
         subscriptions: '/subscriptions',
         playground: '/playground',
     }
-    let resolvers = await Resolvers()
     const server = new GraphQLServer({ typeDefs, resolvers, context, directiveResolvers })
     server.start(options, ({port}) => {
         console.log(`Server is running on localhost:${port}`)

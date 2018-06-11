@@ -16,8 +16,10 @@
     "bcryptjs": "^2.4.3",
     "dotenv-safe": "^5.0.1",
     "esm": "^3.0.17",
+    "glob": "^7.1.2",
     "graphql-yoga": "^1.8.5",
     "jsonwebtoken": "^8.2.1",
+    "merge-graphql-schemas": "^1.5.1",
     "mongodb": "^3.0.6",
     "nodemon": "^1.17.3",
     "uuid": "^3.2.1"

@@ -71,8 +71,58 @@ export default `
     type ProjectList {
         _id: String
         name: String
-        projectId: String,
-        project: Project,
+        projectId: String
+        project: Project
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
+    type ProjectListItem {
+        _id: String
+        title: String
+        description: String
+        projectListId: String
+        state: WorkflowState
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
+    type WorkflowInstance {
+        _id: String
+        recordId: String
+        workflowStateId: String
+        workflowConfigurationId: String
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
+    type WorkflowConfiguration {
+        _id: String
+        name: String
+        workflowSettingId: String
+        insertedAt: DateTime @mongoDateConverter
+        insertedBy: String
+        updatedAt: DateTime @mongoDateConverter
+        updatedBy: String
+        isDeleted: Boolean
+    }
+
+    type WorkflowSetting {
+        name: String
+    }
+
+    type WorkflowState {
+        _id: String
+        status: String
         insertedAt: DateTime @mongoDateConverter
         insertedBy: String
         updatedAt: DateTime @mongoDateConverter
@@ -86,6 +136,7 @@ export default `
         currentProject(_id: String): Project @isAuthenticated
         searchUsers(queryString: String, limit: Int, exclude: [String]): [User] @isAuthenticated
         getAllRoles: [ProjectTeamRole] @isAuthenticated
+        allWorkflowSetting: [WorkflowSetting]
     }
 
     type Mutation {
