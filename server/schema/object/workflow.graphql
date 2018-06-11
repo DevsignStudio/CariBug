@@ -1,0 +1,40 @@
+type WorkflowInstance {
+    _id: String
+    recordId: String
+    workflowStateId: String
+    workflowConfigurationId: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type WorkflowConfiguration {
+    _id: String
+    name: String
+    workflowSettingId: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type WorkflowSetting {
+    name: String
+}
+
+type WorkflowState {
+    _id: String
+    status: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type Query {
+    allWorkflowSetting: [WorkflowSetting]
+}

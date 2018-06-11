@@ -5,12 +5,6 @@ import WorkflowSetting from '../workflow/index'
 import path from 'path'
 
 export default {
-    Query: {
-        getAllRoles: async (root, args, {user, db}) => {
-            let roles = await db.ProjectTeamRole.find().toArray()
-            return roles
-        }
-    },
     Mutation: {
         signup: async (root, {username, password}, {secrets, db}) => {
             let user = await db.User.findOne({username})

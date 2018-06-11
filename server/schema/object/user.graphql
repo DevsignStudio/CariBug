@@ -1,0 +1,16 @@
+type User {
+    _id: String
+    username: String
+    token: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type Query {
+    currentUser: User @isAuthenticated
+    currentUserProjects: [Project] @isAuthenticated
+    searchUsers(queryString: String, limit: Int, exclude: [String]): [User] @isAuthenticated
+}

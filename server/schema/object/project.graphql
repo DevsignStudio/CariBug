@@ -1,0 +1,52 @@
+type Project {
+    _id: String
+    name: String
+    description: String
+    ownerId: String
+    owner: User
+    teams: [ProjectTeam]
+    lists: [ProjectList]
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+    numberOfLists: Int
+}
+
+type ProjectTeamRole {
+    _id: String
+    name: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type ProjectTeam {
+    _id: String
+    userId: String
+    rolesId: [String]
+    projectId: String
+    isConfirmed: Boolean
+    user: User
+    roles: [ProjectTeamRole]
+    project: Project
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type Query {
+    currentProject(_id: String): Project @isAuthenticated
+    getAllRoles: [ProjectTeamRole] @isAuthenticated
+}
+
+type Mutation {
+    createProject(name: String, description: String): Boolean @isAuthenticated
+    createProjectTeamRole(name:String): Boolean @isAuthenticated
+    addUserAndRoles(projectId: String, userId: String, rolesId: [String]): Boolean @isAuthenticated
+}

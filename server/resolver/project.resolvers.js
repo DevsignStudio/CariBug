@@ -4,6 +4,10 @@ export default {
             let result = await db.Project.findOne({_id})
             return result
         },
+        getAllRoles: async (root, args, {user, db}) => {
+            let roles = await db.ProjectTeamRole.find().toArray()
+            return roles
+        }
     },
     Project: {
         owner: async ({insertedBy}, args, {db}) => {
