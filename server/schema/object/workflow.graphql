@@ -13,7 +13,7 @@ type WorkflowInstance {
 type WorkflowConfiguration {
     _id: String
     name: String
-    workflowSettingId: String
+    settingPath: String
     insertedAt: DateTime @mongoDateConverter
     insertedBy: String
     updatedAt: DateTime @mongoDateConverter
@@ -35,6 +35,17 @@ type WorkflowState {
     isDeleted: Boolean
 }
 
+type WorkflowHandler {
+    _id: String
+    name: String
+    startStateId: String
+    endStateId: String
+}
+
 type Query {
     allWorkflowSetting: [WorkflowSetting]
+}
+
+type Mutation{
+    createListItemWorkflowConfiguration(path: String): String  @isAuthenticated
 }

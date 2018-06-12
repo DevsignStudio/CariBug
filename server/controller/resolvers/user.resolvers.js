@@ -23,10 +23,7 @@ export default {
             let result = await db.User.find({'username': {'$regex': queryString, '$options': 'i'}, '_id': {$nin: exclude}}).limit(limit).toArray()
             return result
         },
-        // allWorkflowSetting: (root) => {
-        //     // require(path.resolve(Workflow()[0].name)).default['create'].apply(null, [collections])
-        //     return WorkflowSetting()
-        // },
+        
     },
     
     
