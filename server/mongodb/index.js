@@ -73,13 +73,13 @@ export const Collection = (db, name) => {
         return null
     }
 
-    collection.remove = (user) => {
-        let args = [{}]
-        args[0].updatedAt = (new Date()).toString()
-        args[0].updatedBy = user ? user._id : null
-        args[0].isDeleted = true
+    collection.remove = (user, query) => {
+        let args = [query, {$set: {}}]
+        args[1].$set.updatedAt = (new Date()).toString()
+        args[1].$set.updatedBy = user ? user._id : null
+        args[1].$set.isDeleted = true
 
-        return updateCommand.apply(collection, args)
+        return updateCommand.apply(collection,args)
     }
 
     return collection
