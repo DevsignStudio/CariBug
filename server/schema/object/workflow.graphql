@@ -28,6 +28,8 @@ type WorkflowSetting {
 type WorkflowState {
     _id: String
     status: String
+    workflowConfigurationId: String
+    isStart: Boolean
     insertedAt: DateTime @mongoDateConverter
     insertedBy: String
     updatedAt: DateTime @mongoDateConverter
@@ -37,9 +39,15 @@ type WorkflowState {
 
 type WorkflowHandler {
     _id: String
-    name: String
+    internalName: String
+    DisplayName: String
     startStateId: String
     endStateId: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
 }
 
 type Query {

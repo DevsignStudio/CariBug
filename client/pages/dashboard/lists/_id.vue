@@ -3,9 +3,10 @@
         <div class="flex-fill-height">
             <veb-tab id="tab" ref="tabHeader" class="background-primary elevation z2" v-elevation style="visibility: visible">
                 <veb-tab-item v-ripple>To-do</veb-tab-item>
+                <veb-tab-item v-ripple>Doing</veb-tab-item>
                 <veb-tab-item v-ripple>Done</veb-tab-item>
                 <veb-tab-item v-ripple>Verified</veb-tab-item>
-                <veb-tab-item v-ripple>Production</veb-tab-item>
+                <veb-tab-item v-ripple>In Production</veb-tab-item>
             </veb-tab>
             <veb-tab-content ref="tabContent" element="#tab" :size="3"  class="flex-fill-height">
                 <veb-tab-content-item >
@@ -109,6 +110,9 @@
                             </div>
                         </div>
                     </veb-page-container>
+                </veb-tab-content-item>
+                <veb-tab-content-item>
+                    fgfg
                 </veb-tab-content-item>
                 <veb-tab-content-item>
                     fgfg

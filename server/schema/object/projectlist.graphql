@@ -16,6 +16,9 @@ type ProjectListItem {
     description: String
     projectListId: String
     state: WorkflowState
+    workflowInstanceId: String
+    developerId: String
+    verifierId: String
     insertedAt: DateTime @mongoDateConverter
     insertedBy: String
     updatedAt: DateTime @mongoDateConverter
