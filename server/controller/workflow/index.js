@@ -11,3 +11,7 @@ export default () => {
     })
     return allFiles
 }
+
+export const createWorkflowInstance = async ({db, recordId, workflowConfigurationName}) => {
+    let workflowConfiguration = await db.WorkflowConfiguration.findOne({name: workflowConfigurationName})
+}
