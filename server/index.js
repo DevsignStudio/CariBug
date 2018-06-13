@@ -7,12 +7,20 @@ import DotEnv from 'dotenv-safe'
 
 const dotEnvConf = DotEnv.config()
 
+let localDB = null
+let getDB = async function() {
+    localDB = await DB()
+    return 
+}
+
 
 export const context = async (req, secrets) => {
     let mongo
-    if (!mongo) {
-        mongo = await DB()
+    if (!localDB) {
+        console.log('Calling Mongo DB')
+        await getDB()
     }
+    mongo = localDB
 
     let db = {
         User: Collection(mongo, 'users'),
