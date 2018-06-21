@@ -13,7 +13,7 @@ import {
     WorkflowHandler,
     WorkflowInstance,
     WorkflowState
-} from '../../model'
+} from '../../model/index.js'
 
 export default {
     Query: {

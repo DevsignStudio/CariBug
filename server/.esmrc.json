@@ -1,0 +1,10 @@
+{
+    "cjs": {
+        "cache": true,
+        "extensions": false,
+        "interop": false,
+        "namedExports": true,
+        "paths": true,
+        "vars": true
+    }
+}
