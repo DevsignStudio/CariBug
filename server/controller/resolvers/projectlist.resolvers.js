@@ -1,17 +1,24 @@
+import {
+    ProjectList, 
+} from '../../model/index.js'
+
 export default {
     Mutation: {
-        createList: async (root, {name, _id}, {user, db}) => {
+        createList: async (root, {name, _id}, {user}) => {
             if (!user) {
                 return new Error('User not exists')
             }
 
-            let list = await db.ProjectList.findOne({name, projectId: _id})
+            let list = await ProjectList.findOne({name, projectId: _id})
             if (list) {
                 return new Error('List with same name already exists')
             }
 
-            list = await db.ProjectList.insert(user, {name, projectId: _id})
-            return list
+            list = new ProjectList({name, projectId: _id})
+            list.setModifyUser(user._id)
+            await list.save()
+
+            return list.get()
         }
     }
 }

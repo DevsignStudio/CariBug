@@ -1,5 +1,9 @@
 import glob from 'glob'
-import path from 'path'
+import {
+    WorkflowConfiguration,
+    WorkflowHandler,
+    WorkflowInstance,
+} from '../../model/index.js'
 
 export default () => {
     let allFiles = []
@@ -11,14 +15,17 @@ export default () => {
     return allFiles
 }
 
-export const createWorkflowInstance = async ({user, db, recordId, workflowConfigurationId, workflowStateId}) => {
-    return await db.WorkflowInstance.insert(user, {recordId, workflowStateId, workflowConfigurationId})
+export const createWorkflowInstance = async ({user, recordId, workflowConfigurationId, workflowStateId}) => {
+    let workflowInstance = new WorkflowInstance({recordId, workflowStateId, workflowConfigurationId})
+    workflowInstance.setModifyUser(user._id)
+    await workflowInstance.save()
+    return workflowInstance.get()
 }
 
-export const getConfiguration = async ({db, workflowConfigurationName}) => {
-    return await db.WorkflowConfiguration.findOne({name: workflowConfigurationName})
+export const getConfiguration = async ({workflowConfigurationName}) => {
+    return (await WorkflowConfiguration.findOne({name: workflowConfigurationName})).get()
 }
 
-export const getStartHandler = async ({db, workflowConfigurationId}) => {
-    return await db.WorkflowHandler.findOne({startStateId: null, workflowConfigurationId})
+export const getStartHandler = async ({workflowConfigurationId}) => {
+    return (await WorkflowHandler.findOne({startStateId: null, workflowConfigurationId})).get()
 }

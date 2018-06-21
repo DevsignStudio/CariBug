@@ -1,26 +1,15 @@
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import path from 'path'
 
 import {
     User, 
     Project, 
-    ProjectList, 
-    ProjectListItem, 
-    ProjectTeamRole, 
-    ProjectTeam,
-    WorkflowConfiguration,
-    WorkflowHandler,
-    WorkflowInstance,
-    WorkflowState
-} from '../../model/index.js'
+    ProjectTeam} from '../../model/index.js'
 
 export default {
     Query: {
         currentUser: (root, args, {user}) => {
             return user
         },
-        currentUserProjects: async (root, args, {user, db}) => {
+        currentUserProjects: async (root, args, {user}) => {
             let result = await ProjectTeam.find({userId: user._id})
             let projectIds = result.map(res => {
                 return res.get('projectId')
@@ -29,7 +18,7 @@ export default {
             result = await Project.find({_id: {$in: projectIds}})
             return result.map(r => r.get())
         },
-        searchUsers: async (root, {queryString, limit, exclude = []}, {user, db}) => {
+        searchUsers: async (root, {queryString, limit, exclude = []}, {user}) => {
             if (!queryString) {
                 return []
             }

@@ -1,4 +1,4 @@
-import {Database, Model, ActionTypes} from 'mongorito'
+import {Model} from 'mongorito'
 
 export class User extends Model {
     collection() {
@@ -50,14 +50,3 @@ export class WorkflowHandler extends Model {
 			return 'workflowHandlers';
 		}
 }
-
-
-        // Project: Collection(mongo, 'projects'),
-        // ProjectTeamRole: Collection(mongo, 'projectTeamRoles'),
-        // ProjectTeam: Collection(mongo, 'projectTeams'),
-        // ProjectList: Collection(mongo, 'projectLists'),
-        // ProjectListItem: Collection(mongo, 'projectListItems'),
-        // WorkflowInstance: Collection(mongo, 'workflowInstances'),
-        // WorkflowConfiguration: Collection(mongo, 'workflowConfigurations'),
-        // WorkflowState: Collection(mongo, 'workflowStates'),
-        // WorkflowHandler: Collection(mongo, 'workflowHandlers')
