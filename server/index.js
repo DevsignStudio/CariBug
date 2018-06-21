@@ -44,9 +44,6 @@ export const context = async (req, secrets) => {
         db.register(WorkflowInstance)
     }
 
-    const users = await User.findOne()
-    // console.log(users.get())
-
     return {
         headers: req.request.headers,
         secrets: dotEnvConf.parsed,

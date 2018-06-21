@@ -1,99 +1,117 @@
+import {
+    User, 
+    Project, 
+    ProjectList, 
+    ProjectListItem, 
+    ProjectTeamRole, 
+    ProjectTeam,
+    WorkflowConfiguration,
+    WorkflowHandler,
+    WorkflowInstance,
+    WorkflowState
+} from '../../model/index.js'
+
 export default {
     Query : {
-        currentProject: async (root, {_id}, {user, db}) => {
-            let result = await db.Project.findOne({_id})
-            return result
+        currentProject: async (root, {_id}, {user}) => {
+            let result = await Project.findOne({_id})
+            return !result ? null : result.get()
         },
-        getAllRoles: async (root, args, {user, db}) => {
-            let roles = await db.ProjectTeamRole.find().toArray()
-            return roles
+        getAllRoles: async (root, args, {user}) => {
+            let roles = await ProjectTeamRole.find()
+            return roles.map(r => r.get())
         }
     },
     Project: {
-        owner: async ({insertedBy}, args, {db}) => {
-            let user = await db.User.findOne({_id: insertedBy})
-            return user
+        owner: async ({insertedBy}, args) => {
+            let user = await User.findOne({_id: insertedBy})
+            return user.get()
         },
-        lists: async ({_id}, args, {db}) => {
-            let lists = await db.ProjectList.find({projectId: _id}).toArray()
+        lists: async ({_id}, args) => {
+            let lists = await ProjectList.find({projectId: _id})
 
-            return lists
+            return lists.map(r => r.get())
         },
-        teams: async({_id}, args, {db}) => {
-            let teams = await db.ProjectTeam.find({projectId: _id}).toArray()
+        teams: async({_id}, args) => {
+            let teams = await ProjectTeam.find({projectId: _id})
 
-            return teams
+            return teams.map(r => r.get())
         },
-        numberOfLists: async ({_id}, args, {db}) => {
-            let count = await db.ProjectList.count({projectId: _id})
+        numberOfLists: async ({_id}, args) => {
+            let count = await ProjectList.count({projectId: _id})
             return count
         }
     },
     ProjectTeam: {
-        user: async({userId}, args, {db}) => {
-            let user = await db.User.findOne({_id: userId})
-            return user
+        user: async({userId}, args) => {
+            let user = await User.findOne({_id: userId})
+            return user.get()
         },
-        project: async({projectId}, args, {db}) => {
-            let project = await db.Project.findOne({_id: projectId})
-            return project
+        project: async({projectId}, args) => {
+            let project = await Project.findOne({_id: projectId})
+            return project.get()
         },
-        roles: async({rolesId}, args, {db}) => {
-            let roles = await db.ProjectTeamRole.find({_id: {$in: rolesId}}).toArray()
+        roles: async({rolesId}, args) => {
+            let roles = await ProjectTeamRole.find({_id: {$in: rolesId}})
 
-            return roles
+            return roles.map(r => r.get())
         }
     },
     Mutation: {
-        createProject: async (root, {name, description}, {user, db}) => {
+        createProject: async (root, {name, description}, {user}) => {
             if (!user) {
                 return false
             }
-            let roleOwner = await db.ProjectTeamRole.findOne({name: 'Owner'})
-            let project = await db.Project.insert(user, {name,description})
+            let roleOwner = (await ProjectTeamRole.findOne({name: 'Owner'})).get()
+            let project = new Project({name,description})
+            project.setModifyUser(user._id)
+            project.save()
 
             if (!project) {
                 return false
             }
 
-            let projectOwner = await db.ProjectTeam.insert(user, {userId: user._id, rolesId: [roleOwner._id], projectId: project._id})
+            let projectOwner = new ProjectTeam({userId: user._id, rolesId: [roleOwner._id], projectId: project.get()._id})
+            projectOwner.setModifyUser(user._id)
+            await projectOwner.save()
 
             return true
         },
-        createProjectTeamRole: async (root, {name}, {user, db}) => {
+        createProjectTeamRole: async (root, {name}, {user}) => {
             if (!user) {
                 return false
             }
 
-            let role = await db.ProjectTeamRole.findOne({name})
+            let role = (await ProjectTeamRole.findOne({name})).get()
 
             if (role) {
                 return false
             }
 
-            await db.ProjectTeamRole.insert(user, {
-                name
-            })
+            let result = new ProjectTeamRole.insert({name})
+            result.setModifyUser(user._id)
+            await result.save()
             return true
         },
         
-        addUserAndRoles: async (root, {projectId, userId, rolesId}, {user, db}) => {
-            let userSelected = await db.User.findOne({_id: userId})
-            let project = await db.Project.findOne({_id: projectId})
-            let projectTeam = await db.ProjectTeam.findOne({userId, projectId})
+        addUserAndRoles: async (root, {projectId, userId, rolesId}, {user}) => {
+            let userSelected = (await User.findOne({_id: userId})).get()
+            let project = (await Project.findOne({_id: projectId})).get()
+            let projectTeam = await ProjectTeam.findOne({userId, projectId})
 
             if(!projectTeam) {
-                let projectTeam = await db.ProjectTeam.insert(user, {
+                projectTeam = new ProjectTeam.insert({
                     userId: userId,
                     projectId: projectId,
                     rolesId: rolesId
                 })
+
+                projectTeam.setModifyUser(user._id)
+                projectTeam.save()
             } else {
-                await db.ProjectTeam.update(user, {userId, projectId}, {
-                    $set: {
-                        rolesId
-                    }
-                })
+                projectTeam.set('rolesId', rolesId)
+                projectTeam.setModifyUser(user._id)
+                projectTeam.save()
             }
 
             return true

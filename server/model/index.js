@@ -2,53 +2,53 @@ import {Database, Model, ActionTypes} from 'mongorito'
 
 export class User extends Model {
     collection() {
-		return 'users';
-	}
+			return 'users';
+		}	
 }
 export class Project extends Model {
     collection() {
-		return 'projects';
-	}
+			return 'projects';
+		}
 }
 export class ProjectTeamRole extends Model {
     collection() {
-		return 'projectTeamRoles';
-	}
+			return 'projectTeamRoles';
+		}
 }
 export class ProjectTeam extends Model {
     collection() {
-		return 'projectTeams';
-	}
+			return 'projectTeams';
+		}
 }
 export class ProjectList extends Model {
     collection() {
-		return 'projectLists';
-	}
+			return 'projectLists';
+		}
 }
 export class ProjectListItem extends Model {
     collection() {
-		return 'projectListItems';
-	}
+			return 'projectListItems';
+		}
 }
 export class WorkflowInstance extends Model {
     collection() {
-		return 'workflowInstances';
-	}
+			return 'workflowInstances';
+		}
 }
 export class WorkflowConfiguration extends Model {
     collection() {
-		return 'workflowConfigurations';
-	}
+			return 'workflowConfigurations';
+		}
 }
 export class WorkflowState extends Model {
     collection() {
-		return 'workflowStates';
-	}
+			return 'workflowStates';
+		}
 }
 export class WorkflowHandler extends Model {
     collection() {
-		return 'workflowHandlers';
-	}
+			return 'workflowHandlers';
+		}
 }
 
 

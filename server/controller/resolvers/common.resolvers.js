@@ -2,36 +2,51 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import WorkflowSetting from '../workflow/index'
 import path from 'path'
+import {
+    User, 
+    Project, 
+    ProjectList, 
+    ProjectListItem, 
+    ProjectTeamRole, 
+    ProjectTeam,
+    WorkflowConfiguration,
+    WorkflowHandler,
+    WorkflowInstance,
+    WorkflowState
+} from '../../model/index.js'
 
 export default {
     Mutation: {
-        signup: async (root, {username, password}, {secrets, db}) => {
-            let user = await db.User.findOne({username})
+        signup: async (root, {username, password}, {secrets}) => {
+            let user = await User.findOne({username})
             if (user) {
                 throw new Error('User already exists')
             }
             let hashedPassword = await bcrypt.hash(password, 10)
-            await db.User.insert(null, {
+            user = new User({
                 username,
                 password: hashedPassword
             })
-            user = await db.User.findOne({username})
-            let token = jwt.sign(user, secrets.KEY)
-            user.token = token
-            return user
+            await user.save()
+
+            let getUser = user.get()
+            let token = jwt.sign(getUser, secrets.KEY)
+            getUser.token = token
+            return getUser
         },
-        login: async (root, {username, password}, {secrets, db}) => {
-            const user = await db.User.findOne({ username })
+        login: async (root, {username, password}, {secrets}) => {
+            const user = await User.findOne({ username })
+            let getUser = user.get()
             if (!user) {
                 throw new Error('Username not found')
             }
 
-            const validPassword = await bcrypt.compare(password, user.password)
+            const validPassword = await bcrypt.compare(password, getUser.password)
             if (!validPassword) {
                 throw new Error('Password is incorrect')
             }
-            user.token = jwt.sign(user, secrets.KEY)
-            return user
+            getUser.token = jwt.sign(getUser, secrets.KEY)
+            return getUser
         }
     }
 }

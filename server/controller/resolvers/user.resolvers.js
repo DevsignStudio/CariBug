@@ -26,8 +26,8 @@ export default {
                 return res.get('projectId')
             })
 
-            result = await Project.findToArray({_id: {$in: projectIds}})
-            return result
+            result = await Project.find({_id: {$in: projectIds}})
+            return result.map(r => r.get())
         },
         searchUsers: async (root, {queryString, limit, exclude = []}, {user, db}) => {
             if (!queryString) {
