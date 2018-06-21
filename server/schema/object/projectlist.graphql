@@ -10,22 +10,6 @@ type ProjectList {
     isDeleted: Boolean
 }
 
-type ProjectListItem {
-    _id: String
-    title: String
-    description: String
-    projectListId: String
-    state: WorkflowState
-    workflowInstanceId: String
-    developerId: String
-    verifierId: String
-    insertedAt: DateTime @mongoDateConverter
-    insertedBy: String
-    updatedAt: DateTime @mongoDateConverter
-    updatedBy: String
-    isDeleted: Boolean
-}
-
 type Mutation {
     createList(name: String, _id: String): ProjectList @isAuthenticated
 }

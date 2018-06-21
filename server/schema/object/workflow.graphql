@@ -40,9 +40,10 @@ type WorkflowState {
 type WorkflowHandler {
     _id: String
     internalName: String
-    DisplayName: String
+    displayName: String
     startStateId: String
     endStateId: String
+    workflowConfigurationId: String
     insertedAt: DateTime @mongoDateConverter
     insertedBy: String
     updatedAt: DateTime @mongoDateConverter

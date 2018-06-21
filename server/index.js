@@ -2,45 +2,59 @@ import { GraphQLServer } from 'graphql-yoga'
 import typeDefs from './schema'
 import resolvers from './controller/resolver.js'
 import { directiveResolvers } from './helper/directives'
-import {DB, Collection} from './mongodb'
+import {DB} from './connector/mongorito'
 import DotEnv from 'dotenv-safe'
+
+import {
+    User, 
+    Project, 
+    ProjectList, 
+    ProjectListItem, 
+    ProjectTeamRole, 
+    ProjectTeam,
+    WorkflowConfiguration,
+    WorkflowHandler,
+    WorkflowInstance,
+    WorkflowState
+} from './model'
 
 const dotEnvConf = DotEnv.config()
 
-let localDB = null
+let db = null
 let getDB = async function() {
-    localDB = await DB()
+    db = await DB()
     return 
 }
 
 
 export const context = async (req, secrets) => {
-    let mongo
-    if (!localDB) {
+    if (!db) {
         console.log('Calling Mongo DB')
         await getDB()
-    }
-    mongo = localDB
 
-    let db = {
-        User: Collection(mongo, 'users'),
-        Project: Collection(mongo, 'projects'),
-        ProjectTeamRole: Collection(mongo, 'projectTeamRoles'),
-        ProjectTeam: Collection(mongo, 'projectTeams'),
-        ProjectList: Collection(mongo, 'projectLists'),
-        WorkflowInstance: Collection(mongo, 'workflowInstances'),
-        WorkflowConfiguration: Collection(mongo, 'workflowConfigurations'),
-        WorkflowState: Collection(mongo, 'workflowStates')
+        db.register(User)
+        db.register(Project)
+        db.register(ProjectTeam)
+        db.register(ProjectTeamRole)
+        db.register(ProjectList)
+        db.register(ProjectListItem)
+        db.register(WorkflowConfiguration)
+        db.register(WorkflowHandler)
+        db.register(WorkflowState)
+        db.register(WorkflowInstance)
     }
+
+    const users = await User.findOne()
+    // console.log(users.get())
+
     return {
         headers: req.request.headers,
         secrets: dotEnvConf.parsed,
-        mongo,
-        db
     }
 }
 
 let start  = async () => {
+    // context()
     const options = {
         port: 4000,
         endpoint: '/graphql',

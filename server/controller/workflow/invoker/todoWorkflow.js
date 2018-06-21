@@ -1,8 +1,8 @@
-// import Data from '../../mongodb/data'
+import {createWorkflowInstance} from '../../workflow'
 export default {
-    create: async ($, {recordId}) => {
+    create: async ({user, db, handler}, {recordId}) => {
         // $.work
-        console.log('hello worlf')
+        return await createWorkflowInstance({user,db, recordId, workflowConfigurationId: handler.workflowConfigurationId, workflowStateId: handler.endStateId})
     },
     done () {
     }

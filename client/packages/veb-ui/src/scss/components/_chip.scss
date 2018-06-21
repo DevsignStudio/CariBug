@@ -103,4 +103,10 @@ $var: '.veb-chip';
             }
         }
     }
+
+    @include webkit-fix {
+        line-height: 21px;
+        padding-top: 4px;
+        padding-bottom: 3px;
+    }
 }
