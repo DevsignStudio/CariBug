@@ -82,13 +82,13 @@ export default {
                 return false
             }
 
-            let role = (await ProjectTeamRole.findOne({name})).get()
+            let role = await ProjectTeamRole.findOne({name})
 
             if (role) {
                 return false
             }
 
-            let result = new ProjectTeamRole.insert({name})
+            let result = new ProjectTeamRole({name})
             result.setModifyUser(user._id)
             await result.save()
             return true
@@ -100,7 +100,7 @@ export default {
             let projectTeam = await ProjectTeam.findOne({userId, projectId})
 
             if(!projectTeam) {
-                projectTeam = new ProjectTeam.insert({
+                projectTeam = new ProjectTeam({
                     userId: userId,
                     projectId: projectId,
                     rolesId: rolesId
