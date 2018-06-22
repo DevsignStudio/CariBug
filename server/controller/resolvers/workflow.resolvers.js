@@ -1,17 +1,10 @@
 import WorkflowSetting from '../workflow/index'
 import rpath from 'path'
 import {
-    User, 
-    Project, 
-    ProjectList, 
-    ProjectListItem, 
-    ProjectTeamRole, 
-    ProjectTeam,
     WorkflowConfiguration,
     WorkflowHandler,
-    WorkflowInstance,
     WorkflowState
-} from '../../model'
+} from '~/model'
 
 export default {
     Mutation: {

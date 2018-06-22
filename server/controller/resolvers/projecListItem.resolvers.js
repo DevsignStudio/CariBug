@@ -2,7 +2,7 @@ import {getConfiguration, getStartHandler} from '../workflow'
 import {
     ProjectList, 
     ProjectListItem, 
-} from '../../model/index.js'
+} from '~/model/index.js'
 import path from 'path'
 export default {
     Mutation: {

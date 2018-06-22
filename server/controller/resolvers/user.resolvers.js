@@ -2,7 +2,7 @@
 import {
     User, 
     Project, 
-    ProjectTeam} from '../../model/index.js'
+    ProjectTeam} from '~/model/index.js'
 
 export default {
     Query: {

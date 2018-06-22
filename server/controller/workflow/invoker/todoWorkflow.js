@@ -1,4 +1,4 @@
-import {createWorkflowInstance} from '../../workflow'
+import {createWorkflowInstance} from '~/controller/workflow'
 export default {
     create: async ({user, handler}, {recordId}) => {
         // $.work

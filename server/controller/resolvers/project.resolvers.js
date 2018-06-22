@@ -2,14 +2,9 @@ import {
     User, 
     Project, 
     ProjectList, 
-    ProjectListItem, 
     ProjectTeamRole, 
     ProjectTeam,
-    WorkflowConfiguration,
-    WorkflowHandler,
-    WorkflowInstance,
-    WorkflowState
-} from '../../model/index.js'
+} from '~/model/index.js'
 
 export default {
     Query : {

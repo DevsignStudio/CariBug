@@ -1,6 +1,6 @@
 import {
     ProjectList, 
-} from '../../model/index.js'
+} from '~/model/index.js'
 
 export default {
     Mutation: {

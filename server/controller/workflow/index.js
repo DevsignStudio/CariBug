@@ -3,7 +3,7 @@ import {
     WorkflowConfiguration,
     WorkflowHandler,
     WorkflowInstance,
-} from '../../model/index.js'
+} from '~/model/index.js'
 
 export default () => {
     let allFiles = []

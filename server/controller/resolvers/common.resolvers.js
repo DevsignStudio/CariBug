@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import {
     User, 
-} from '../../model/index.js'
+} from '~/model/index.js'
 
 export default {
     Mutation: {

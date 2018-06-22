@@ -16,7 +16,7 @@ import {
     WorkflowHandler,
     WorkflowInstance,
     WorkflowState
-} from './model'
+} from '~/model'
 
 const dotEnvConf = DotEnv.config()
 
