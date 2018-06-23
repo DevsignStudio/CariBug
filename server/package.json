@@ -8,7 +8,10 @@
     "start": "cross-env NODE_PATH=. node ./.vebserv/index.js",
     "dev": "nodemon --exec npm run start"
   },
-  "esm": {"cjs":true,"mode":"all"},
+  "esm": {
+    "cjs": true,
+    "mode": "all"
+  },
   "_moduleAliases": {
     "@": ".",
     "~": "."
@@ -23,6 +26,7 @@
     "dotenv-safe": "^5.0.1",
     "esm": "^3.0.17",
     "glob": "^7.1.2",
+    "graphql-type-json": "^0.2.1",
     "graphql-yoga": "^1.8.5",
     "jsonwebtoken": "^8.2.1",
     "merge-graphql-schemas": "^1.5.1",

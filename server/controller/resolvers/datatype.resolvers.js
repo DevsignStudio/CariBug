@@ -11,6 +11,7 @@ import {
     EmailAddress,
     URL
 } from '@okgrow/graphql-scalars'
+import GraphQLJSON from 'graphql-type-json'
 
 export default {
     DateTime,
@@ -23,5 +24,6 @@ export default {
     NonNegativeFloat,
     NegativeFloat,
     EmailAddress,
-    URL
+    URL,
+    JSON: GraphQLJSON
 }

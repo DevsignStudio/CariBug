@@ -9,3 +9,4 @@ scalar NonNegativeFloat
 scalar NegativeFloat
 scalar EmailAddress
 scalar URL
+scalar JSON
