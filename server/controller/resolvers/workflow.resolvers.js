@@ -15,7 +15,7 @@ export default {
             let currentWorkflowConfig = await WorkflowConfiguration.findOne({name: 'ProjectListItem Workflow'})
             
             if (currentWorkflowConfig) {
-                currentWorkflowConfig.setModifierUser(user._id)
+                currentWorkflowConfig.setModifyUser(user._id)
                 await currentWorkflowConfig.remove()
             }
             let workflowSettings = WorkflowSetting()
@@ -32,7 +32,7 @@ export default {
             }
 
             let result = new WorkflowConfiguration({name: 'ProjectListItem Workflow', settingPath: path})
-            result.setModifierUser(user._id)
+            result.setModifyUser(user._id)
             await result.save()
             let state = await createListItemWorkflowStateAndHandler({user, workflowConfigurationId: result.get()._id})
             if (!state) {
@@ -60,13 +60,13 @@ const createListItemWorkflowStateAndHandler = async ({user, db, workflowConfigur
     let state4 = new WorkflowState({status: 'Verified', workflowConfigurationId})
     let state5 = new WorkflowState({status: 'Unverified', workflowConfigurationId})
     let state6 = new WorkflowState({status: 'In Production', workflowConfigurationId})
-    state0.setModifierUser(user._id)
-    state1.setModifierUser(user._id)
-    state2.setModifierUser(user._id)
-    state3.setModifierUser(user._id)
-    state4.setModifierUser(user._id)
-    state5.setModifierUser(user._id)
-    state6.setModifierUser(user._id)
+    state0.setModifyUser(user._id)
+    state1.setModifyUser(user._id)
+    state2.setModifyUser(user._id)
+    state3.setModifyUser(user._id)
+    state4.setModifyUser(user._id)
+    state5.setModifyUser(user._id)
+    state6.setModifyUser(user._id)
     await Promise.all([
         await state0.save(),
         await state1.save(),
@@ -77,7 +77,7 @@ const createListItemWorkflowStateAndHandler = async ({user, db, workflowConfigur
         await state6.save()
     ])
 
-    let handler0 = new WorkflowHandler({internalName: 'create', displayName: 'Create', startStateId:  null, endStateId: state0.get()._id, workflowConfigurationId})
+    let handler0 = new WorkflowHandler({internalName: 'create', displayName: 'Create', isStart: true, startStateId:  null, endStateId: state0.get()._id, workflowConfigurationId})
     let handler1 = new WorkflowHandler({internalName: 'assign', displayName: 'Assign', startStateId:  state0.get()._id, endStateId: state1.get()._id, workflowConfigurationId})
     let handler2 = new WorkflowHandler({internalName: 'doing', displayName: 'Mark As Doing', startStateId:  state1.get()._id, endStateId: state2.get()._id, workflowConfigurationId})
     let handler3 = new WorkflowHandler({internalName: 'done', displayName: 'Mark As Done', startStateId:  state2.get()._id, endStateId: state3.get()._id, workflowConfigurationId})
@@ -85,21 +85,21 @@ const createListItemWorkflowStateAndHandler = async ({user, db, workflowConfigur
     let handler5 = new WorkflowHandler({internalName: 'unverify', displayName: 'Unverify', startStateId:  state4.get()._id, endStateId: state5.get()._id, workflowConfigurationId})
     let handler6 = new WorkflowHandler({internalName: 'inproduction', displayName: 'Move Production', startStateId:  state5.get()._id, endStateId: state6.get()._id, workflowConfigurationId})
 
-    handler0.setModifierUser(user._id)
-    handler1.setModifierUser(user._id)
-    handler2.setModifierUser(user._id)
-    handler3.setModifierUser(user._id)
-    handler4.setModifierUser(user._id)
-    handler5.setModifierUser(user._id)
-    handler6.setModifierUser(user._id)
+    handler0.setModifyUser(user._id)
+    handler1.setModifyUser(user._id)
+    handler2.setModifyUser(user._id)
+    handler3.setModifyUser(user._id)
+    handler4.setModifyUser(user._id)
+    handler5.setModifyUser(user._id)
+    handler6.setModifyUser(user._id)
     await Promise.all([
-        await handler[0].save(),
-        await handler[1].save(),
-        await handler[2].save(),
-        await handler[3].save(),
-        await handler[4].save(),
-        await handler[5].save(),
-        await handler[6].save(),
+        await handler0.save(),
+        await handler1.save(),
+        await handler2.save(),
+        await handler3.save(),
+        await handler4.save(),
+        await handler5.save(),
+        await handler6.save(),
     ])
 
     return true

@@ -19,13 +19,26 @@ export const createWorkflowInstance = async ({user, recordId, workflowConfigurat
     let workflowInstance = new WorkflowInstance({recordId, workflowStateId, workflowConfigurationId})
     workflowInstance.setModifyUser(user._id)
     await workflowInstance.save()
-    return workflowInstance.get()
+    return workflowInstance
 }
 
 export const getConfiguration = async ({workflowConfigurationName}) => {
-    return (await WorkflowConfiguration.findOne({name: workflowConfigurationName})).get()
+    let query = await WorkflowConfiguration.findOne({name: workflowConfigurationName})
+    return query
+}
+
+export const getConfigurationFromInstance = async ({workflowInstance}) => {
+    let query = await WorkflowConfiguration.findOne({_id: workflowInstance.get().workflowConfigurationId})
+
+    return query
 }
 
 export const getStartHandler = async ({workflowConfigurationId}) => {
-    return (await WorkflowHandler.findOne({startStateId: null, workflowConfigurationId})).get()
+    let query = await WorkflowHandler.findOne({isStart: true, workflowConfigurationId})
+    return query
+}
+
+export const getAvailableHandlers = async ({workflowConfigurationId, currentStateId}) => {
+    let query = await WorkflowHandler.find({workflowConfigurationId, startStateId: {$in: [currentStateId, null]}})
+    return query
 }

@@ -41,6 +41,7 @@ type WorkflowHandler {
     _id: String
     internalName: String
     displayName: String
+    isStart: String
     startStateId: String
     endStateId: String
     workflowConfigurationId: String
