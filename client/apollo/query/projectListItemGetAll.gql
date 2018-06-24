@@ -6,5 +6,10 @@ query projectListItemGetAll($projectListId: String){
         projectListId
         state
         availableHandler
+        insertedAt
+        developerId
+        Developer {
+            username
+        }
     }
 }

@@ -13,28 +13,7 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <veb-cards class="cards-details" v-for="listitem in undoingItems" :key="listitem._id">
-                                    <div @click="toggleHeight" class="cards-toggler">
-                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
-                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
-                                        </veb-cards-content>
-                                    </div>
-                                    <div>
-                                        <veb-divider></veb-divider>
-                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
-                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
-                                        </veb-cards-content>
-                                        <veb-cards-action>
-                                            <div class="pull-right">
-                                                <span>
-                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
-                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
-                                                </span>
-                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
-                                            </div>
-                                        </veb-cards-action>
-                                    </div>
-                                </veb-cards>
+                                <list-item-cards :items="undoingItems"></list-item-cards>
                             </div>
                         </div>
                     </veb-page-container>
@@ -43,28 +22,21 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <veb-cards class="cards-details" v-for="listitem in doingItems" :key="listitem._id">
-                                    <div @click="toggleHeight" class="cards-toggler">
-                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
-                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
-                                        </veb-cards-content>
-                                    </div>
-                                    <div>
-                                        <veb-divider></veb-divider>
-                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
-                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
-                                        </veb-cards-content>
-                                        <veb-cards-action>
-                                            <div class="pull-right">
-                                                <span>
-                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
-                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
-                                                </span>
-                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
-                                            </div>
-                                        </veb-cards-action>
-                                    </div>
-                                </veb-cards>
+                                <list-item-cards :items="doingItems"></list-item-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
+                </veb-tab-content-item>
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <list-item-cards :items="doneItems"></list-item-cards>
+                    </veb-page-container>
+                </veb-tab-content-item>
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                               <list-item-cards :items="verifiedItems"></list-item-cards>
                             </div>
                         </div>
                     </veb-page-container>
@@ -73,88 +45,7 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <veb-cards class="cards-details" v-for="listitem in doneItems" :key="listitem._id">
-                                    <div @click="toggleHeight" class="cards-toggler">
-                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
-                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
-                                        </veb-cards-content>
-                                    </div>
-                                    <div>
-                                        <veb-divider></veb-divider>
-                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
-                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
-                                        </veb-cards-content>
-                                        <veb-cards-action>
-                                            <div class="pull-right">
-                                                <span>
-                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
-                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
-                                                </span>
-                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
-                                            </div>
-                                        </veb-cards-action>
-                                    </div>
-                                </veb-cards>
-                            </div>
-                        </div>
-                    </veb-page-container>
-                </veb-tab-content-item>
-                <veb-tab-content-item >
-                    <veb-page-container style="max-width: 500px;">
-                        <div class="row center-xs">
-                            <div class="col-xs-fluid-24">
-                                <veb-cards class="cards-details" v-for="listitem in verifiedItems" :key="listitem._id">
-                                    <div @click="toggleHeight" class="cards-toggler">
-                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
-                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
-                                        </veb-cards-content>
-                                    </div>
-                                    <div>
-                                        <veb-divider></veb-divider>
-                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
-                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
-                                        </veb-cards-content>
-                                        <veb-cards-action>
-                                            <div class="pull-right">
-                                                <span>
-                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
-                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
-                                                </span>
-                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
-                                            </div>
-                                        </veb-cards-action>
-                                    </div>
-                                </veb-cards>
-                            </div>
-                        </div>
-                    </veb-page-container>
-                </veb-tab-content-item>
-                <veb-tab-content-item >
-                    <veb-page-container style="max-width: 500px;">
-                        <div class="row center-xs">
-                            <div class="col-xs-fluid-24">
-                                <veb-cards class="cards-details" v-for="listitem in inproductionItems" :key="listitem._id">
-                                    <div @click="toggleHeight" class="cards-toggler">
-                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
-                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
-                                        </veb-cards-content>
-                                    </div>
-                                    <div>
-                                        <veb-divider></veb-divider>
-                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
-                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
-                                        </veb-cards-content>
-                                        <veb-cards-action>
-                                            <div class="pull-right">
-                                                <span>
-                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
-                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
-                                                </span>
-                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
-                                            </div>
-                                        </veb-cards-action>
-                                    </div>
-                                </veb-cards>
+                                <list-item-cards :items="inproductionItems"></list-item-cards>
                             </div>
                         </div>
                     </veb-page-container>
@@ -194,9 +85,13 @@ import ProjectListItemGetAllGQL from '~/apollo/query/projectListItemGetAll.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import CreateListItemGQL from '~/apollo/query/createListItem.gql'
 import StateActionListItemGQL from '~/apollo/query/stateActionListItem.gql'
+import ListItemCards from '~/components/ListItemCards.vue'
 export default {
     mixins: [pageMixins],
     layout: 'dashboardLayout',
+    components: {
+        ListItemCards
+    },
     data () {
         return {
             pageTitle: 'Lists',
@@ -212,27 +107,27 @@ export default {
     },
     computed: {
         undoingItems () {
-            return this.projectListItemGetAll.filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
                 return item.state === 'Created' || item.state === 'Assigned'
             }) 
         },
         doingItems () {
-            return this.projectListItemGetAll.filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
                 return item.state === 'Doing'
             }) 
         },
         doneItems () {
-            return this.projectListItemGetAll.filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
                 return item.state === 'Done'
             }) 
         },
         verifiedItems () {
-            return this.projectListItemGetAll.filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
                 return item.state === 'Verified'
             }) 
         },
         inproductionItems () {
-            return this.projectListItemGetAll.filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
                 return item.state === 'In Production'
             }) 
         }
@@ -252,16 +147,6 @@ export default {
                 header = 'name'
             }
             this.currentUserProjects = _.orderBy(this.currentUserProjects, header, order)
-        },
-        toggleHeight(e) {
-            let cards = Helper.findAncestor(e.target, 'veb-cards')
-            Helper.toggleClass(cards, 'show')
-            if (Helper.hasClass(cards, 'show')){
-                cards.style.maxHeight = (cards.children[1].scrollHeight + 48) + 'px'
-            } else {
-                cards.style.maxHeight = 48 + 'px'
-            }
-            
         },
         insert() {
             this.$apollo.mutate({
@@ -352,31 +237,4 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-    .no-hover:hover {
-        background: none;
-    }
-
-    .cards-details {
-        will-change: max-height;
-        transition: max-height 0.2s ease-in-out;
-        transform: translateZ(0);
-        overflow: hidden;
-        max-height: 48px;
-    }
-
-    .cards-details .cards-toggler {
-        z-index: 3;
-    }
-
-    .cards-details.show {
-        height: auto;
-    }
-
-    .cards-details.show .cards-toggler {
-        background: #fafafa;
-    }
-</style>
-
 

@@ -4,7 +4,8 @@ import {
     ProjectListItem, 
     WorkflowInstance,
     WorkflowState,
-    WorkflowHandler
+    WorkflowHandler,
+    User
 } from '~/model/index.js'
 
 import path from 'path'
@@ -29,6 +30,12 @@ export default {
                     displayName: r.displayName
                 }
             })
+        },
+        Developer: async({developerId}) => {
+            if (!developerId) {
+                return null
+            }
+            return (await User.findOne({_id: developerId})).get()
         }
     },
     Query: {
