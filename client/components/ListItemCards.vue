@@ -9,7 +9,7 @@
                 <veb-cards class="cards-details">
                     <div class="cards-toggler">
                         <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px;" v-ripple>
-                            <div class="font-subhead font-medium" style="text-overflow: ellipsis; white-space: nowrap; height: 30px; overflow: hidden" >{{listitem.title}}</div>
+                            <div class="font-subhead font-medium"  >{{listitem.title}}</div>
                         </veb-cards-content>
                     </div>
                     <div>
