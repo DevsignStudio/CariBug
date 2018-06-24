@@ -1,0 +1,3 @@
+mutation StateActionListItem($handlerName: String!, $data: JSON!) {
+     stateActionListItem(handlerName: $handlerName, data: $data)
+}

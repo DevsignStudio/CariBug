@@ -13,7 +13,7 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <veb-cards class="cards-details" v-for="listitem in unassignedItems" :key="listitem._id">
+                                <veb-cards class="cards-details" v-for="listitem in undoingItems" :key="listitem._id">
                                     <div @click="toggleHeight" class="cards-toggler">
                                         <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
                                             <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
@@ -22,22 +22,15 @@
                                     <div>
                                         <veb-divider></veb-divider>
                                         <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
-                                            <!-- <div class="font-subhead font-medium" style="margin-bottom: 20px;">{{listitem.title}}</div> -->
-                                            <div class="font-body">{{listitem.description}}</div>
+                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
                                         </veb-cards-content>
-                                        <!-- <veb-cards-content style="padding: 12px;">
-                                            <veb-chip name="High Priority" class="invert background-red"></veb-chip>
-                                            <veb-chip name="module:UAUC" class="invert background-primary"></veb-chip>
-                                            <veb-chip name="module:HSERAI" class="invert background-primary"></veb-chip>
-                                            <veb-chip name="module:Incident" class="invert background-primary"></veb-chip>
-                                        </veb-cards-content> -->
                                         <veb-cards-action>
                                             <div class="pull-right">
                                                 <span>
                                                     <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
                                                     <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
                                                 </span>
-                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" v-ripple>{{handler.displayName}}</veb-button>
+                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
                                             </div>
                                         </veb-cards-action>
                                     </div>
@@ -46,17 +39,125 @@
                         </div>
                     </veb-page-container>
                 </veb-tab-content-item>
-                <veb-tab-content-item>
-                    fgfg
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                                <veb-cards class="cards-details" v-for="listitem in doingItems" :key="listitem._id">
+                                    <div @click="toggleHeight" class="cards-toggler">
+                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
+                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
+                                        </veb-cards-content>
+                                    </div>
+                                    <div>
+                                        <veb-divider></veb-divider>
+                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
+                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
+                                        </veb-cards-content>
+                                        <veb-cards-action>
+                                            <div class="pull-right">
+                                                <span>
+                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
+                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
+                                                </span>
+                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
+                                            </div>
+                                        </veb-cards-action>
+                                    </div>
+                                </veb-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
                 </veb-tab-content-item>
-                <veb-tab-content-item>
-                    fgfg
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                                <veb-cards class="cards-details" v-for="listitem in doneItems" :key="listitem._id">
+                                    <div @click="toggleHeight" class="cards-toggler">
+                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
+                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
+                                        </veb-cards-content>
+                                    </div>
+                                    <div>
+                                        <veb-divider></veb-divider>
+                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
+                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
+                                        </veb-cards-content>
+                                        <veb-cards-action>
+                                            <div class="pull-right">
+                                                <span>
+                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
+                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
+                                                </span>
+                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
+                                            </div>
+                                        </veb-cards-action>
+                                    </div>
+                                </veb-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
                 </veb-tab-content-item>
-                <veb-tab-content-item>
-                    fgfg
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                                <veb-cards class="cards-details" v-for="listitem in verifiedItems" :key="listitem._id">
+                                    <div @click="toggleHeight" class="cards-toggler">
+                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
+                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
+                                        </veb-cards-content>
+                                    </div>
+                                    <div>
+                                        <veb-divider></veb-divider>
+                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
+                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
+                                        </veb-cards-content>
+                                        <veb-cards-action>
+                                            <div class="pull-right">
+                                                <span>
+                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
+                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
+                                                </span>
+                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
+                                            </div>
+                                        </veb-cards-action>
+                                    </div>
+                                </veb-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
                 </veb-tab-content-item>
-                <veb-tab-content-item>
-                    fgfg
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                                <veb-cards class="cards-details" v-for="listitem in inproductionItems" :key="listitem._id">
+                                    <div @click="toggleHeight" class="cards-toggler">
+                                        <veb-cards-content style="padding: 12px 24px;padding-bottom: 6px; cursor: pointer" v-ripple>
+                                            <div class="font-title" style="text-overflow: ellipsis; height: 30px; overflow: hidden" >{{listitem.title}}</div>
+                                        </veb-cards-content>
+                                    </div>
+                                    <div>
+                                        <veb-divider></veb-divider>
+                                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
+                                            <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
+                                        </veb-cards-content>
+                                        <veb-cards-action>
+                                            <div class="pull-right">
+                                                <span>
+                                                    <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
+                                                    <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
+                                                </span>
+                                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" class="primary" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple>{{handler.displayName}}</veb-button>
+                                            </div>
+                                        </veb-cards-action>
+                                    </div>
+                                </veb-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
                 </veb-tab-content-item>
             </veb-tab-content>
         </div>
@@ -92,6 +193,7 @@ import CurrentuserProjectsGQL from '~/apollo/query/currentUserProjects.gql'
 import ProjectListItemGetAllGQL from '~/apollo/query/projectListItemGetAll.gql'
 import CurrentProjectGQL from '~/apollo/query/currentProject.gql'
 import CreateListItemGQL from '~/apollo/query/createListItem.gql'
+import StateActionListItemGQL from '~/apollo/query/stateActionListItem.gql'
 export default {
     mixins: [pageMixins],
     layout: 'dashboardLayout',
@@ -109,9 +211,29 @@ export default {
         }
     },
     computed: {
-        unassignedItems () {
+        undoingItems () {
             return this.projectListItemGetAll.filter((item) => {
                 return item.state === 'Created' || item.state === 'Assigned'
+            }) 
+        },
+        doingItems () {
+            return this.projectListItemGetAll.filter((item) => {
+                return item.state === 'Doing'
+            }) 
+        },
+        doneItems () {
+            return this.projectListItemGetAll.filter((item) => {
+                return item.state === 'Done'
+            }) 
+        },
+        verifiedItems () {
+            return this.projectListItemGetAll.filter((item) => {
+                return item.state === 'Verified'
+            }) 
+        },
+        inproductionItems () {
+            return this.projectListItemGetAll.filter((item) => {
+                return item.state === 'In Production'
             }) 
         }
     },
@@ -176,6 +298,44 @@ export default {
                 this.$snackbar.run({message: 'Failed to add new item', type: 'color-pink'})
             })
             this.$refs.addItem.disable()
+        },
+        action (handlerName, obj) {
+            if (handlerName === 'assign') {
+                obj.developerId = this.currentUser._id
+            }
+            let jsonObj = JSON.stringify(obj)
+
+            this.$apollo.mutate({
+                mutation: StateActionListItemGQL,
+                variables: {
+                    handlerName,
+                    data: jsonObj
+                },
+                refetchQueries: [{
+                    query: ProjectListItemGetAllGQL,
+                    variables: {
+                        projectListId: this.$route.params.id
+                    }
+                }],
+                // // Optimistic UI
+                // // Will be treated as a 'fake' result as soon as the request is made
+                // // so that the UI can react quickly and the user be happy
+                // optimisticResponse: {
+                //     __typename: 'Mutation',
+                //     addTag: {
+                //         __typename: 'Tag',
+                //         id: -1,
+                //         label: newTag
+                //     }
+                // }
+            }).then((result) => {
+                if (result.data) {
+                    this.$snackbar.run({message: 'Successfully added new item'})
+                }
+            }).catch((error) => {
+                console.log(error)
+                this.$snackbar.run({message: 'Failed to add new item', type: 'color-pink'})
+            })
         }
     },
     apollo: {
@@ -188,6 +348,7 @@ export default {
             },
             fetchPolicy: 'cache-and-network'
         },
+        currentUser: CurrentuserGQL
     }
 }
 </script>
