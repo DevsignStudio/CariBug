@@ -10,3 +10,4 @@ scalar NegativeFloat
 scalar EmailAddress
 scalar URL
 scalar JSON
+scalar Object

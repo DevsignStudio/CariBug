@@ -38,22 +38,66 @@ export const saveExtender = (model) => {
             fields['insertedBy'] = updatedUser
             model.set('insertedBy', updatedUser)
             isCreated = false
+            fields['isDeleted'] = false
+            model.set('isDeleted', false)
         }
 
         fields['updatedAt'] = timestamp
         model.set('updatedAt', timestamp)
         fields['updatedBy'] = updatedUser
         model.set('updatedBy', updatedUser)
-        fields['isDeleted'] = false
-        model.set('isDeleted', false)
+        
         return dispatch(isCreated ? update(action.fields) : create(action.fields));
     }
 }
 
 export const extendModel = Model => {
+    let findCommand = Model.find
+    let findOneCommand = Model.findOne
+    let updateCommand = Model.update
 	Model.prototype.setModifyUser = function (id) {
         this.set('updatedBy', id);
-	};
+    };
+    
+    Model.find = function(...args) {
+        if (!args[0]) {
+            args[0] = {}
+        }
+        args[0].isDeleted = false
+
+        let data = findCommand.apply(Model, args)
+        return data
+    }
+
+    Model.findWithDeleted = function(...args) {
+        let data = findCommand.apply(Model, args)
+        return data
+    }
+
+    Model.findOne = function(...args) {
+        if (!args[0]) {
+            args[0] = {}
+        }
+        args[0].isDeleted = false
+
+        let data = findOneCommand.apply(Model, args)
+        return data
+    }
+
+    Model.findOneWithDeleted = function(...args) {
+        let data = findOneCommand.apply(Model, args)
+        return data
+    }
+
+    Model.remove = async (user, query) => {
+        let models = await Model.find(query)
+        models.forEach(r => {
+            r.set('isDeleted', true)
+            r.set('updatedBy', user._id);
+            r.save()
+        })
+        return true
+    }
 };
 
 

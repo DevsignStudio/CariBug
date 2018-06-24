@@ -1,0 +1,10 @@
+query projectListItemGetAll($projectListId: String){
+    projectListItemGetAll(projectListId: $projectListId) {
+        _id
+        title
+        description
+        projectListId
+        state
+        availableHandler
+    }
+}

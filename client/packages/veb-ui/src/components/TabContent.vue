@@ -52,17 +52,20 @@ export default {
                 touchThreshold: 10
             })
 
-            $swipeTabsContainer.slick({
-                slidesToShow: self.size,
-                slidesToScroll: 1,
-                arrows: false,
-                swipe: false,
-                infinite: false,
-                swipeToSlide: true,
-                touchThreshold: 10,
-                asNavFor: $swipeTabsContentContainer,
-                variableWidth: true
-            })
+            setTimeout(() => {
+                $swipeTabsContainer.slick({
+                    slidesToShow: self.size,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    swipe: false,
+                    infinite: false,
+                    swipeToSlide: true,
+                    touchThreshold: 10,
+                    asNavFor: $swipeTabsContentContainer,
+                    variableWidth: true
+                })
+            }, 300)
+            
             
             $swipeTabs.on('click', function (event) {
                 let containerWidth = $swipeTabsContainer.width()

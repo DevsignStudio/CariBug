@@ -1,0 +1,12 @@
+mutation CreateListItem($title: String!, $description: String!, $projectListId: String! ) {
+    createListItem(title: $title, description: $description projectListId: $projectListId) {
+        _id
+        title
+        description
+        state
+        insertedAt
+        updatedAt
+        insertedBy
+        updatedBy
+    }
+}

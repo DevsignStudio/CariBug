@@ -12,11 +12,10 @@ export default {
             if (!user) {
                 return null
             }
-            let currentWorkflowConfig = await WorkflowConfiguration.findOne({name: 'ProjectListItem Workflow'})
+            let currentWorkflowConfig = await WorkflowConfiguration.find({name: 'ProjectListItem Workflow'})
             
-            if (currentWorkflowConfig) {
-                currentWorkflowConfig.setModifyUser(user._id)
-                await currentWorkflowConfig.remove()
+            if (currentWorkflowConfig.length) {
+                await WorkflowConfiguration.remove(user,{name: 'ProjectListItem Workflow'})
             }
             let workflowSettings = WorkflowSetting()
             let pathIsExists = false
@@ -82,8 +81,9 @@ const createListItemWorkflowStateAndHandler = async ({user, db, workflowConfigur
     let handler2 = new WorkflowHandler({internalName: 'doing', displayName: 'Mark As Doing', startStateId:  state1.get()._id, endStateId: state2.get()._id, workflowConfigurationId})
     let handler3 = new WorkflowHandler({internalName: 'done', displayName: 'Mark As Done', startStateId:  state2.get()._id, endStateId: state3.get()._id, workflowConfigurationId})
     let handler4 = new WorkflowHandler({internalName: 'verify', displayName: 'Verify', startStateId:  state3.get()._id, endStateId: state4.get()._id, workflowConfigurationId})
-    let handler5 = new WorkflowHandler({internalName: 'unverify', displayName: 'Unverify', startStateId:  state4.get()._id, endStateId: state5.get()._id, workflowConfigurationId})
-    let handler6 = new WorkflowHandler({internalName: 'inproduction', displayName: 'Move Production', startStateId:  state5.get()._id, endStateId: state6.get()._id, workflowConfigurationId})
+    let handler5 = new WorkflowHandler({internalName: 'unverify', displayName: 'Unverify', startStateId:  state3.get()._id, endStateId: state5.get()._id, workflowConfigurationId})
+    let handler6 = new WorkflowHandler({internalName: 'inproduction', displayName: 'Move Production', startStateId:  state4.get()._id, endStateId: state6.get()._id, workflowConfigurationId})
+    let handler7 = new WorkflowHandler({internalName: 'resubmit', displayName: 'Done', startStateId:  state5.get()._id, endStateId: state3.get()._id, workflowConfigurationId})
 
     handler0.setModifyUser(user._id)
     handler1.setModifyUser(user._id)
@@ -92,6 +92,7 @@ const createListItemWorkflowStateAndHandler = async ({user, db, workflowConfigur
     handler4.setModifyUser(user._id)
     handler5.setModifyUser(user._id)
     handler6.setModifyUser(user._id)
+    handler7.setModifyUser(user._id)
     await Promise.all([
         await handler0.save(),
         await handler1.save(),
@@ -100,6 +101,7 @@ const createListItemWorkflowStateAndHandler = async ({user, db, workflowConfigur
         await handler4.save(),
         await handler5.save(),
         await handler6.save(),
+        await handler7.save()
     ])
 
     return true
