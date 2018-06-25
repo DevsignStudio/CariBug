@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="!items || items.length === 0">
-            <div class="font-subhead color-grey font-center" style="line-height: 56px;"><b>Heads Up!</b> No Data to show</div>
+            <div class="font-subhead color-grey font-center" style="line-height: 56px;"><b>Heads Up!</b> No item to show</div>
         </div>
         
         <fade-transition group>

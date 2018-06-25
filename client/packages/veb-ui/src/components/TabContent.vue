@@ -66,7 +66,6 @@ export default {
                     edgeFriction: 0,
                     speed: 200,
                     touchThreshold: 10,
-                    
                 })
 
                 $swipeTabs.on('click', function (event) {
@@ -119,7 +118,7 @@ export default {
                     self.$children[currentSlide.currentSlide].$children[0].scrollTop()
                 // self.lastSlide = (currentSlide.slideCount -1) === currentSlide.currentSlide;
                 })
-            }, 500)
+            }, 300)
             
         })
     }
