@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <div class="swipe-tabs-container" ref="tabContainer">
+        <div class="swipe-tabs-container invisible" ref="tabContainer">
             <slot></slot>
         </div>
     </div>
@@ -24,16 +24,16 @@ export default {
     },
     mounted () {
         var self = this
+        require('slick-carousel')
+        require('slick-carousel/slick/slick.css')
         self.$nextTick(() => {
-            setTimeout(() => {
-                require('slick-carousel')
-                require('slick-carousel/slick/slick.css')
-                const $swipeTabsContainer = $(self.element).find('.swipe-tabs')
-                const $swipeTabs = $swipeTabsContainer.find('.swipe-tab')
-                const $swipeTabsContentContainer = $(self.$el).find('.swipe-tabs-container')
+            if (process.browser) {
+                let $swipeTabsContainer = $(self.element).find('.swipe-tabs')
+                let $swipeTabs = $swipeTabsContainer.find('.swipe-tab')
+                let $swipeTabsContentContainer = $(self.$el).find('.swipe-tabs-container')
                 let currentIndex = 0
                 const activeTabClassName = 'active-tab'
-
+                
                 $swipeTabsContainer.on('init', function (event, slick) {
                     $swipeTabsContentContainer.removeClass('invisible')
                     $swipeTabsContainer.removeClass('invisible')
@@ -41,19 +41,20 @@ export default {
                     $swipeTabs.removeClass(activeTabClassName)
                     $(this).find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
                 })
-                $swipeTabsContentContainer.on('init', function (event, slick) {
+
+                setTimeout(() => {
                     $swipeTabsContainer.slick({
                         slidesToShow: self.size,
                         slidesToScroll: 1,
                         arrows: false,
                         swipe: false,
                         infinite: false,
-                        swipeToSlide: true,
+                        swipeToSlide: false,
                         touchThreshold: 10,
                         variableWidth: true,
                         asNavFor: $swipeTabsContentContainer,
                     })
-                })
+                }, 800)
 
                 $swipeTabsContentContainer.slick({
                     slidesToShow: 1,
@@ -67,6 +68,7 @@ export default {
                     speed: 200,
                     touchThreshold: 10,
                 })
+                
 
                 $swipeTabs.on('click', function (event) {
                     let containerWidth = $swipeTabsContainer.width()
@@ -118,7 +120,7 @@ export default {
                     self.$children[currentSlide.currentSlide].$children[0].scrollTop()
                 // self.lastSlide = (currentSlide.slideCount -1) === currentSlide.currentSlide;
                 })
-            }, 300)
+            }
             
         })
     }

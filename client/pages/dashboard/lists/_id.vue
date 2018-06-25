@@ -1,7 +1,7 @@
 <template>
     <div style="width: 100%; max-width: 100%; height: 100%; position: absolute; top: 0;left: 0; overflow: hidden"  class="flex-fill-height">
         <div class="flex-fill-height">
-            <veb-tab id="tab" ref="tabHeader" class="background-primary elevation z2" v-elevation style="visibility: visible">
+            <veb-tab id="tab" ref="tabHeader" class="background-primary elevation z2" v-elevation>
                 <veb-tab-item v-ripple>To-do</veb-tab-item>
                 <veb-tab-item v-ripple>Doing</veb-tab-item>
                 <veb-tab-item v-ripple>Done</veb-tab-item>
@@ -22,21 +22,21 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <list-item-cards :items="doingItems"></list-item-cards>
+                                <!-- <list-item-cards :items="doingItems"></list-item-cards> -->
                             </div>
                         </div>
                     </veb-page-container>
                 </veb-tab-content-item>
                 <veb-tab-content-item >
                     <veb-page-container style="max-width: 500px;">
-                        <list-item-cards :items="doneItems"></list-item-cards>
+                        <!-- <list-item-cards :items="doneItems"></list-item-cards> -->
                     </veb-page-container>
                 </veb-tab-content-item>
                 <veb-tab-content-item >
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                               <list-item-cards :items="verifiedItems"></list-item-cards>
+                               <!-- <list-item-cards :items="verifiedItems"></list-item-cards> -->
                             </div>
                         </div>
                     </veb-page-container>
@@ -45,7 +45,7 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <list-item-cards :items="inproductionItems"></list-item-cards>
+                                <!-- <list-item-cards :items="inproductionItems"></list-item-cards> -->
                             </div>
                         </div>
                     </veb-page-container>

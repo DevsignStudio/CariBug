@@ -1,14 +1,16 @@
 $swipe-tab-color: $color-white;
+
+.swipe-tabs {
+    max-height: 50px;
+    overflow: hidden;
+}
 .slick-initialized {
     height:100%;
     width:100%;
     .swipe-tab-content {
         position: relative;
     }
-    &.swipe-tabs {
-        max-height: 50px;
-        overflow: hidden;
-    }
+    
     .swipe-tab {
         height: 50px;
         background: none;

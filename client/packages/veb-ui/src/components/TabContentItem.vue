@@ -6,12 +6,3 @@
     </div>
 </template>
 
-<script>
-export default {
-    mounted () {
-        // console.log(this.$refs.scrollbar.myScrollbar)
-        //this.$refs.scrollbar.$el.myScrollbar.update()
-    }
-}
-</script>
-
