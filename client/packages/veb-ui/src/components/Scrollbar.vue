@@ -23,7 +23,7 @@ export default {
                 viewElement.style.zIndex = '0'
                 let containerElement = viewElement.querySelectorAll('.gm-scrollbar-container:not(.dont-count)')
                 if (containerElement.length > 0) {
-                    viewElement.style.zIndex = '100'
+                    viewElement.style.zIndex = '99'
                 }
             }
             
