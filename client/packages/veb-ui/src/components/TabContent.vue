@@ -8,7 +8,6 @@
 
 <script>
 import $ from 'jquery'
-import { setTimeout } from 'timers';
 
 export default {
     props: {
@@ -42,19 +41,28 @@ export default {
                     $(this).find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
                 })
 
-                setTimeout(() => {
-                    $swipeTabsContainer.slick({
-                        slidesToShow: self.size,
-                        slidesToScroll: 1,
-                        arrows: false,
-                        swipe: false,
-                        infinite: false,
-                        swipeToSlide: false,
-                        touchThreshold: 10,
-                        variableWidth: true,
-                        asNavFor: $swipeTabsContentContainer,
-                    })
-                }, 800)
+                let callInitialize = function () {
+                    if (!$swipeTabsContainer.hasClass('slick-initialized')) {
+                        // $swipeTabsContainer.slick('unslick')
+                        $swipeTabsContainer.slick({
+                            slidesToShow: self.size,
+                            slidesToScroll: 1,
+                            arrows: false,
+                            swipe: false,
+                            infinite: false,
+                            swipeToSlide: false,
+                            touchThreshold: 10,
+                            variableWidth: true,
+                            asNavFor: $swipeTabsContentContainer,
+                        })
+                        if (refresh) clearInterval(refresh)
+                    }
+                }
+
+                callInitialize()
+                let refresh = setInterval(() => {
+                    callInitialize()
+                }, 100)
 
                 $swipeTabsContentContainer.slick({
                     slidesToShow: 1,

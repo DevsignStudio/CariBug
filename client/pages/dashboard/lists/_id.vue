@@ -22,21 +22,7 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <!-- <list-item-cards :items="doingItems"></list-item-cards> -->
-                            </div>
-                        </div>
-                    </veb-page-container>
-                </veb-tab-content-item>
-                <veb-tab-content-item >
-                    <veb-page-container style="max-width: 500px;">
-                        <!-- <list-item-cards :items="doneItems"></list-item-cards> -->
-                    </veb-page-container>
-                </veb-tab-content-item>
-                <veb-tab-content-item >
-                    <veb-page-container style="max-width: 500px;">
-                        <div class="row center-xs">
-                            <div class="col-xs-fluid-24">
-                               <!-- <list-item-cards :items="verifiedItems"></list-item-cards> -->
+                                <list-item-cards :items="doingItems"></list-item-cards>
                             </div>
                         </div>
                     </veb-page-container>
@@ -45,7 +31,25 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
-                                <!-- <list-item-cards :items="inproductionItems"></list-item-cards> -->
+                               <list-item-cards :items="doneItems"></list-item-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
+                </veb-tab-content-item>
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                               <list-item-cards :items="verifiedItems"></list-item-cards>
+                            </div>
+                        </div>
+                    </veb-page-container>
+                </veb-tab-content-item>
+                <veb-tab-content-item >
+                    <veb-page-container style="max-width: 500px;">
+                        <div class="row center-xs">
+                            <div class="col-xs-fluid-24">
+                                <list-item-cards :items="inproductionItems"></list-item-cards>
                             </div>
                         </div>
                     </veb-page-container>
