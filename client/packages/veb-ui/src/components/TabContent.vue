@@ -33,12 +33,13 @@ export default {
                 let currentIndex = 0
                 const activeTabClassName = 'active-tab'
                 
+                console.log($swipeTabs)
                 $swipeTabsContainer.on('init', function (event, slick) {
                     $swipeTabsContentContainer.removeClass('invisible')
                     $swipeTabsContainer.removeClass('invisible')
                     currentIndex = slick.getCurrent()
                     $swipeTabs.removeClass(activeTabClassName)
-                    $(this).find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
+                    $(this).find('[data-slick-index=' + currentIndex + ']').children().children().children().addClass(activeTabClassName)
                 })
 
                 let callInitialize = function () {
@@ -90,9 +91,9 @@ export default {
                     })
 
                     let beforeIndex = currentIndex
-                    currentIndex = $(this).parent().parent().data('slick-index')
+                    currentIndex = $(this).parent().parent().parent().data('slick-index')
                     $swipeTabs.removeClass(activeTabClassName)
-                    $swipeTabsContainer.find('[data-slick-index=' + currentIndex + ']').children().children().addClass(activeTabClassName)
+                    $swipeTabsContainer.find('[data-slick-index=' + currentIndex + ']').children().children().children().addClass(activeTabClassName)
                     $swipeTabsContentContainer.slick('slickGoTo', currentIndex)
                     if (containerWidth > totalWidth) {
                         $swipeTabsContainer.slick('slickGoTo', 0)

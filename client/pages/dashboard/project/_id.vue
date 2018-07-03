@@ -11,14 +11,13 @@
                                 <div class="font-center font-body">Set up a project to get going with your issues tracking. After that, you’ll find your relevant repositories and work right here.</div>
                                 <div class="button-center-container" style="margin-top: 20px">
                                     <veb-button @click="showAdd" class="primary" button-style="raised" v-ripple v-elevation><veb-icon name="plus"></veb-icon>Create New List</veb-button>
-                                    <veb-button @click="showUserList" class="primary" button-style="flat" v-ripple v-elevation><veb-icon name="settings"></veb-icon>Settings</veb-button>
+                                    <!-- <veb-button @click="showUserList" class="primary" button-style="flat" v-ripple v-elevation><veb-icon name="settings"></veb-icon>Settings</veb-button> -->
                                 </div>
                             </div>
                         </div>
                     </fade-transition>
                     
                     <div class="clearfix"></div>
-                    
                         <div class="row center-xs" v-if="currentProject && currentProject.lists.length">
                             <div class="col-xs-fluid-24 col-md-fluid-15">
                                 <div class="font-display1" style="margin-bottom: 10px; margin-top: 16px">Lists</div>
@@ -45,8 +44,6 @@
                                 </div>
                             </div>
                         </div>
-                    
-                    
                     <div class="loading-container" v-if="(currentProjectNumberOfList && $apollo.loading) || (currentProjectNumberOfList === null && $apollo.loading)">
                         <div class="loading-style2"></div>
                     </div>
@@ -174,6 +171,11 @@ export default {
             selectedRole: [],
             getAllRoles: [],
         }
+    },
+    mounted () {
+        this.$root.mainToolbar.registerIconAction({iconName: 'settings'},() => {
+            this.showUserList()
+        })
     },
     computed: {
         currentProjectEditable () {

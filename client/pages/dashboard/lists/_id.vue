@@ -13,6 +13,9 @@
                     <veb-page-container style="max-width: 500px;">
                         <div class="row center-xs">
                             <div class="col-xs-fluid-24">
+                                <div class="loading-container" v-if="$apollo.loading">
+                                    <div class="loading-style2"></div>
+                                </div>
                                 <list-item-cards :items="undoingItems"></list-item-cards>
                             </div>
                         </div>

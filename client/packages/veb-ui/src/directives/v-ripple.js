@@ -1,5 +1,5 @@
 export default {
-    bind: (el, binding, vnode) => {
+    inserted: (el, binding, vnode) => {
         const $ = require('jquery')
         let background = null
         let takeFromFont = false

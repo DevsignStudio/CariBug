@@ -70,7 +70,7 @@ export default {
                 obj.developerId = this.currentUser._id
             }
             let jsonObj = JSON.stringify(obj)
-
+            let self = this
             this.$apollo.mutate({
                 mutation: StateActionListItemGQL,
                 variables: {
@@ -81,8 +81,13 @@ export default {
                     query: ProjectListItemGetAllGQL,
                     variables: {
                         projectListId: this.$route.params.id
-                    }
+                    },
                 }],
+                update(data) {
+                    if (data.data){
+                        self.$snackbar.run({message: 'Successfully update item'})
+                    }
+                },
                 // // Optimistic UI
                 // // Will be treated as a 'fake' result as soon as the request is made
                 // // so that the UI can react quickly and the user be happy
@@ -95,12 +100,10 @@ export default {
                 //     }
                 // }
             }).then((result) => {
-                if (result.data) {
-                    this.$snackbar.run({message: 'Successfully added new item'})
-                }
+                
             }).catch((error) => {
                 console.log(error)
-                this.$snackbar.run({message: 'Failed to add new item', type: 'color-pink'})
+                this.$snackbar.run({message: 'Failed to update item', type: 'color-pink'})
             })
         }
     },
