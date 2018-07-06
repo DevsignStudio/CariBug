@@ -45,9 +45,13 @@ export default {
             if (!ancestor) {
                 ancestor = Helper.findAncestor(this.$el, 'gm-scrollbar-container')
             }
-            Helper.one(ancestor, 'scroll', (e) => {
-                Helper.removeClass(this.childElement, 'show')
-            })
+
+            if (ancestor) {
+                Helper.one(ancestor, 'scroll', (e) => {
+                    Helper.removeClass(this.childElement, 'show')
+                })
+            }
+
             e.stopPropagation()
             Helper.one(document, 'click', (e) => {
                 Helper.removeClass(this.childElement, 'show')
@@ -60,6 +64,7 @@ export default {
         reposition () {
             const bodyRect = document.body.getBoundingClientRect()
             const elemRect = this.triggerElement.getBoundingClientRect()
+
             const offsetTop = elemRect.top - bodyRect.top
             const offsetLeft = elemRect.left - bodyRect.left
             const offsetRight = bodyRect.right - elemRect.right

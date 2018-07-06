@@ -10,7 +10,7 @@ export default {
             const ancestor = Helper.findAncestor(this.$el, 'veb-menu-content')
             Helper.removeClass(ancestor, 'show')
             const itemActive = ancestor.querySelector('.veb-menu-item.active')
-            if (itemActive) {
+            if (itemActive && itemActive !== this.$el) {
                 Helper.removeClass(itemActive, 'active')
             }
             this.$emit('click')

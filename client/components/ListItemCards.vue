@@ -13,8 +13,8 @@
                         </veb-cards-content>
                     </div>
                     <div>
-                        <veb-divider></veb-divider>
-                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px">
+                        <!-- <veb-divider></veb-divider> -->
+                        <veb-cards-content style="padding: 12px 24px;padding-top: 6px" v-if="listitem.description">
                             <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
                         </veb-cards-content>
                         <veb-cards-content>

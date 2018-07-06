@@ -1,8 +1,8 @@
 <template>
-    <div :class="elClass" v-ripple>
+    <div :class="elClass" v-ripple @click="activate">
         <veb-dropdown-menu ref="dropdown">
             <div class="veb-floating-placeholder" v-if="value !== '' && value !== undefined">{{label}}</div>
-            <div trigger-menu @click="activate" class="veb-menu-select-description">{{description}}</div>
+            <div trigger-menu  class="veb-menu-select-description">{{description}}</div>
             <veb-menu ref="menuContent">
                 <slot></slot>
             </veb-menu>
@@ -17,7 +17,6 @@
 <script>
 import Helper from '../helper'
 import $ from 'jquery'
-import { setTimeout } from 'timers'
 export default {
     props: {
         name: {
@@ -68,6 +67,7 @@ export default {
             this.activate()
         },
         activate () {
+            this.changeMenuSize()
             const allOptions = this.$refs.menuContent.$children[0].$children
             this.index = typeof this.index === 'undefined' ? 0 : this.index
             allOptions.forEach((option, i) => {
@@ -111,7 +111,7 @@ export default {
             return this.$refs.menuContent.$children[0].$children[this.index]
         },
         scrollIntoView () {
-            this.getCurrentSelectedChild().$el.scrollIntoView()
+            // this.getCurrentSelectedChild().$el.scrollIntoView()
         },
         getAllOptions () {
             this.options = this.$children[0].$children[0].$children[0].$children
@@ -132,6 +132,7 @@ export default {
             }
         },
         changeMenuSize () {
+            console.log(this.$el.offsetWidth)
             this.$refs.menuContent.$el.style.width = this.$el.offsetWidth + 'px'
         }
     },

@@ -68,10 +68,17 @@
                                 <div class="font-headline font-medium" style="margin-bottom: 16px">Add Item</div>
                                 <veb-textfield v-model="input.title" placeholder="Title"></veb-textfield>
                                 <veb-textfield v-model="input.description" type="multiline" placeholder="Description"></veb-textfield>
+                                <veb-select label="Priority" v-model="input.priority">
+                                    <veb-option value="1">Minor</veb-option>
+                                    <veb-option value="2">Normal</veb-option>
+                                    <veb-option value="3">Major</veb-option>
+                                    <veb-option value="4">Critical</veb-option>
+                                </veb-select>
                             </veb-cards-content>
                             <veb-cards-action>
                                 <div class="pull-right">
-                                    <veb-button type="submit" class="primary" v-ripple><veb-icon name="plus"></veb-icon>Insert</veb-button>
+                                    <veb-button button-style="flat" class="primary" v-ripple>Cancel</veb-button>
+                                    <veb-button type="submit" class="primary" v-ripple><veb-icon name="plus"></veb-icon>Create</veb-button>
                                 </div>
                             </veb-cards-action>
                         </form>
@@ -109,32 +116,33 @@ export default {
             input: {
                 title: '',
                 description: '',
+                priority: '1',
             }
         }
     },
     computed: {
         undoingItems () {
-            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['asc']).filter((item) => {
                 return item.state === 'Created' || item.state === 'Assigned'
             }) 
         },
         doingItems () {
-            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['asc']).filter((item) => {
                 return item.state === 'Doing'
             }) 
         },
         doneItems () {
-            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['asc']).filter((item) => {
                 return item.state === 'Done'
             }) 
         },
         verifiedItems () {
-            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['asc']).filter((item) => {
                 return item.state === 'Verified'
             }) 
         },
         inproductionItems () {
-            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['desc']).filter((item) => {
+            return _.orderBy(this.projectListItemGetAll, ['insertedAt'], ['asc']).filter((item) => {
                 return item.state === 'In Production'
             }) 
         }
