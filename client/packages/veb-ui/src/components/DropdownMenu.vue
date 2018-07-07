@@ -13,11 +13,13 @@ export default {
             this.triggerElement = this.$el.querySelector('[trigger-menu]')
             this.childElement = this.$el.querySelector('.veb-menu-content')
             this.childElement = this.root.appendChild(this.childElement)
+
+            console.log(this.triggerElement)
             this.reposition()
 
-            this.triggerElement.addEventListener('mousedown', (e) => {
-                this.reposition()
-            })
+            // this.triggerElement.addEventListener('mousedown', (e) => {
+            //     this.reposition()
+            // })
 
             this.triggerElement.addEventListener('focus', (e) => {
                 this.click(e)
@@ -33,6 +35,7 @@ export default {
     },
     methods: {
         click (e) {
+            this.reposition()
             var matches = document.querySelectorAll('.veb-menu-content')
             matches.forEach(function (element) {
                 Helper.removeClass(element, 'show')
@@ -47,17 +50,17 @@ export default {
             }
 
             if (ancestor) {
-                Helper.one(ancestor, 'scroll', (e) => {
+                Helper.one(ancestor, 'scroll', (ev) => {
                     Helper.removeClass(this.childElement, 'show')
                 })
             }
 
             e.stopPropagation()
-            Helper.one(document, 'click', (e) => {
+            Helper.one(document, 'click', (ev) => {
                 Helper.removeClass(this.childElement, 'show')
             })
 
-            Helper.one(document, 'blur', (e) => {
+            Helper.one(document, 'blur', (ev) => {
                 Helper.removeClass(this.childElement, 'show')
             })
         },

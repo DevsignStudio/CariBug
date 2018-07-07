@@ -1,5 +1,5 @@
 <template>
-    <div :class="elClass" v-ripple @mouseup="focus">
+    <div :class="elClass" v-ripple @mouseup="click">
         <veb-dropdown-menu ref="dropdown">
             <div class="veb-floating-placeholder" v-if="value !== '' && value !== undefined">{{label}}</div>
             <div trigger-menu  class="veb-menu-select-description">{{description}}</div>
@@ -62,9 +62,13 @@ export default {
         }
     },
     methods: {
-        focus (e) {
-            this.$refs.dropdown.click(e)
+        click(e) {
             this.activate()
+            this.$refs.dropdown.click(e)
+        },
+        focus (e) {
+            this.activate()
+            this.$refs.dropdown.click(e)
         },
         activate () {
             this.changeMenuSize()
@@ -132,7 +136,6 @@ export default {
             }
         },
         changeMenuSize () {
-            console.log(this.$el.offsetWidth)
             this.$refs.menuContent.$el.style.width = this.$el.offsetWidth + 'px'
         }
     },
