@@ -14,12 +14,11 @@ export default {
             this.childElement = this.$el.querySelector('.veb-menu-content')
             this.childElement = this.root.appendChild(this.childElement)
 
-            console.log(this.triggerElement)
             this.reposition()
 
-            // this.triggerElement.addEventListener('mousedown', (e) => {
-            //     this.reposition()
-            // })
+            this.triggerElement.addEventListener('mousedown', (e) => {
+                this.reposition()
+            })
 
             this.triggerElement.addEventListener('focus', (e) => {
                 this.click(e)

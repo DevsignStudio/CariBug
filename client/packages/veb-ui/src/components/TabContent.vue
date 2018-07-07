@@ -33,7 +33,6 @@ export default {
                 let currentIndex = 0
                 const activeTabClassName = 'active-tab'
                 
-                console.log($swipeTabs)
                 $swipeTabsContainer.on('init', function (event, slick) {
                     $swipeTabsContentContainer.removeClass('invisible')
                     $swipeTabsContainer.removeClass('invisible')
