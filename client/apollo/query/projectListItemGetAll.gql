@@ -8,8 +8,14 @@ query projectListItemGetAll($projectListId: String){
         availableHandler
         insertedAt
         developerId
+        canEdit
         Developer {
             username
+        },
+        Priority {
+            _id
+            name
+            order
         }
     }
 }

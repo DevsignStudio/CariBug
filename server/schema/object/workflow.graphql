@@ -52,10 +52,35 @@ type WorkflowHandler {
     isDeleted: Boolean
 }
 
+type WorkflowAuthorizeCustomAction {
+    _id: String
+    workflowCustomActionId: String
+    workflowStateId: String
+    workflowConfigurationId: String
+    authorize: Boolean
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
+type WorkflowCustomAction {
+    _id: String
+    name: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
 type Query {
     allWorkflowSetting: [WorkflowSetting]
 }
 
 type Mutation{
     createListItemWorkflowConfiguration(path: String): String  @isAuthenticated
+    createWorkflowCustomAction(name: String, workflowConfigurationId: String): WorkflowCustomAction @isAuthenticated
+    createWorkflowAuthorizeCustomAction(workflowCustomActionId: String, workflowStateId: String, authorize: Boolean, workflowConfigurationId: String): WorkflowAuthorizeCustomAction @isAuthenticated
 }

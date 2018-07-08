@@ -7815,7 +7815,9 @@ table {
     .veb-menu-item.active:hover {
       background: rgba(48, 79, 254, 0.1); }
   .veb-menu-item.veb-menu-option.selected {
-    background: rgba(0, 0, 0, 0.05); }
+    background: rgba(48, 79, 254, 0.05); }
+    .veb-menu-item.veb-menu-option.selected:hover {
+      background: rgba(48, 79, 254, 0.1); }
 
 .veb-menu-select {
   padding-bottom: 9px;
@@ -7835,7 +7837,8 @@ table {
   -moz-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
   -ms-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
   -o-transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1); }
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  height: 56px; }
   .veb-menu-select select {
     width: 0;
     height: 0;
@@ -7852,7 +7855,9 @@ table {
     z-index: 1;
     width: 100%;
     border: 0;
-    margin: 0 -8px;
+    margin: 0;
+    margin-left: -8px;
+    margin-top: -6px;
     padding: 24px 8px;
     padding-bottom: 0px;
     background: transparent;
@@ -7865,6 +7870,8 @@ table {
     -o-transform: translateZ(0);
     transform: translateZ(0);
     white-space: nowrap; }
+  .veb-menu-select.has-data .veb-menu-select-description {
+    padding-top: 30px; }
   .veb-menu-select .veb-floating-placeholder {
     position: absolute;
     top: 0;

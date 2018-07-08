@@ -26,10 +26,17 @@ export class ProjectList extends Model {
 		}
 }
 export class ProjectListItem extends Model {
-    collection() {
+    collection () {
 			return 'projectListItems';
 		}
 }
+
+export class ProjectListItemPriority extends Model {
+    collection () {
+		return 'projectListItemPriorities';
+	}
+}
+
 export class WorkflowInstance extends Model {
     collection() {
 			return 'workflowInstances';
@@ -49,4 +56,16 @@ export class WorkflowHandler extends Model {
     collection() {
 			return 'workflowHandlers';
 		}
+}
+
+export class WorkflowCustomAction extends Model {
+	collection() {
+		return 'workflowCustomActions';
+	}
+}
+
+export class WorkflowAuthorizeCustomAction extends Model {
+	collection() {
+		return 'workflowAuthorizeCustomActions';
+	}
 }

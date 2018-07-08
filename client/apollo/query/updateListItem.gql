@@ -1,0 +1,13 @@
+mutation UpdateListItem($title: String!, $description: String!, $projectListItemId: String! , $priorityId: String!) {
+    updateListItem(title: $title, description: $description, projectListItemId: $projectListItemId, priorityId: $priorityId) {
+        _id
+        title
+        description
+        priorityId
+        state
+        insertedAt
+        updatedAt
+        insertedBy
+        updatedBy
+    }
+}

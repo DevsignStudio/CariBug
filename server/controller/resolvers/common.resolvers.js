@@ -1,10 +1,23 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import {
-    User, 
+    User,
+    ProjectListItemPriority 
 } from '~/model/index.js'
 
+let init = {
+    createProjectListItemPriority: (arg) => {
+        return new ProjectListItemPriority(arg)
+    }
+}
+
+
 export default {
+    Query: {
+        getProjectListItemPriority: async (root, args, {user})  => {
+            return (await ProjectListItemPriority.find()).map(r => r.get())
+        }
+    },
     Mutation: {
         signup: async (root, {username, password}, {secrets}) => {
             let user = await User.findOne({username})
@@ -36,6 +49,14 @@ export default {
             }
             getUser.token = jwt.sign(getUser, secrets.KEY)
             return getUser
+        },
+        createMasterData: async (root, {dataName, input}, {user}) => {
+            let masterData = init['create' + dataName].call(null,JSON.parse(input))
+            masterData.setModifyUser(user._id)
+            masterData.set('isActive', true)
+            await masterData.save()
+
+            return true
         }
     }
 }

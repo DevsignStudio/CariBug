@@ -17,18 +17,26 @@
                         <veb-cards-content style="padding: 12px 24px;padding-top: 6px" v-if="listitem.description">
                             <pre class="font-body" style="background: none; font-family: 'Roboto'" v-html="listitem.description"></pre>
                         </veb-cards-content>
-                        <veb-cards-content>
+                        <veb-cards-content style="padding: 6px 12px">
+                            <veb-chip :name="`Status: ${listitem.state}`"></veb-chip>
+                            <veb-chip :name="`${listitem.Priority.name}`"></veb-chip>
+                            <veb-chip v-if="listitem.developerId" :name="`Developer: ${listitem.Developer.username}`">
+                                <veb-avatar slot="avatar" :text="listitem.Developer.username"></veb-avatar>
+                            </veb-chip>
+                        </veb-cards-content>
+                        <!-- <veb-cards-content>
                             <div style="padding: 6px 24px" class="font-body background-grey-100" v-if="listitem.developerId">
                                 <b>Developer :</b> {{listitem.Developer.username}}                                                               
                             </div>
-                        </veb-cards-content>
+                        </veb-cards-content> -->
                         <veb-cards-action class="background-grey-100">
                             <div class="pull-right">
                                 <span>
+                                    <veb-icon-button v-if="listitem.canEdit" name="pencil" style="float:left" @click="$emit('editClicked', listitem)"></veb-icon-button>
                                     <veb-icon-button name="comment-plus-outline" style="float:left"></veb-icon-button>
                                     <veb-icon-button name="comment-text-multiple" style="float:left"></veb-icon-button>
                                 </span>
-                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" :button-style="handler.internalName === 'unverify' ? 'flat' : 'color'" :class="handler.internalName === 'unverify' ? 'color-pink' : 'primary'" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple style="float: right">{{handler.displayName}}</veb-button>
+                                <veb-button v-for="handler in listitem.availableHandler" :key="handler.internalName" :button-style="handler.internalName === 'unverify' ? 'flat' : 'color'" :class="handler.internalName === 'unverify' ? '' : 'primary'" @click="action(handler.internalName, {recordId: listitem._id} )" v-ripple style="float: right">{{handler.displayName}}</veb-button>
                             </div>
                         </veb-cards-action>
                     </div>

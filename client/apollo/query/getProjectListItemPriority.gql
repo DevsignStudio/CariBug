@@ -1,0 +1,7 @@
+query {
+	getProjectListItemPriority {
+        _id
+        name
+        order
+    }
+}

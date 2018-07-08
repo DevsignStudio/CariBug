@@ -1,5 +1,22 @@
+type ProjectListItemPriority {
+    _id: String
+    name: String
+    order: Int
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+    isActive: Boolean
+}
+
+type Query {
+    getProjectListItemPriority: [ProjectListItemPriority] @isAuthenticated
+}
+
 type Mutation {
     signup(username: String, password: String): User
     login(username: String, password: String): User
+    createMasterData(dataName: String, input: JSON): Boolean @isAuthenticated
 }
 

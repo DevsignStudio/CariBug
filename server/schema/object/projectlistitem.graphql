@@ -4,6 +4,8 @@ type ProjectListItem {
     description: String
     projectListId: String
     state: String
+    priorityId: String
+    Priority: ProjectListItemPriority
     workflowInstanceId: String
     WorkflowInstance: WorkflowInstance
     developerId: String
@@ -15,6 +17,7 @@ type ProjectListItem {
     updatedBy: String
     isDeleted: Boolean
     availableHandler: [Object]
+    canEdit: Boolean
 }
 
 type Query {
@@ -22,6 +25,7 @@ type Query {
 }
 
 type Mutation {
-    createListItem(projectListId: String, title: String, description: String): ProjectListItem @isAuthenticated
+    createListItem(projectListId: String, title: String, description: String, priorityId: String): ProjectListItem @isAuthenticated
+    updateListItem(projectListItemId: String, title: String, description: String, priorityId: String): ProjectListItem @isAuthenticated
     stateActionListItem(handlerName: String, data: JSON): Boolean @isAuthenticated
 }

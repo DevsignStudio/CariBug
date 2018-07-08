@@ -87,6 +87,9 @@
             </span>
         </veb-nav-list>
         <!-- <veb-divider></veb-divider> -->
+        <nuxt-link to="/dashboard/users/" exact>
+            <veb-nav-list><veb-icon name="fingerprint"></veb-icon> Manage Workflow</veb-nav-list>
+        </nuxt-link>
         <veb-nav-list @click="signout"><veb-icon name="key"></veb-icon> Sign Out</veb-nav-list>
         
     </div>

@@ -2,7 +2,7 @@
     <div :class="elClass" v-ripple @mouseup="focus">
         <veb-dropdown-menu ref="dropdown">
             <div class="veb-floating-placeholder" v-if="value !== '' && value !== undefined">{{label}}</div>
-            <div trigger-menu  class="veb-menu-select-description">{{description}}</div>
+            <div trigger-menu class="veb-menu-select-description">{{description}}</div>
             <veb-menu ref="menuContent">
                 <slot></slot>
             </veb-menu>
@@ -48,7 +48,8 @@ export default {
         elClass () {
             return {
                 'veb-menu-select': true,
-                'disabled': this.disabled
+                'disabled': this.disabled,
+                'has-data': this.value
             }
         }
     },

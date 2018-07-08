@@ -3,7 +3,9 @@ import rpath from 'path'
 import {
     WorkflowConfiguration,
     WorkflowHandler,
-    WorkflowState
+    WorkflowState,
+    WorkflowCustomAction,
+    WorkflowAuthorizeCustomAction
 } from '~/model'
 
 export default {
@@ -38,7 +40,40 @@ export default {
                 return null
             }
             return result.get()._id
-        }
+        },
+        createWorkflowCustomAction: async (root, {name, workflowConfigurationId}, {user}) => {
+            let customAction = await WorkflowCustomAction.findOne({workflowConfigurationId})
+            if(customAction) {
+                throw new Error('Workflow Custom Action with the same name Exist')
+            }
+
+            customAction = new WorkflowCustomAction({
+                name,
+                workflowConfigurationId
+            })
+            customAction.setModifyUser(user._id)
+            await customAction.save()
+
+            return customAction.get()
+        },
+        createWorkflowAuthorizeCustomAction: async (root, {workflowCustomActionId, workflowStateId, authorize, workflowConfigurationId}, {user}) => {
+            let customAuthorizeAction = await WorkflowAuthorizeCustomAction.findOne({workflowConfigurationId, workflowCustomActionId, workflowStateId})
+
+            if(!customAuthorizeAction) {
+                customAuthorizeAction = new WorkflowAuthorizeCustomAction({
+                    workflowCustomActionId,
+                    workflowStateId,
+                    workflowConfigurationId,
+                    authorize
+                })
+            }
+
+            customAuthorizeAction.set('authorize', authorize)
+            customAuthorizeAction.setModifyUser(user._id)
+            await customAuthorizeAction.save()
+
+            return customAuthorizeAction.get()
+        }   
     },
     Query: {
         allWorkflowSetting: (root) => {

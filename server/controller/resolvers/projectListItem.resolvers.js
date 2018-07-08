@@ -5,10 +5,31 @@ import {
     WorkflowInstance,
     WorkflowState,
     WorkflowHandler,
-    User
+    User,
+    ProjectListItemPriority,
+    WorkflowAuthorizeCustomAction,
+    WorkflowCustomAction
 } from '~/model/index.js'
 
 import path from 'path'
+
+let canEdit = async (recordId) => {
+    let record = (await ProjectListItem.findOne({_id: recordId})).get()
+    let instance = await WorkflowInstance.findOne({_id: record.workflowInstanceId})
+    let state = await WorkflowState.findOne({_id: instance.get().workflowStateId})
+    let customAction = (await WorkflowCustomAction.findOne({name: 'editProjectListItem'})).get()
+    let authCustomAction = await WorkflowAuthorizeCustomAction.findOne({
+        workflowStateId: state.get()._id, 
+        workflowConfigurationId: state.get().workflowConfigurationId,
+        workflowCustomActionId: customAction._id
+    })
+
+    if (authCustomAction && authCustomAction.get().authorize) {
+        return true
+    }
+    return false
+}
+
 export default {
     ProjectListItem: {
         state: async ({workflowInstanceId}) => {
@@ -36,6 +57,12 @@ export default {
                 return null
             }
             return (await User.findOne({_id: developerId})).get()
+        },
+        Priority: async({priorityId}) => {
+            return (await ProjectListItemPriority.findOne({_id: priorityId})).get()
+        },
+        canEdit: async({_id}) => {
+            return (await canEdit(_id))
         }
     },
     Query: {
@@ -48,7 +75,7 @@ export default {
         }
     },
     Mutation: {
-        createListItem: async (root, {projectListId, title, description}, {user}) => {
+        createListItem: async (root, {projectListId, title, description, priorityId}, {user}) => {
             if (!user) {
                 return new Error('User not exists')
             }
@@ -58,7 +85,7 @@ export default {
                 return new Error('Cannot find Project List')
             }
 
-            let listitem = new ProjectListItem({projectListId, title, description})
+            let listitem = new ProjectListItem({projectListId, title, description, priorityId})
             listitem.setModifyUser(user._id)
             await listitem.save()
 
@@ -78,6 +105,15 @@ export default {
             await listitem.save()
 
             return listitem.get()
+        },
+        updateListItem: async (root, {projectListItemId, title, description, priorityId}, {user}) => {
+            let plItem = await ProjectListItem.findOne({_id: projectListItemId})
+            plItem.set('title', title)
+            plItem.set('description', description)
+            plItem.set('priorityId', priorityId)
+            await plItem.save()
+
+            return plItem.get()
         },
         stateActionListItem: async (root, {handlerName, data}, {user}) => {
             data = JSON.parse(data)

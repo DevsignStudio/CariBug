@@ -169,7 +169,7 @@ export default {
             username: '',
             selectedUser: null,
             selectedRole: [],
-            getAllRoles: [],
+            getAllRoles: []
         }
     },
     mounted () {
@@ -314,7 +314,7 @@ export default {
             },
             fetchPolicy: 'cache-and-network'
         },
-        getAllRoles: GetAllRolesGQL
+        getAllRoles: GetAllRolesGQL,
     }
 }
 </script>
