@@ -3,7 +3,10 @@ import {
     WorkflowConfiguration,
     WorkflowHandler,
     WorkflowInstance,
+    WorkflowAuthorizeCustomAction,
+    WorkflowAuthorizeRoleCustomAction
 } from '~/model/index.js'
+
 
 export default () => {
     let allFiles = []
@@ -41,4 +44,16 @@ export const getStartHandler = async ({workflowConfigurationId}) => {
 export const getAvailableHandlers = async ({workflowConfigurationId, currentStateId}) => {
     let query = await WorkflowHandler.find({workflowConfigurationId, startStateId: {$in: [currentStateId, null]}})
     return query
+}
+
+export const isAuthorizeToSee = async ({workflowAuthorizeCustomAction, rolesId = [], isRecordCreator= false}) => {
+    if (isRecordCreator) rolesId.push('00000000-0000-0000-0000-000000000000')
+
+    let authorizeRole = await WorkflowAuthorizeRoleCustomAction.findOne({roleId: {$in: rolesId}, workflowAuthorizeCustomActionId: workflowAuthorizeCustomAction.get()._id})
+
+    if(authorizeRole) {
+        return true
+    }
+
+    return false
 }

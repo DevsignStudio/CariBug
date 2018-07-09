@@ -17,7 +17,7 @@ type ProjectListItem {
     updatedBy: String
     isDeleted: Boolean
     availableHandler: [Object]
-    canEdit: Boolean
+    canEdit: Boolean @isEditableByUser(settingName: "editProjectListItem")
 }
 
 type Query {

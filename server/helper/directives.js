@@ -1,5 +1,6 @@
 import { AuthorizationError } from './error'
 import jwt from 'jsonwebtoken'
+import {canEdit} from '~/helper/helperProjectListItem.js'
 
 const directiveResolvers = {
     isAuthenticated: (next, source, args, context) => {
@@ -52,6 +53,22 @@ const directiveResolvers = {
     mongoDateConverter: async (resolve, source, args) => {
         const value = await resolve()
         return new Date(value)
+    },
+    isEditableByUser: async (next, source, {settingName}, context) => {
+        const token = context.headers.authorization
+        if (!token) {
+            throw new AuthorizationError({
+                message: 'You must supply a JWT for authorization!'
+            })
+        }
+        const decoded = jwt.verify(
+            token.replace('Bearer ', ''),
+            context.secrets.KEY
+        )
+        context.user = decoded
+        let _id = await next()
+        let result = await canEdit(_id, context.user, settingName)
+        return result
     }
 }
 export { directiveResolvers }

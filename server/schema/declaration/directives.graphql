@@ -1,3 +1,4 @@
-directive @isAuthenticated on QUERY | FIELD
+directive @isAuthenticated on QUERY | FIELD 
 directive @hasScope(scope: [String]) on QUERY | FIELD
 directive @mongoDateConverter on FIELD_DEFINITION | FIELD
+directive @canEdit on FIELD_DEFINITION | FIELD

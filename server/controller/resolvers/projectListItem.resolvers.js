@@ -13,23 +13,6 @@ import {
 
 import path from 'path'
 
-let canEdit = async (recordId) => {
-    let record = (await ProjectListItem.findOne({_id: recordId})).get()
-    let instance = await WorkflowInstance.findOne({_id: record.workflowInstanceId})
-    let state = await WorkflowState.findOne({_id: instance.get().workflowStateId})
-    let customAction = (await WorkflowCustomAction.findOne({name: 'editProjectListItem'})).get()
-    let authCustomAction = await WorkflowAuthorizeCustomAction.findOne({
-        workflowStateId: state.get()._id, 
-        workflowConfigurationId: state.get().workflowConfigurationId,
-        workflowCustomActionId: customAction._id
-    })
-
-    if (authCustomAction && authCustomAction.get().authorize) {
-        return true
-    }
-    return false
-}
-
 export default {
     ProjectListItem: {
         state: async ({workflowInstanceId}) => {
@@ -61,8 +44,8 @@ export default {
         Priority: async({priorityId}) => {
             return (await ProjectListItemPriority.findOne({_id: priorityId})).get()
         },
-        canEdit: async({_id}) => {
-            return (await canEdit(_id))
+        canEdit: async({_id}, args) => {
+            return _id
         }
     },
     Query: {
