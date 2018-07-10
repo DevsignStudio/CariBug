@@ -2,7 +2,7 @@
     <div :class="elClass" style="min-height: 56px">
         <textarea style="min-height: 103px" :class="{'always-show': alwaysShowColor}" v-if="isMultiline" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :disabled="disabled || isInfo" @blur="blur" @focus="focusInput" ref="textarea" @input="updateValue($event.target.value)" v-model="textareaData"></textarea>
         <input :class="{'always-show': alwaysShowColor}" v-if="!isMultiline" :disabled="disabled || isInfo" ref="input" :type="type" :autocomplete="autocomplete" :autocorrect="autocorrect" :autocapitalize="autocapitalize" :spellcheck="spellcheck" :value="value" @blur="blur" @focus="focusInput" @input="updateValue($event.target.value)">
-        <div class="veb-textfield-floating-placeholder" @click="focusInput">{{placeholder}}</div>
+        <div class="veb-textfield-floating-placeholder" @click="focusInput">{{placeholder}} <span class="required" v-if="required">*</span></div>
         <div class="veb-textfield-line"></div>
         <div :class="messageClass">{{message}}</div>
     </div>
@@ -56,6 +56,10 @@ export default {
             type: Boolean
         },
         alwaysShowColor: {
+            default: false,
+            type: Boolean
+        },
+        required: {
             default: false,
             type: Boolean
         }
@@ -142,3 +146,13 @@ export default {
     }
 }
 </script>
+
+<style>
+    .required {
+        color: inherit
+    }
+
+    .on-focus .required {
+        color: red !important;
+    }
+</style>
