@@ -4,7 +4,8 @@ import {
     WorkflowHandler,
     WorkflowInstance,
     WorkflowAuthorizeCustomAction,
-    WorkflowAuthorizeRoleCustomAction
+    WorkflowAuthorizeRoleCustomAction,
+    WorkflowAuthorizeUserRole
 } from '~/model/index.js'
 
 
@@ -51,6 +52,17 @@ export const isAuthorizeToSee = async ({workflowAuthorizeCustomAction, rolesId =
 
     let authorizeRole = await WorkflowAuthorizeRoleCustomAction.findOne({roleId: {$in: rolesId}, workflowAuthorizeCustomActionId: workflowAuthorizeCustomAction.get()._id})
 
+    if(authorizeRole) {
+        return true
+    }
+
+    return false
+}
+
+export const isAuthorizeToSeeHandler = async ({workflowHandler, rolesId = [], isRecordCreator= false}) => {
+    if (isRecordCreator) rolesId.push('00000000-0000-0000-0000-000000000000')
+
+    let authorizeRole = await WorkflowAuthorizeUserRole.findOne({roleId: {$in: rolesId}, workflowHandlerId: workflowHandler.get()._id})
     if(authorizeRole) {
         return true
     }

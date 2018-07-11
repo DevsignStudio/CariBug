@@ -8,10 +8,10 @@ import {
     User,
     ProjectListItemPriority,
     WorkflowAuthorizeCustomAction,
-    WorkflowCustomAction
+    WorkflowCustomAction,
 } from '~/model/index.js'
 
-import {isAuthorizeToSee} from '~/controller/workflow'
+import {isAuthorizeToSee, isAuthorizeToSeeHandler} from '~/controller/workflow'
 
 export const canEdit = async (recordId, user, settingName) => {
     let record = (await ProjectListItem.findOne({_id: recordId})).get()
@@ -34,5 +34,21 @@ export const canEdit = async (recordId, user, settingName) => {
     if (authorize && authCustomAction && authCustomAction.get().authorize) {
         return true
     }
+    return false
+}
+
+export const canViewHandler = async (recordId, user, _id) => {
+    let workflowHandler = await WorkflowHandler.findOne({_id})
+
+    if (!workflowHandler) throw new Error('Handler not exixts')
+
+    let workflowInstance = await WorkflowInstance.findOne({recordId})
+    let isRecordCreator = workflowInstance.get().insertedBy === user._id
+
+    let roles = (await ProjectTeam.findOne({userId: user._id}))
+    roles = roles ? roles.get().rolesId : []
+    let authorize = await isAuthorizeToSeeHandler({workflowHandler, rolesId: roles, isRecordCreator})
+    if(authorize) return true
+
     return false
 }

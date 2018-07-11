@@ -19,7 +19,8 @@ import {
     ProjectListItemPriority,
     WorkflowCustomAction,
     WorkflowAuthorizeCustomAction,
-    WorkflowAuthorizeRoleCustomAction
+    WorkflowAuthorizeRoleCustomAction,
+    WorkflowAuthorizeUserRole
 } from '~/model'
 
 const dotEnvConf = DotEnv.config()
@@ -50,6 +51,7 @@ export const context = async (req, secrets) => {
         db.register(WorkflowCustomAction)
         db.register(WorkflowAuthorizeCustomAction)
         db.register(WorkflowAuthorizeRoleCustomAction)
+        db.register(WorkflowAuthorizeUserRole)
     }
 
     return {

@@ -16,7 +16,7 @@ type ProjectListItem {
     updatedAt: DateTime @mongoDateConverter
     updatedBy: String
     isDeleted: Boolean
-    availableHandler: [Object]
+    availableHandler: [Object] @isAuthorizeByRole
     canEdit: Boolean @isEditableByUser(settingName: "editProjectListItem")
 }
 

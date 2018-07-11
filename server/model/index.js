@@ -75,3 +75,9 @@ export class WorkflowAuthorizeRoleCustomAction extends Model {
 		return 'workflowAuthorizeRoleCustomActions';
 	}
 }
+
+export class WorkflowAuthorizeUserRole extends Model {
+	collection() {
+		return 'workflowAuthorizeUserRoles';
+	}
+}

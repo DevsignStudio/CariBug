@@ -22,7 +22,7 @@ export default {
         WorkflowInstance: async ({workflowInstanceId}) => {
             return (await WorkflowInstance.findOne({_id: workflowInstanceId})).get()
         },
-        availableHandler: async ({workflowInstanceId}) => {
+        availableHandler: async ({workflowInstanceId, _id}) => {
             let workflowInstance = await WorkflowInstance.findOne({_id: workflowInstanceId})
             let workflowState = await WorkflowState.findOne({_id: workflowInstance.get().workflowStateId})
 
@@ -31,7 +31,9 @@ export default {
                 r = r.get()
                 return {
                     internalName: r.internalName,
-                    displayName: r.displayName
+                    displayName: r.displayName,
+                    _id: r._id,
+                    recordId: _id
                 }
             })
         },

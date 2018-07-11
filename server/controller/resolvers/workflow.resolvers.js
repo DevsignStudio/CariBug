@@ -6,7 +6,8 @@ import {
     WorkflowState,
     WorkflowCustomAction,
     WorkflowAuthorizeCustomAction,
-    WorkflowAuthorizeRoleCustomAction
+    WorkflowAuthorizeRoleCustomAction,
+    WorkflowAuthorizeUserRole
 } from '~/model'
 
 export default {
@@ -87,6 +88,16 @@ export default {
             workflowAuthorizeRoleCustomAction.setModifyUser(user._id)
             await workflowAuthorizeRoleCustomAction.save()
             return workflowAuthorizeRoleCustomAction.get()
+        },
+        createWorkflowAuthorizeUserRole: async (root, {workflowHandlerId, roleId}, {user}) => {
+            let authorize = await WorkflowAuthorizeUserRole.findOne({workflowHandlerId, roleId})
+            if (authorize) throw new Error('Authorize role already exists')
+            
+            authorize = new WorkflowAuthorizeUserRole({workflowHandlerId, roleId})
+            authorize.setModifyUser(user._id)
+            await authorize.save()
+
+            return authorize.get()
         }
     },
     Query: {

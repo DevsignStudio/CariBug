@@ -86,6 +86,17 @@ type WorkflowAuthorizeRoleCustomAction {
     isDeleted: Boolean
 }
 
+type WorkflowAuthorizeUserRole {
+    _id: String
+    roleId: String,
+    workflowHandlerId: String
+    insertedAt: DateTime @mongoDateConverter
+    insertedBy: String
+    updatedAt: DateTime @mongoDateConverter
+    updatedBy: String
+    isDeleted: Boolean
+}
+
 type Query {
     allWorkflowSetting: [WorkflowSetting]
 }
@@ -95,4 +106,5 @@ type Mutation{
     createWorkflowCustomAction(name: String, workflowConfigurationId: String): WorkflowCustomAction @isAuthenticated
     createWorkflowAuthorizeCustomAction(workflowCustomActionId: String, workflowStateId: String, authorize: Boolean, workflowConfigurationId: String): WorkflowAuthorizeCustomAction @isAuthenticated
     createWorkflowAuthorizeRoleCustomAction(workflowAuthorizeCustomActionId: String, roleId: String): WorkflowAuthorizeRoleCustomAction @isAuthenticated
+    createWorkflowAuthorizeUserRole(workflowHandlerId: String, roleId: String): WorkflowAuthorizeUserRole @isAuthenticated
 }
