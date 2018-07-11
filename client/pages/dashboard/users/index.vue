@@ -31,8 +31,8 @@
                                         <td>{{user.lastName}}</td>
                                         <td>{{user.email}}</td>
                                         <td>
-                                            <veb-chip v-if="user.isActive" name="Active" class="background-green invert"></veb-chip>
-                                            <veb-chip v-if="!user.isActive" name="Inactive" class="background-pink invert"></veb-chip>
+                                            <veb-chip style="margin: 0" v-if="user.isActive" name="Active" class="background-green invert"></veb-chip>
+                                            <veb-chip style="margin: 0" v-if="!user.isActive" name="Inactive" class="background-pink invert"></veb-chip>
                                         </td>
                                         <td>{{ user.updatedAt | moment("from", "now")}}</td>
                                         <td class="td-action">
