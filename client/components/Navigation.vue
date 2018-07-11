@@ -78,16 +78,19 @@
         <veb-nav-list :sublist="true">
             <veb-icon name="chart-bubble"></veb-icon> Directives
             <span slot="sublist">
-                <nuxt-link to="/dashboard/users/" exact>
+                <nuxt-link to="/dashboard/users/aa" exact>
                     <veb-nav-list><veb-icon name="chart-bubble"></veb-icon> Ripple (WIP)</veb-nav-list>
                 </nuxt-link>
-                <nuxt-link to="/dashboard/users/" exact>
+                <nuxt-link to="/dashboard/users/aa" exact>
                     <veb-nav-list><veb-icon name="chart-bubble"></veb-icon> Elevation (WIP)</veb-nav-list>
                 </nuxt-link>
             </span>
         </veb-nav-list>
         <!-- <veb-divider></veb-divider> -->
         <nuxt-link to="/dashboard/users/" exact>
+            <veb-nav-list><veb-icon name="account-multiple"></veb-icon> Manage User</veb-nav-list>
+        </nuxt-link>
+        <nuxt-link to="/dashboard/users/aa" exact>
             <veb-nav-list><veb-icon name="fingerprint"></veb-icon> Manage Workflow</veb-nav-list>
         </nuxt-link>
         <veb-nav-list @click="signout"><veb-icon name="key"></veb-icon> Sign Out</veb-nav-list>

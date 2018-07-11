@@ -1,0 +1,10 @@
+{
+    users {
+        username
+        firstName
+        lastName
+        email
+        updatedAt
+        isActive
+    }
+}

@@ -1,6 +1,10 @@
 type User {
     _id: String
     username: String
+    firstName: String,
+    lastName: String,
+    email: String,
+    isActive: Boolean,
     token: String
     insertedAt: DateTime @mongoDateConverter
     insertedBy: String
