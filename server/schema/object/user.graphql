@@ -13,4 +13,24 @@ type Query {
     currentUser: User @isAuthenticated
     currentUserProjects: [Project] @isAuthenticated
     searchUsers(queryString: String, limit: Int, exclude: [String]): [User] @isAuthenticated
+    users(queryString: String, limit: Int): [User] @isAuthenticated
+}
+
+type Mutation {
+    createUser(
+        username: String, 
+        password: String, 
+        email: String, 
+        firstName: String, 
+        lastName: String, 
+        firstTimePasswordAsk: String
+    ): User @isAuthenticated
+    updateUser(
+        _id: String
+        username: String, 
+        password: String, 
+        email: String, 
+        firstName: String, 
+        lastName: String
+    ): User @isAuthenticated
 }

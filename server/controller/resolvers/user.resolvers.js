@@ -4,6 +4,8 @@ import {
     Project, 
     ProjectTeam} from '~/model/index.js'
 
+import bcrypt from 'bcryptjs'
+
 export default {
     Query: {
         currentUser: (root, args, {user}) => {
@@ -25,8 +27,47 @@ export default {
             let result = await User.limit(limit).find({'username': {'$regex': queryString, '$options': 'i'}, '_id': {$nin: exclude}})
             return result.map(r => r.get())
         },
-        
-    },
-    
+        users: async (root, {queryString ='', limit}, {user}) => {
+            let users = await User.find({
+                'username': {'$regex': queryString, '$options': 'i'}
+            })
+
+            return users.map(r => r.get())
+        }
+    }, 
+    Mutation: {
+        createUser: async (root, {username, password, email, firstName, lastName, firstTimePasswordAsk = true}, {user}) => {
+            let newUser = await User.findOne({username})
+            if (newUser) {
+                throw new Error('User already exists')
+            }
+            let hashedPassword = await bcrypt.hash(password, 10)
+            newUser = new User({
+                username,
+                password: hashedPassword,
+                email,
+                firstName,
+                lastName,
+                lastLoginDate: null,
+                firstTimePasswordAsk,
+                isActive: true
+            })
+            newUser.setModifyUser(user._id)
+            await newUser.save()
+            return newUser.get()
+        },
+        updateUser: async (root, 
+            data,
+            {user}
+        ) => {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    console.log(property)
+                }
+            }
+            return user
+        }
+    }
+
     
 }
